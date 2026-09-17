@@ -1,0 +1,31 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "portfolio-demo-contact-sheet-consumer",
+  "main": "src/index.ts",
+  "workers_dev": false,
+  "compatibility_date": "2026-09-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "secrets": {
+    "required": [
+      "GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_JSON",
+      "GOOGLE_SHEET_ID",
+      "GOOGLE_SHEET_RANGE"
+    ]
+  },
+  "queues": {
+    "consumers": [
+      {
+        "queue": "portfolio-demo-contact-submissions",
+        "max_batch_size": 25,
+        "max_batch_timeout": 10,
+        "max_retries": 5,
+        "dead_letter_queue": "portfolio-demo-contact-submissions-dlq",
+        "max_concurrency": 1,
+        "retry_delay": 60
+      }
+    ]
+  },
+  "observability": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,37 @@
+flowchart LR
+    subgraph JOURNEY[Visitor journey]
+        ARRIVE[Arrive without prior context]
+        UNDERSTAND[Understand the event]
+        CHOOSE[Choose a session]
+        PREPARE[Prepare before visiting]
+        VISIT[Visit with venue and map guidance]
+        CONTINUE[Continue exploring brand stories<br/>and the digital Guidebook]
+    end
+
+    subgraph SUPPORT[Supporting mechanisms]
+        MOBILE_NAV[Mobile navigation]
+        STABLE_ANCHORS[Stable section anchors]
+    end
+
+    subgraph EXTERNAL[External hand-off]
+        BOOKING[The Ground booking page]
+    end
+
+    ARRIVE --> UNDERSTAND
+    UNDERSTAND --> CHOOSE
+    CHOOSE --> PREPARE
+    PREPARE --> VISIT
+    VISIT --> CONTINUE
+
+    MOBILE_NAV -.->|Supports orientation| UNDERSTAND
+    MOBILE_NAV -.->|Supports selection| CHOOSE
+    STABLE_ANCHORS -.->|Jumps to guidance| PREPARE
+    STABLE_ANCHORS -.->|Jumps to arrival details| VISIT
+    CHOOSE -.->|Canonical external booking| BOOKING
+
+    classDef journey fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef support fill:#f0eef5,stroke:#675b79,color:#312a3a
+    classDef external fill:#f7eadf,stroke:#8a5834,color:#442a18
+    class ARRIVE,UNDERSTAND,CHOOSE,PREPARE,VISIT,CONTINUE journey
+    class MOBILE_NAV,STABLE_ANCHORS support
+    class BOOKING external

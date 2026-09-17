@@ -1,0 +1,81 @@
+flowchart TB
+    subgraph ACQUIRE[1. 擷取]
+        direction LR
+        CONFIG[已設定的機構範圍]
+        CATALOGUE[以機構為範圍的活動目錄]
+        UPCOMING[即將舉行活動資料流]
+        PAST[過往活動資料流]
+        PAGINATION[並行且受限的分頁擷取<br/>每頁最多 50 筆記錄<br/>每個資料流最多 20 頁]
+    end
+
+    subgraph TRUST[2. 信任邊界]
+        direction LR
+        LIMITS[八秒逾時限制<br/>兩 MiB 回應大小限制]
+        SCHEMA[執行階段結構描述與分頁驗證]
+        PUBLIC_CONTRACT[僅接納公開活動合約]
+    end
+
+    subgraph NORMALISE[3. 經私隱篩選的正規化]
+        direction LR
+        FILTER[移除供應者專用及不支援的欄位]
+        HKT[明確轉換為 HKT +08:00 時間]
+        LINKS[產生標準 HTTPS 報名連結]
+        DEDUP[依活動識別碼去除重複項目]
+        SORT[以確定性規則排序]
+        CACHE[五分鐘正規化快取]
+    end
+
+    subgraph DERIVE[4. 衍生與呈現]
+        direction LR
+        PHASE[準確的時間階段]
+        CALENDAR[活動所涵蓋的香港曆日分類]
+        CATEGORIES[確定性的已確認活動分類]
+        DISPLAY[顯示次序、篩選器與行動按鈕]
+        UI[首頁與節目介面]
+    end
+
+    FALLBACK{供應者請求失敗}
+    WARM{是否存在有效的暖實例快照}
+    COLD[如實顯示無法使用狀態]
+    BOOKING[標準 The Ground 報名交接]
+
+    CONFIG --> CATALOGUE
+    CATALOGUE --> UPCOMING
+    CATALOGUE --> PAST
+    UPCOMING --> PAGINATION
+    PAST --> PAGINATION
+    PAGINATION --> LIMITS
+    LIMITS --> SCHEMA
+    SCHEMA --> PUBLIC_CONTRACT
+    PUBLIC_CONTRACT --> FILTER
+    FILTER --> HKT
+    HKT --> LINKS
+    LINKS --> DEDUP
+    DEDUP --> SORT
+    SORT --> CACHE
+
+    CACHE --> PHASE
+    CACHE --> CALENDAR
+    CACHE --> CATEGORIES
+    PHASE --> DISPLAY
+    CALENDAR --> DISPLAY
+    CATEGORIES --> DISPLAY
+    DISPLAY --> UI
+    UI --> BOOKING
+
+    PAGINATION -.->|網絡、結構描述或限制錯誤| FALLBACK
+    FALLBACK --> WARM
+    WARM -->|是，使用最後一份有效快照| CACHE
+    WARM -.->|沒有快照| COLD
+    COLD -.->|The Ground 直接連結| BOOKING
+
+    classDef acquire fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef trust fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef normalise fill:#f0eef5,stroke:#675b79,color:#312a3a
+    classDef derive fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef failure fill:#f9e4e4,stroke:#8b4545,color:#421f1f
+    class CONFIG,CATALOGUE,UPCOMING,PAST,PAGINATION acquire
+    class LIMITS,SCHEMA,PUBLIC_CONTRACT trust
+    class FILTER,HKT,LINKS,DEDUP,SORT,CACHE normalise
+    class PHASE,CALENDAR,CATEGORIES,DISPLAY,UI,BOOKING derive
+    class FALLBACK,WARM,COLD failure

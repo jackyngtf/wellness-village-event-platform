@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "portfolio-demo-wellness-village-preview",
+  "main": ".open-next/worker.js",
+  "workers_dev": false,
+  "compatibility_date": "2026-09-17",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "portfolio-demo-wellness-village-preview"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "portfolio-demo-preview-next-cache"
+    }
+  ],
+  "vars": {
+    "THE_GROUND_LIVE_ENABLED": "false",
+    "THE_GROUND_ORGANIZATION_ID": "",
+    "PORTFOLIO_CONTACT_COLLECTION_ENABLED": "false",
+    "PORTFOLIO_CONTACT_CONSENT_VERSION": "portfolio-demo-contact-v1",
+    "PORTFOLIO_TURNSTILE_EXPECTED_HOSTNAME": "preview.portfolio.example.com"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

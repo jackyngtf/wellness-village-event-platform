@@ -1,0 +1,49 @@
+sequenceDiagram
+    autonumber
+    participant B as 訪客瀏覽器
+    participant W as 網站 Worker
+    participant Q as Cloudflare 佇列
+    participant C as 私有消費者 Worker
+    participant O as Google OAuth
+    participant S as Google 試算表
+    participant D as 無法投遞佇列
+
+    B->>W: 提交最少且已獲同意的表格資料
+    W->>W: 解析功能、私隱、Turnstile 與佇列關卡
+    W->>W: 強制執行 JSON、速率、8 KiB 大小與嚴格結構描述限制
+    W->>W: 驗證 Turnstile 並套用驗證後的速率限制
+    alt 已填寫 honeypot 的誘餌提交
+        W-->>B: 傳回相同的 202 Accepted，但不加入佇列
+    else 真實且未觸發 honeypot 的提交
+        W->>W: 建立伺服器時間戳記
+        W->>Q: 將穩定識別碼與最少核准合約加入佇列
+        Q-->>W: 確認 Cloudflare 佇列已持久接納訊息
+        W-->>B: 佇列接受後傳回 202；試算表寫入仍待處理
+        Q->>C: 傳送私有批次
+        C->>C: 驗證包含 14 個欄位的精確內部合約
+        C->>O: 使用消費者專用憑證請求試算表限定範圍的 OAuth 權杖
+        O-->>C: 將限定範圍的權杖傳回私有消費者
+        C->>S: 讀取提交識別碼欄
+        S-->>C: 傳回現有識別碼
+
+        alt 識別碼已存在或在同一批次中重複
+            C-->>Q: 確認重複訊息
+        else 尚未出現的識別碼
+            C->>S: 以 RAW 值附加未見過的資料列
+            alt 已確認附加資料列
+                S-->>C: 確認附加完成
+                C-->>Q: 確認已完成的訊息
+            else 消費者或 Google 發生暫時性故障
+                C-->>Q: 在不記錄資料內容下要求重試
+                alt 仍有重試額度
+                    Q->>C: 再次傳送訊息
+                else 重試次數已用盡
+                    Q->>D: 將訊息移至無法投遞佇列
+                end
+            end
+        end
+
+        Note over Q,C: 至少一次傳送配合穩定識別碼
+        Note over Q,C: 達致冪等收斂
+        Note over Q,C: 並非分散式完全一次傳送
+    end

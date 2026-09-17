@@ -1,0 +1,48 @@
+{
+  "name": "wellness-village-synthetic-reference",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:dry-run": "npm run cf:build && wrangler deploy --dry-run --config wrangler.jsonc",
+    "cf:preview": "OPEN_NEXT_LOCAL_PREVIEW=true opennextjs-cloudflare build --config wrangler.preview.jsonc && opennextjs-cloudflare preview --config wrangler.preview.jsonc",
+    "cf:typegen": "wrangler types --config wrangler.jsonc --env-interface GeneratedWebsiteEnv --include-runtime false worker-configuration.d.ts",
+    "cf:typegen:check": "wrangler types --check --config wrangler.jsonc --env-interface GeneratedWebsiteEnv --include-runtime false worker-configuration.d.ts",
+    "contact-consumer:config-test": "vitest run workers/contact-sheet-consumer/wrangler-config.test.ts",
+    "contact-consumer:test": "npm run contact-consumer:config-test && vitest run --config workers/contact-sheet-consumer/vitest.config.ts",
+    "contact-consumer:typecheck": "tsc -p workers/contact-sheet-consumer/tsconfig.json --noEmit",
+    "contact-consumer:typegen": "wrangler types --config workers/contact-sheet-consumer/wrangler.jsonc --env-interface GeneratedEnv --include-runtime false workers/contact-sheet-consumer/worker-configuration.d.ts",
+    "contact-consumer:typegen:check": "wrangler types --check --config workers/contact-sheet-consumer/wrangler.jsonc --env-interface GeneratedEnv --include-runtime false workers/contact-sheet-consumer/worker-configuration.d.ts",
+    "contact-consumer:dry-run": "wrangler deploy --dry-run --config workers/contact-sheet-consumer/wrangler.jsonc --outdir /tmp/wv-portfolio-contact-consumer-dry-run",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "@opennextjs/cloudflare": "1.20.6",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.1.12",
+    "@cloudflare/workers-types": "5.20260917.1",
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.5",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11",
+    "wrangler": "4.134.0"
+  }
+}

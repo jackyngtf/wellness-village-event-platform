@@ -1,0 +1,50 @@
+flowchart TB
+    GUIDEBOOK[184 頁指南手冊]
+
+    subgraph AGENT_ASSISTED[Agent 輔助工作]
+        direction LR
+        EXTRACTION[記錄中繼資料、轉繪頁面<br/>並產生擷取候選項目]
+        RESEARCH[研究候選第一方目的地]
+        CANDIDATE[候選目的地]
+    end
+
+    subgraph HUMAN_VERIFICATION[人工驗證與核准]
+        direction LR
+        VISUAL_REVIEW[逐頁進行視覺驗證]
+        CONTENT_MODEL[確認 48 個簡介、四大支柱<br/>及準確頁面範圍]
+        EVIDENCE_GATE{證據關卡}
+        PUBLISH[發布標準目的地]
+        PENDING[省略或保留待定狀態]
+    end
+
+    subgraph AUTOMATED_TESTS[自動化驗證]
+        direction LR
+        CONTENT_TESTS[測試數量、支柱分佈、頁面對應、<br/>標準網址、唯一性及來源狀態]
+        INTERFACE_TESTS[測試雙語內容與介面合約]
+    end
+
+    TYPED_CONTENT[雙語型別化內容]
+    INTERFACE[品牌與指南手冊介面]
+
+    GUIDEBOOK --> EXTRACTION
+    EXTRACTION --> VISUAL_REVIEW
+    VISUAL_REVIEW --> CONTENT_MODEL
+    CONTENT_MODEL --> RESEARCH
+    RESEARCH --> CANDIDATE
+    CANDIDATE --> EVIDENCE_GATE
+    EVIDENCE_GATE -->|證據充分| PUBLISH
+    EVIDENCE_GATE -.->|證據不足| PENDING
+    PUBLISH --> TYPED_CONTENT
+    PENDING -.->|記錄為缺省或待定狀態| TYPED_CONTENT
+    TYPED_CONTENT --> CONTENT_TESTS
+    CONTENT_TESTS --> INTERFACE_TESTS
+    INTERFACE_TESTS --> INTERFACE
+
+    classDef agent fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef human fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef automated fill:#f0eef5,stroke:#675b79,color:#312a3a
+    classDef output fill:#eaf4e1,stroke:#48633c,color:#20301b
+    class EXTRACTION,RESEARCH,CANDIDATE agent
+    class VISUAL_REVIEW,CONTENT_MODEL,EVIDENCE_GATE,PUBLISH,PENDING human
+    class CONTENT_TESTS,INTERFACE_TESTS automated
+    class GUIDEBOOK,TYPED_CONTENT,INTERFACE output

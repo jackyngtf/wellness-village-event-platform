@@ -1,0 +1,37 @@
+flowchart LR
+    subgraph JOURNEY[訪客旅程]
+        ARRIVE[在沒有先備背景下開始瀏覽]
+        UNDERSTAND[了解活動]
+        CHOOSE[選擇活動場次]
+        PREPARE[準備到訪]
+        VISIT[依照場地與地圖指引到訪]
+        CONTINUE[繼續探索品牌故事<br/>與數碼指南手冊]
+    end
+
+    subgraph SUPPORT[支援機制]
+        MOBILE_NAV[行動裝置導覽]
+        STABLE_ANCHORS[穩定的章節錨點]
+    end
+
+    subgraph EXTERNAL[外部交接]
+        BOOKING[The Ground 報名頁面]
+    end
+
+    ARRIVE --> UNDERSTAND
+    UNDERSTAND --> CHOOSE
+    CHOOSE --> PREPARE
+    PREPARE --> VISIT
+    VISIT --> CONTINUE
+
+    MOBILE_NAV -.->|支援活動定位| UNDERSTAND
+    MOBILE_NAV -.->|支援場次選擇| CHOOSE
+    STABLE_ANCHORS -.->|直接前往到訪須知| PREPARE
+    STABLE_ANCHORS -.->|直接前往抵達資訊| VISIT
+    CHOOSE -.->|標準外部報名交接| BOOKING
+
+    classDef journey fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef support fill:#f0eef5,stroke:#675b79,color:#312a3a
+    classDef external fill:#f7eadf,stroke:#8a5834,color:#442a18
+    class ARRIVE,UNDERSTAND,CHOOSE,PREPARE,VISIT,CONTINUE journey
+    class MOBILE_NAV,STABLE_ANCHORS support
+    class BOOKING external

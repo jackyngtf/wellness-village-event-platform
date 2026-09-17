@@ -1,0 +1,55 @@
+flowchart LR
+    subgraph SOURCES[Sources]
+        GUIDEBOOK[Client Guidebook]
+        PUBLIC_EVIDENCE[Verified public evidence]
+        CATALOGUE[The Ground organisation-scoped catalogue]
+        VISITOR_FORM[Visitor interest form]
+    end
+
+    subgraph PRODUCT_RUNTIME[Product and runtime]
+        EVIDENCE_REGISTER[Evidence register]
+        TYPED_CONTENT[Typed bilingual content]
+        BILINGUAL_INTERFACE[Brand and Guidebook interface]
+        EVENT_ADAPTER[Server-only event adapter]
+        PROGRAMME_INTERFACE[Homepage and programme interface]
+        WEBSITE_API[Validated website API]
+        QUEUE[Cloudflare Queue]
+        OPENNEXT[OpenNext Worker runtime]
+        R2_CACHE[R2 incremental cache<br/>Never stores lead submissions]
+        REVALIDATION[Durable Object revalidation coordination]
+    end
+
+    subgraph DESTINATIONS[Destinations]
+        BOOKING[Canonical The Ground booking page]
+        PRIVATE_CONSUMER[Private consumer Worker]
+        GOOGLE_SHEET[Client-owned Google Sheet]
+    end
+
+    GUIDEBOOK --> EVIDENCE_REGISTER
+    PUBLIC_EVIDENCE --> EVIDENCE_REGISTER
+    EVIDENCE_REGISTER --> TYPED_CONTENT
+    TYPED_CONTENT --> BILINGUAL_INTERFACE
+
+    CATALOGUE --> EVENT_ADAPTER
+    EVENT_ADAPTER --> PROGRAMME_INTERFACE
+    PROGRAMME_INTERFACE --> BOOKING
+
+    VISITOR_FORM --> WEBSITE_API
+    WEBSITE_API -->|Genuine non-honeypot submissions only| QUEUE
+    QUEUE --> PRIVATE_CONSUMER
+    PRIVATE_CONSUMER --> GOOGLE_SHEET
+
+    BILINGUAL_INTERFACE -.->|Served by| OPENNEXT
+    PROGRAMME_INTERFACE -.->|Served by| OPENNEXT
+    WEBSITE_API -.->|Handled by| OPENNEXT
+    OPENNEXT -.->|Incremental cache only| R2_CACHE
+    OPENNEXT -.->|Coordinates revalidation| REVALIDATION
+
+    classDef evidence fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef programme fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef submission fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef runtime fill:#f0eef5,stroke:#675b79,color:#312a3a
+    class GUIDEBOOK,PUBLIC_EVIDENCE,EVIDENCE_REGISTER,TYPED_CONTENT,BILINGUAL_INTERFACE evidence
+    class CATALOGUE,EVENT_ADAPTER,PROGRAMME_INTERFACE,BOOKING programme
+    class VISITOR_FORM,WEBSITE_API,QUEUE,PRIVATE_CONSUMER,GOOGLE_SHEET submission
+    class OPENNEXT,R2_CACHE,REVALIDATION runtime

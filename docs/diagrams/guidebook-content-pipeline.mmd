@@ -1,0 +1,50 @@
+flowchart TB
+    GUIDEBOOK[184-page Guidebook]
+
+    subgraph AGENT_ASSISTED[Agent-assisted work]
+        direction LR
+        EXTRACTION[Record metadata, render pages<br/>and generate extraction candidates]
+        RESEARCH[Research candidate first-party destinations]
+        CANDIDATE[Candidate destination]
+    end
+
+    subgraph HUMAN_VERIFICATION[Human verification and approval]
+        direction LR
+        VISUAL_REVIEW[Visually verify every page]
+        CONTENT_MODEL[Confirm 48 profiles, four pillars<br/>and exact page ranges]
+        EVIDENCE_GATE{Evidence gate}
+        PUBLISH[Publish canonical destination]
+        PENDING[Omit or keep pending]
+    end
+
+    subgraph AUTOMATED_TESTS[Automated verification]
+        direction LR
+        CONTENT_TESTS[Test counts, pillar distribution, page mapping,<br/>canonical URLs, uniqueness and source status]
+        INTERFACE_TESTS[Test bilingual content and interface contracts]
+    end
+
+    TYPED_CONTENT[Typed bilingual content]
+    INTERFACE[Brand and Guidebook interface]
+
+    GUIDEBOOK --> EXTRACTION
+    EXTRACTION --> VISUAL_REVIEW
+    VISUAL_REVIEW --> CONTENT_MODEL
+    CONTENT_MODEL --> RESEARCH
+    RESEARCH --> CANDIDATE
+    CANDIDATE --> EVIDENCE_GATE
+    EVIDENCE_GATE -->|Evidence supported| PUBLISH
+    EVIDENCE_GATE -.->|Evidence unsupported| PENDING
+    PUBLISH --> TYPED_CONTENT
+    PENDING -.->|Record absent or pending state| TYPED_CONTENT
+    TYPED_CONTENT --> CONTENT_TESTS
+    CONTENT_TESTS --> INTERFACE_TESTS
+    INTERFACE_TESTS --> INTERFACE
+
+    classDef agent fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef human fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef automated fill:#f0eef5,stroke:#675b79,color:#312a3a
+    classDef output fill:#eaf4e1,stroke:#48633c,color:#20301b
+    class EXTRACTION,RESEARCH,CANDIDATE agent
+    class VISUAL_REVIEW,CONTENT_MODEL,EVIDENCE_GATE,PUBLISH,PENDING human
+    class CONTENT_TESTS,INTERFACE_TESTS automated
+    class GUIDEBOOK,TYPED_CONTENT,INTERFACE output

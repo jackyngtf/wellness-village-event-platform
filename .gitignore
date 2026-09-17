@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.open-next/
+.wrangler/
+.playwright-cli/
+output/
+coverage/
+next-env.d.ts
+*.tsbuildinfo
+.env*
+!.env.example
+.dev.vars*
+.DS_Store
+npm-debug.log*

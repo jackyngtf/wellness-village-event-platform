@@ -1,0 +1,81 @@
+flowchart TB
+    subgraph ACQUIRE[1. Acquire]
+        direction LR
+        CONFIG[Configured organisation scope]
+        CATALOGUE[Organisation-scoped catalogue]
+        UPCOMING[Upcoming feed]
+        PAST[Past feed]
+        PAGINATION[Parallel bounded pagination<br/>Maximum 50 records per page<br/>Maximum 20 pages per feed]
+    end
+
+    subgraph TRUST[2. Trust boundary]
+        direction LR
+        LIMITS[Eight-second timeout<br/>Two MiB response limit]
+        SCHEMA[Runtime schema and pagination validation]
+        PUBLIC_CONTRACT[Admit only the public event contract]
+    end
+
+    subgraph NORMALISE[3. Privacy-filtered normalisation]
+        direction LR
+        FILTER[Strip provider-only and unsupported fields]
+        HKT[Convert timestamps explicitly to HKT +08:00]
+        LINKS[Generate canonical HTTPS registration links]
+        DEDUP[Deduplicate by event ID]
+        SORT[Sort deterministically]
+        CACHE[Five-minute normalised cache]
+    end
+
+    subgraph DERIVE[4. Derive and present]
+        direction LR
+        PHASE[Exact temporal phase]
+        CALENDAR[Occupied Hong Kong calendar bucket]
+        CATEGORIES[Deterministic confirmed categories]
+        DISPLAY[Display order, filters and CTA]
+        UI[Homepage and programme UI]
+    end
+
+    FALLBACK{Provider request fails}
+    WARM{Valid warm snapshot exists}
+    COLD[Honest unavailable state]
+    BOOKING[Canonical The Ground booking hand-off]
+
+    CONFIG --> CATALOGUE
+    CATALOGUE --> UPCOMING
+    CATALOGUE --> PAST
+    UPCOMING --> PAGINATION
+    PAST --> PAGINATION
+    PAGINATION --> LIMITS
+    LIMITS --> SCHEMA
+    SCHEMA --> PUBLIC_CONTRACT
+    PUBLIC_CONTRACT --> FILTER
+    FILTER --> HKT
+    HKT --> LINKS
+    LINKS --> DEDUP
+    DEDUP --> SORT
+    SORT --> CACHE
+
+    CACHE --> PHASE
+    CACHE --> CALENDAR
+    CACHE --> CATEGORIES
+    PHASE --> DISPLAY
+    CALENDAR --> DISPLAY
+    CATEGORIES --> DISPLAY
+    DISPLAY --> UI
+    UI --> BOOKING
+
+    PAGINATION -.->|Network, schema or limit failure| FALLBACK
+    FALLBACK --> WARM
+    WARM -->|Yes, use last valid snapshot| CACHE
+    WARM -.->|No snapshot| COLD
+    COLD -.->|Direct The Ground link| BOOKING
+
+    classDef acquire fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef trust fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef normalise fill:#f0eef5,stroke:#675b79,color:#312a3a
+    classDef derive fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef failure fill:#f9e4e4,stroke:#8b4545,color:#421f1f
+    class CONFIG,CATALOGUE,UPCOMING,PAST,PAGINATION acquire
+    class LIMITS,SCHEMA,PUBLIC_CONTRACT trust
+    class FILTER,HKT,LINKS,DEDUP,SORT,CACHE normalise
+    class PHASE,CALENDAR,CATEGORIES,DISPLAY,UI,BOOKING derive
+    class FALLBACK,WARM,COLD failure

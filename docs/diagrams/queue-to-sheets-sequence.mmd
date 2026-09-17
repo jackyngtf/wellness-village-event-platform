@@ -1,0 +1,49 @@
+sequenceDiagram
+    autonumber
+    participant B as Visitor browser
+    participant W as Website Worker
+    participant Q as Cloudflare Queue
+    participant C as Private consumer Worker
+    participant O as Google OAuth
+    participant S as Google Sheets
+    participant D as Dead-letter Queue
+
+    B->>W: Submit minimal consented form payload
+    W->>W: Resolve feature, privacy, Turnstile and Queue gates
+    W->>W: Enforce JSON, rate limits, 8 KiB limit and strict schema
+    W->>W: Verify Turnstile and apply post-verification rate limit
+    alt Filled honeypot decoy
+        W-->>B: Return the same 202 Accepted without enqueueing
+    else Genuine non-honeypot submission
+        W->>W: Create server timestamps
+        W->>Q: Enqueue stable ID and minimal approved contract
+        Q-->>W: Confirm durable Queue acceptance
+        W-->>B: Return 202 after Queue acceptance, while Sheets is still pending
+        Q->>C: Deliver private batch
+        C->>C: Validate exact 14-field internal contract
+        C->>O: Request Sheets-scoped OAuth token with consumer-only credentials
+        O-->>C: Return scoped token to the private consumer
+        C->>S: Read the submission-ID column
+        S-->>C: Return existing IDs
+
+        alt Duplicate ID already stored or repeated in the batch
+            C-->>Q: Acknowledge duplicate message
+        else Unseen ID
+            C->>S: Append unseen row with RAW values
+            alt Append confirmed
+                S-->>C: Confirm append
+                C-->>Q: Acknowledge confirmed message
+            else Transient consumer or Google failure
+                C-->>Q: Request retry without logging the payload
+                alt Retry budget remains
+                    Q->>C: Redeliver the message
+                else Retries exhausted
+                    Q->>D: Move the message to the dead-letter Queue
+                end
+            end
+        end
+
+        Note over Q,C: At-least-once delivery plus stable IDs
+        Note over Q,C: Idempotent convergence
+        Note over Q,C: Not distributed exactly-once delivery
+    end
