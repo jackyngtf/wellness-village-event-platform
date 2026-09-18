@@ -2,6 +2,8 @@
 
 > **Disclosure — reconstructed, edited and sanitised:** This retrospective brief was reconstructed from the delivered requirements. It is not the verbatim first prompt and does not imply that one prompt produced the final production system. Product direction, source authority, client decisions, privacy boundaries, architecture and release approval remained human-owned.
 
+The historical first reviewable MVP was deployed from a home server on 5 August 2026, before the production domain was purchased. This reconstructed brief models the bounded vertical-slice intent; the [delivery timeline](../case-study/delivery-timeline.md) records how review, integration and production hardening continued afterwards.
+
 ## Prompt
 
 You are helping me build the first working vertical slice of a bilingual visitor website for Wellness Village, a time-limited event at Central Market in Hong Kong.

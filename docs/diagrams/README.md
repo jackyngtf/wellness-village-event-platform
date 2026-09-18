@@ -4,6 +4,7 @@ Each diagram is maintained as an English and formal written Traditional Chinese 
 
 | Diagram | English | Traditional Chinese |
 | --- | --- | --- |
+| Delivery evolution | [Mermaid source](delivery-evolution.mmd) · [SVG fallback](delivery-evolution.svg) | [Mermaid source](delivery-evolution.zh-Hant.mmd) · [SVG fallback](delivery-evolution.zh-Hant.svg) |
 | System overview | [Mermaid source](system-overview.mmd) · [SVG fallback](system-overview.svg) | [Mermaid source](system-overview.zh-Hant.mmd) · [SVG fallback](system-overview.zh-Hant.svg) |
 | Visitor journey | [Mermaid source](visitor-journey.mmd) · [SVG fallback](visitor-journey.svg) | [Mermaid source](visitor-journey.zh-Hant.mmd) · [SVG fallback](visitor-journey.zh-Hant.svg) |
 | Guidebook content pipeline | [Mermaid source](guidebook-content-pipeline.mmd) · [SVG fallback](guidebook-content-pipeline.svg) | [Mermaid source](guidebook-content-pipeline.zh-Hant.mmd) · [SVG fallback](guidebook-content-pipeline.zh-Hant.svg) |

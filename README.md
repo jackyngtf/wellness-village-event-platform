@@ -9,7 +9,7 @@
 
 **An evidence-first bilingual event platform that transformed a 184-page Guidebook, verified brand research, live booking data and privacy requirements into a production visitor experience.**
 
-I led the product direction, evidence model, bilingual UX, full-stack implementation, Cloudflare delivery and release operations. Agent assistance accelerated research organisation, implementation and verification; product judgement, client facts, privacy decisions and release authority remained human-owned.
+I was the sole developer and led the product direction, evidence model, bilingual UX, full-stack implementation, Cloudflare delivery and release operations. The client supplied the campaign assets, Guidebook, design guide and factual approvals. Agent assistance accelerated research organisation, implementation and verification; product judgement, client facts, privacy decisions and release authority remained human-owned.
 
 > **Portfolio edition.** This is a curated, sanitised case study and runnable reference implementation, intentionally separate from the private production repository and history. It excludes credentials, personal data, private handover material and source assets that cannot be redistributed. It is **source-available, not open-source**: no permission to copy, modify, redistribute or commercially deploy the original code is granted. See the [notice](NOTICE.md) and [asset policy](ASSET_POLICY.md).
 
@@ -24,8 +24,9 @@ I led the product direction, evidence model, bilingual UX, full-stack implementa
 | --- | --- |
 | **Context** | A bilingual, time-limited Wellness Village event at Central Market, Hong Kong |
 | **Public event scale** | 12 days across three floors, with 50+ brands and 30+ workshops and experiences reported by ELLE Hong Kong |
-| **My ownership** | Product framing, information architecture, evidence rules, UX, full-stack implementation, integrations, Cloudflare delivery and release checks |
+| **My ownership** | Sole developer: product framing, information architecture, evidence rules, UX, asset preparation, public-source research, full-stack implementation, integrations, Cloudflare delivery and release checks |
 | **Human and client authority** | Client confirmations, privacy decisions, factual approvals and final release go/no-go |
+| **Delivery cadence** | First reviewable home-server MVP on 5 August; working production URL shared on 20 August, before the 21 August internal target; public event opened on 30 August |
 | **Delivered experience** | Shared English and Traditional Chinese information architecture across orientation, programme, visit, brand and Guidebook journeys |
 | **Core stack** | Next.js, React, TypeScript, Zod, OpenNext, Cloudflare Workers, Queues, R2, Durable Objects, Turnstile and Google Sheets API |
 | **Production evidence** | 108,443 edge requests, 4,322 HTML page views and 4.34 GB delivered in the event window; cost and metric boundaries are documented below |
@@ -40,11 +41,23 @@ I led the product direction, evidence model, bilingual UX, full-stack implementa
 
 That public scale explains why content authority, current schedules, bilingual orientation, privacy and release operations mattered. It does not prove attendance, conversion, commercial return or that the website caused the event's outcome. [Read the full context and role boundary](docs/case-study/01-context-and-role.md).
 
+<!-- section:delivery-timeline -->
+## From brief to live operation
+
+On 5 August, the project group confirmed that I would lead and deliver the website, with a 21 August internal launch target. Before the production domain had been purchased, I deployed the first reviewable MVP from my home server later that evening. That preview turned the brief into a concrete product conversation while the client remained focused on organising the event.
+
+From 12 to 19 August, the review loop incorporated the current 184-page Guidebook, supplied design material, The Ground event acquisition, formal written Chinese and UX feedback, brand-source verification and production-domain preparation. The domain was registered on 19 August. A working public production URL was shared on 20 August—one day before the internal target—while smaller corrections and operational hardening continued before the event opened on 30 August.
+
+![Delivery evolution from the formal brief and first home-server MVP through production release, event operation and post-event evidence capture.](docs/diagrams/delivery-evolution.svg)
+
+The same-day MVP was a **reviewable vertical slice**, not a one-prompt production claim. [Read the full delivery chronology](docs/case-study/delivery-timeline.md) · [Inspect its sanitised evidence boundary](docs/evidence/delivery-timeline/) · [View the Traditional Chinese diagram](docs/diagrams/delivery-evolution.zh-Hant.svg)
+
 <!-- section:choose-perspective -->
 ## Choose your perspective
 
 | Perspective | What you will learn | Start here |
 | --- | --- | --- |
+| **Delivery and ownership** | How a sole developer moved from an ambiguous brief and temporary home-server preview to an on-time public release and event support | [From brief to live operation](docs/case-study/delivery-timeline.md) |
 | **Visitor experience** | How a first-time visitor moves from orientation to an activity, preparation, venue support and continued discovery | [Guided visitor journey](docs/case-study/03-visitor-journey.md) |
 | **Client and operations** | How the website works with The Ground and Google Sheets without taking ownership away from either operational system | [The Ground interface](docs/case-study/04-the-ground-event-interface.md) · [Queue-to-Sheets interface](docs/case-study/05-queue-to-sheets-interface.md) |
 | **AI-enabled delivery** | How evidence boundaries, bounded Agent briefs and human review turned fragmented inputs into verified implementation | [Evidence-first Agent workflow](docs/case-study/02-evidence-first-agent-workflow.md) |
@@ -167,6 +180,7 @@ The public workflow is explicit: **Inventory → Bound claims → Model content 
 
 | Capability | Evidence of ownership and delivery | Inspect |
 | --- | --- | --- |
+| **End-to-end delivery** | Used a same-day home-server vertical slice to start review, then independently carried the product through evidence gathering, client feedback, domain transition, production release and event support | [Delivery timeline](docs/case-study/delivery-timeline.md) · [Sanitised chronology](docs/evidence/delivery-timeline/) |
 | **Product strategy** | Framed the product around source authority, visitor jobs, client workflow and a proportionate public edition | [Context and role](docs/case-study/01-context-and-role.md) · [Case-study index](docs/case-study/README.md) |
 | **UX and accessibility** | Designed one bilingual, mobile-first path with stable anchors, text alternatives, keyboard support and honest failure states | [Visitor journey](docs/case-study/03-visitor-journey.md) · [Guided-home implementation and tests](src/features/home/) |
 | **Agent orchestration** | Defined the evidence hierarchy, bounded briefs, review loops and human release authority | [Agent workflow](docs/agent-workflow/evidence-first-workflow.md) · [Public Agent rules](AGENTS.md) · [Reconstructed brief](docs/agent-workflow/reconstructed-mvp-brief.md) |
@@ -190,11 +204,11 @@ src/features/interest/              form validation and Queue producer
 src/integrations/the-ground/        bounded server-only event adapter
 workers/contact-sheet-consumer/     private Queue consumer and Sheets adapter
 fixtures/demo/                      synthetic events and brands only
-docs/case-study/                    ten evidence-backed chapters
+docs/case-study/                    evidence-backed product, delivery and technical chapters
 docs/agent-workflow/                workflow, reconstructed brief and release gates
 docs/decisions/                     architecture decision records
 docs/diagrams/                      rendered SVGs and inspectable Mermaid sources
-docs/evidence/                      sanitised production and discovery records
+docs/evidence/                      sanitised delivery, production and discovery records
 docs/media/                         approved documentary portfolio media
 ```
 

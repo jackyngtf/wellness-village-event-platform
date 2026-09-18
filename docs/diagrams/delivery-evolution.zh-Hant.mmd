@@ -1,0 +1,22 @@
+flowchart LR
+    BRIEF["8 月 5 日<br/>Brief + 8 月 21 日目標"]
+    MVP["8 月 5 日<br/>家中伺服器 MVP"]
+    ITERATE["8 月 12 至 19 日<br/>資料 + 體驗審閱"]
+    RELEASE["8 月 20 日<br/>可供公眾使用的正式版本"]
+    OPERATE["8 月 30 日至 9 月 10 日<br/>活動營運與支援"]
+    EVIDENCE["9 月 18 日<br/>活動後證據擷取"]
+
+    BRIEF --> MVP
+    MVP --> ITERATE
+    ITERATE --> RELEASE
+    RELEASE --> OPERATE
+    OPERATE --> EVIDENCE
+
+    classDef planning fill:#f2efe8,stroke:#6d6250,color:#332e27
+    classDef preview fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef delivery fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef evidence fill:#f0eef5,stroke:#675b79,color:#312a3a
+    class BRIEF planning
+    class MVP,ITERATE preview
+    class RELEASE,OPERATE delivery
+    class EVIDENCE evidence

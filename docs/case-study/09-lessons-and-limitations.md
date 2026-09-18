@@ -6,6 +6,10 @@
 
 A long prompt is not a substitute for source authority. The useful control surface was a source register, explicit unknowns, typed contracts, acceptance criteria and verification evidence. Agent speed became valuable only after those boundaries were visible.
 
+### Make the product reviewable before optimising the environment
+
+The home-server preview shortened the path from an ambiguous brief to a concrete client conversation before the production domain existed. Its value was not that production should be self-hosted; it was that preview infrastructure and production infrastructure served different stages. The final release then moved behind the custom domain and Cloudflare runtime with the required privacy, integration and operational controls.
+
 ### Design hand-offs, not duplicated ownership
 
 The website improved discovery while The Ground kept booking authority. The Queue separated the public request from Google latency while Google Sheets stayed the client's operating surface. R2 and Durable Objects handled application caching, not contact records. Each system had one clear responsibility.
@@ -39,6 +43,7 @@ Serving a valid bilingual sitemap and `robots.txt` makes discovery possible; it 
 - Read-before-append deduplication, retention, withdrawal and DLQ recovery still require bounded operation and human ownership.
 - The public documentary media preserves the delivered interface, but campaign imagery inside it remains subject to the approved portfolio scope.
 - The reconstructed prompt explains a bounded starting brief; it is not a verbatim historical record or a claim that one prompt built the product.
+- The public delivery timeline is a sanitised chronology supported partly by private project correspondence. The messages, participant identities, quotations and attachments remain excluded from the repository.
 - Cloudflare event analytics include crawlers and threats, and adaptive Worker datasets may be sampled. Requests, page views and runtime invocations are not people, visits or attendance.
 - Cloudflare billing evidence is account-level and can include other workloads. It establishes a zero usage charge for one complete billing period, not a project-only invoice or total cost of ownership.
 - The first-year Porkbun domain registration is directly attributable; future renewal prices are not claimed.

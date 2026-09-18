@@ -14,17 +14,29 @@ Those facts establish campaign context and delivery scope. They do not, by thems
 
 ## My ownership
 
-I owned the translation from that ambiguity into a working product and its technical delivery:
+I was the sole developer and owned the translation from that ambiguity into a working product and its technical delivery:
 
 - product framing and information architecture;
 - the evidence hierarchy and rules for unsupported claims;
 - the mobile-first visitor journey and bilingual UX;
+- preparation of supplied print-oriented assets for the web, including removal of print-production marks;
+- first-party public research, with ambiguous facts escalated for client confirmation rather than guessed;
 - full-stack implementation, typed content and third-party integrations;
 - the Cloudflare Workers architecture, deployment work and release checks;
 - privacy-gated visitor-interest delivery to the client's existing Google Sheets workflow; and
 - Agent briefs, review loops, test strategy and verification evidence.
 
 The Agent accelerated source inventory, candidate extraction, research organisation, implementation drafts, refactoring, tests and documentation. I remained accountable for product and technical judgement. Client confirmations and approvals, privacy decisions and the final release go/no-go remained human-owned; the Agent never had approval or release authority.
+
+## Collaboration model
+
+| Contributor | Responsibility boundary |
+| --- | --- |
+| **Client and organising team** | Supplied the approved campaign images, 184-page Guidebook, brand and design guide, event operations context, factual clarifications and final approvals. Their primary responsibility remained organising the event. |
+| **Jacky Ng — sole developer** | Researched available public evidence first, converted supplied material into web-ready assets and structured content, designed the visitor journey, implemented the full stack and integrations, deployed the product and supported the release. Only ambiguous or authority-sensitive facts were escalated to the client. |
+| **Agent assistance** | Accelerated source inventory, candidate research, implementation drafts, refactoring, tests and documentation inside explicit evidence and review boundaries. It did not approve facts, privacy terms or releases. |
+
+This division reduced routine research and implementation demands on the organising team without moving factual authority away from them. It also makes the ownership claim precise: the website product and code were delivered by one developer, while the event identity, source materials and client decisions remained client-owned.
 
 ## Constraints that shaped the product
 
@@ -35,6 +47,7 @@ The Agent accelerated source inventory, candidate extraction, research organisat
 - English and Traditional Chinese routes needed the same information architecture rather than two unrelated sites.
 - Credentials, personal data, private correspondence and unlicensed source media could not become part of a public portfolio repository.
 - The public portfolio later needed to survive without the event URL, production credentials or redistributable source media.
+- The first client review needed to begin before a production domain was purchased, so a temporary home-server preview was used as a review environment rather than a production claim.
 
 ## Evidence standard
 
@@ -45,4 +58,5 @@ Delivery claims are tied to observable behaviour: coherent bilingual routes, a g
 - Implementation: [bilingual application routes](../../src/app/) and [typed content](../../src/content/)
 - Tests: [route checks](../../src/app/) and [content-contract checks](../../src/content/)
 - Diagram: [system overview SVG](../diagrams/system-overview.svg) and [Mermaid source](../diagrams/system-overview.mmd)
+- Delivery record: [from brief to live operation](delivery-timeline.md) and its [sanitised evidence note](../evidence/delivery-timeline/)
 - Decision record: [Guidebook content boundaries](../decisions/004-guidebook-content-boundaries.md) and [Workers runtime](../decisions/002-workers-not-static-pages.md)

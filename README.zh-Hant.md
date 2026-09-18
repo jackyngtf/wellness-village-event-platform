@@ -9,7 +9,7 @@
 
 **一個以證據為先的雙語活動平台，將 184 頁 Guidebook、經核實的品牌研究、即時預約資料及個人資料保護要求，轉化為正式投入使用的訪客體驗。**
 
-我主導產品方向、證據模型、雙語使用者體驗、全端實作、Cloudflare 交付及發佈作業。Agent 協助加快研究整理、實作與驗證；產品判斷、客戶事實、個人資料處理決定及發佈權限始終由人負責。
+我是本項目的唯一開發者，負責產品方向、證據模型、雙語使用者體驗、全端實作、Cloudflare 交付及發佈作業。客戶提供活動素材、Guidebook、設計指引及事實審批；Agent 則協助加快研究整理、實作與驗證。產品判斷、客戶事實、個人資料處理決定及發佈權限始終由人負責。
 
 > **作品集版本。** 這是經整理及刪除敏感資訊的案例研究與可執行參考實作，刻意與私人正式版本的儲存庫及歷史分開。當中不包含憑證、個人資料、私人交接資料，亦不包含不可再分發的原始素材。本儲存庫只屬**原始碼可供閱覽（source-available），並非開放原始碼**；並無授予複製、修改、再分發或商業部署原創程式碼的權利。詳見[法律聲明](NOTICE.md)及[素材政策](ASSET_POLICY.md)。
 
@@ -24,8 +24,9 @@
 | --- | --- |
 | **背景** | 於香港中環街市舉行、設有雙語內容並有指定期限的 Wellness Village 活動 |
 | **公開活動規模** | ELLE Hong Kong 報道活動一連 12 日、橫跨三個樓層，集合超過 50 個品牌及 30 多項工作坊與體驗 |
-| **我的職責** | 產品定位、資訊架構、證據規則、使用者體驗、全端實作、系統整合、Cloudflare 交付及發佈檢查 |
+| **我的職責** | 唯一開發者：產品定位、資訊架構、證據規則、使用者體驗、素材整理、公開資料研究、全端實作、系統整合、Cloudflare 交付及發佈檢查 |
 | **人與客戶掌握的權限** | 客戶確認、個人資料處理決定、事實審批及最終發佈決定 |
+| **交付節奏** | 8 月 5 日提供首個家中伺服器審閱版 MVP；8 月 20 日分享正式網站，早於 8 月 21 日內部目標；活動於 8 月 30 日開始 |
 | **完成的體驗** | 英文與繁體中文共用同一資訊架構，涵蓋活動導覽、節目、到訪、品牌及 Guidebook 旅程 |
 | **核心技術** | Next.js、React、TypeScript、Zod、OpenNext、Cloudflare Workers、Queues、R2、Durable Objects、Turnstile 及 Google Sheets API |
 | **正式環境證據** | 活動時段錄得 108,443 個邊緣請求、4,322 次 HTML 頁面瀏覽及 4.34 GB 傳輸量；成本與指標邊界詳列於下文 |
@@ -40,11 +41,23 @@
 
 這個公開規模說明為何內容權威、最新時間表、雙語導覽、個人資料保護及發佈營運同樣重要；但它本身並不證明入場人數、轉換、商業回報，亦不代表網站造成活動成果。[閱讀完整背景與職責邊界](docs/case-study/01-context-and-role.md)。
 
+<!-- section:delivery-timeline -->
+## 由 brief 到正式營運
+
+8 月 5 日，項目群組確認由我負責網站，並以 8 月 21 日為內部上線目標。當時正式網域尚未購入，我在同日晚上先以家中伺服器部署首個可供審閱的 MVP，讓抽象要求變成可以實際操作及討論的產品，同時讓客戶繼續集中處理活動籌備。
+
+8 月 12 日至 19 日期間，審閱循環逐步加入最新的 184 頁 Guidebook、客戶提供的設計資料、The Ground 活動資料擷取、書面中文與使用者體驗回饋、品牌資料核實及正式網域準備。網域於 8 月 19 日註冊；可供公眾使用的正式網站則於 8 月 20 日分享，比內部目標早一日。其後仍繼續處理較小修正及營運強化，直至活動在 8 月 30 日開幕。
+
+![由正式 brief、首個家中伺服器 MVP、正式版本，到活動營運及活動後證據擷取的交付演進。](docs/diagrams/delivery-evolution.zh-Hant.svg)
+
+同日完成的 MVP 是**可供審閱的垂直切片**，並不代表單一 prompt 已完成正式系統。[閱讀完整交付時間線](docs/case-study/delivery-timeline.md) · [查閱已移除敏感資料的證據邊界](docs/evidence/delivery-timeline/) · [查看英文圖表](docs/diagrams/delivery-evolution.svg)
+
 <!-- section:choose-perspective -->
 ## 選擇閱讀角度
 
 | 閱讀角度 | 你會了解 | 建議起點 |
 | --- | --- | --- |
+| **交付與職責** | 唯一開發者如何由含糊 brief 及臨時家中伺服器預覽，推進至按時公開上線及活動支援 | [由 brief 到正式營運](docs/case-study/delivery-timeline.md) |
 | **訪客體驗** | 首次到訪的使用者如何由活動導覽，前往場次選擇、行前準備、場地支援及延伸探索 | [導覽式訪客旅程](docs/case-study/03-visitor-journey.md) |
 | **客戶與營運** | 網站如何配合 The Ground 與 Google Sheets，同時不取代兩個營運系統各自的權責 | [The Ground 介面](docs/case-study/04-the-ground-event-interface.md) · [Queue-to-Sheets 介面](docs/case-study/05-queue-to-sheets-interface.md) |
 | **AI 輔助交付** | 證據邊界、範圍明確的 Agent brief 及人工審核，如何把零散輸入轉化為經驗證的實作 | [以證據為先的 Agent 工作流程](docs/case-study/02-evidence-first-agent-workflow.md) |
@@ -167,6 +180,7 @@ Agent 加快工作，但不擁有產品判斷權。
 
 | 能力 | 職責與交付證據 | 查閱位置 |
 | --- | --- | --- |
+| **端到端交付** | 先以同日家中伺服器垂直切片開始審閱，再獨立完成證據整理、客戶回饋、網域轉換、正式發佈及活動支援 | [交付時間線](docs/case-study/delivery-timeline.md) · [已移除敏感資料的時序紀錄](docs/evidence/delivery-timeline/) |
 | **產品策略** | 以資料來源權威、訪客任務、客戶工作流程及合乎比例的公開版本界定產品 | [背景與職責](docs/case-study/01-context-and-role.md) · [案例研究索引](docs/case-study/README.md) |
 | **使用者體驗與無障礙設計** | 設計共用的雙語流動優先路徑，加入穩定 anchors、文字替代內容、鍵盤操作及誠實故障狀態 | [訪客旅程](docs/case-study/03-visitor-journey.md) · [導覽首頁實作與測試](src/features/home/) |
 | **Agent orchestration** | 定義證據層級、範圍明確的 brief、審核循環及由人掌握的發佈權限 | [Agent 工作流程](docs/agent-workflow/evidence-first-workflow.md) · [公開 Agent 規則](AGENTS.md) · [重建版 brief](docs/agent-workflow/reconstructed-mvp-brief.md) |
@@ -190,11 +204,11 @@ src/features/interest/              表格驗證及 Queue producer
 src/integrations/the-ground/        有明確限制且僅在伺服器執行的活動 adapter
 workers/contact-sheet-consumer/     私人 Queue consumer 及 Sheets adapter
 fixtures/demo/                      只包含合成活動與品牌資料
-docs/case-study/                    十個以證據支持的章節
+docs/case-study/                    以證據支持的產品、交付及技術章節
 docs/agent-workflow/                工作流程、重建版 brief 及發佈閘門
 docs/decisions/                     架構決策紀錄
 docs/diagrams/                      已渲染 SVG 及可查閱 Mermaid 原始檔
-docs/evidence/                      已移除敏感資料的正式環境及搜尋紀錄
+docs/evidence/                      已移除敏感資料的交付、正式環境及搜尋紀錄
 docs/media/                         經批准的作品集紀錄媒體
 ```
 

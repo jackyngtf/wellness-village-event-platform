@@ -56,6 +56,8 @@ The working loop was:
 
 Human review remained the control surface: the Agent could propose, extract, research, implement and challenge, but it could not confirm client facts, approve privacy terms or authorise a release.
 
+The first home-server MVP made that loop visible on 5 August. It was a same-day review artefact, not a claim that one prompt produced the production platform. The following two weeks incorporated the current Guidebook and design material, live event acquisition, client UX feedback, content evidence, privacy controls, production infrastructure and release checks. [The delivery timeline](delivery-timeline.md) separates those stages explicitly.
+
 ## Reconstructed-prompt disclosure
 
 The initial one-shot prompt is not preserved in the private Git history. The public [MVP brief](../agent-workflow/reconstructed-mvp-brief.md) is therefore labelled reconstructed, edited and sanitised. It demonstrates how the vertical slice was bounded; it is not presented as a verbatim transcript or as evidence that one prompt produced the final system.
@@ -66,3 +68,4 @@ The initial one-shot prompt is not preserved in the private Git history. The pub
 - Public tests: [count, page-range, status and identity-exclusion checks](../../src/content/guidebook-audit.test.ts)
 - Diagram: [Guidebook content pipeline SVG](../diagrams/guidebook-content-pipeline.svg) and [Mermaid source](../diagrams/guidebook-content-pipeline.mmd)
 - Decision record: [Guidebook content boundaries](../decisions/004-guidebook-content-boundaries.md) and [full Agent workflow](../agent-workflow/evidence-first-workflow.md)
+- Delivery chronology: [from brief to live operation](delivery-timeline.md)
