@@ -1,5 +1,18 @@
 # Lessons and limitations
 
+## How to read the evidence
+
+This portfolio does not use one metric as a proxy for overall success. It applies four different evidence levels to four different questions:
+
+| Evidence level | Question it can answer | Evidence used here | What it cannot establish |
+| --- | --- | --- | --- |
+| **Delivery record** | Was a reviewable and then production product delivered against the recorded milestones? | Sanitised chronology, timestamped private project records and domain registration evidence | How much faster Agent assistance made the work |
+| **Implementation verification** | Do defined content, date, integration, privacy and failure-path behaviours work as specified? | Typed contracts, automated tests, builds, browser QA, accessibility checks and dry runs | Permanent third-party availability or every possible real-world condition |
+| **Production observation** | What workload, cost boundary and search state were observed during bounded periods? | Cloudflare analytics and billing, domain invoice, production endpoints and Search Console | Unique visitors, attendance, conversion, ROI or causation |
+| **User and business outcome** | Did the experience improve comprehension, satisfaction, registration or client productivity? | No controlled baseline or user study was retained | No outcome claim is made at this level |
+
+This separation keeps a verified technical success from being silently promoted into an unmeasured UX or commercial success.
+
 ## What transferred beyond this event
 
 ### Give the Agent an evidence system
@@ -33,6 +46,18 @@ Edge requests, HTML page views, Worker invocations, included quantities, usage c
 ### Treat search measurement as a launch dependency
 
 Serving a valid bilingual sitemap and `robots.txt` makes discovery possible; it does not prove indexing or organic performance. The pre-event Search Console verification and sitemap submission made a bounded post-event readout possible. The important discipline is to retain the report timezone, aggregation mode and snapshot dates instead of turning a verified dashboard into stronger claims than it supports.
+
+## What would strengthen a future iteration
+
+The current record is strong on delivery, implementation and production operation. A future campaign could add outcome evidence without collecting unnecessary personal data:
+
+1. **Task-based usability sessions before launch.** Ask representative first-time visitors to explain the event, find a suitable activity, identify whether booking is required and locate arrival guidance. Record task completion, time, wrong turns and qualitative confusion; compare the revised flow with the original information sources rather than relying on preference alone.
+2. **Privacy-safe journey measurement.** Count aggregate programme views, outbound hand-offs to The Ground and successful contact-intent acceptance without recording form values in analytics. Define the denominator and consent basis before implementation.
+3. **Content-operation measures.** Record how long a verified programme or brand correction takes to reach the website, how often updates require client clarification and whether source conflicts are caught before publication.
+4. **Longer-lived performance evidence.** If the site remains active long enough, review field Core Web Vitals and route-level performance instead of treating lab checks or insufficient Search Console data as real-user results.
+5. **Independent review.** Have a designer, accessibility reviewer or another engineer repeat selected visitor tasks and technical checks to reduce sole-author blind spots.
+
+These are proposed measurements, not missing results retroactively inferred from the event.
 
 ## Limitations
 

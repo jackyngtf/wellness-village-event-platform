@@ -63,6 +63,7 @@ The same-day MVP was a **reviewable vertical slice**, not a one-prompt productio
 | **AI-enabled delivery** | How evidence boundaries, bounded Agent briefs and human review turned fragmented inputs into verified implementation | [Evidence-first Agent workflow](docs/case-study/02-evidence-first-agent-workflow.md) |
 | **Production and economics** | What the event-window traffic, Cloudflare billing boundary, direct domain cost and search evidence actually establish | [Production economics](docs/case-study/07-production-economics-and-observability.md) · [Search discoverability](docs/case-study/08-search-discoverability.md) |
 | **Technical evidence** | How each headline claim maps to selected code, tests, diagrams and decision records | [Evidence index](docs/case-study/10-evidence-index.md) |
+| **Critical review** | Which results are verified, which are production observations, what was not measured and how a future campaign could close those gaps | [Lessons, evidence and limitations](docs/case-study/09-lessons-and-limitations.md) |
 
 <!-- section:problem -->
 ## The starting problem
@@ -86,6 +87,23 @@ The product therefore had to solve four connected problems:
 | **Guidebook → 48 profiles and verified destinations** | Visual review established four pillars and 48 exact two-page profiles. All 48 received client-confirmed Instagram destinations; 29 also received independently verified official websites, while 19 retained no website action instead of a guessed link. | [Understand the case study](docs/case-study/02-evidence-first-agent-workflow.md) · [Inspect the decision](docs/decisions/004-guidebook-content-boundaries.md) · [Inspect the sanitised audit](src/content/guidebook-audit.ts) · [Inspect its tests](src/content/guidebook-audit.test.ts) |
 | **The Ground → date-aware discovery and canonical booking** | A server-only, privacy-filtered integration separates exact event phase from Hong Kong calendar dates and preserves deterministic discovery. Verified live records hand registration to the canonical The Ground page; the default synthetic demo uses clearly labelled reserved `example.com` destinations. | [Understand the case study](docs/case-study/04-the-ground-event-interface.md) · [Inspect the decision](docs/decisions/001-the-ground-is-the-live-source.md) · [Inspect implementation and tests](src/features/programme/) |
 | **Form → Queue → private Worker → Google Sheets** | The public route validates a minimal contract; genuine non-honeypot submissions are queued, while a non-public consumer isolates Google credentials, deduplicates stable submission IDs and appends raw values to the client-owned Sheet. A genuine `202 Accepted` follows awaited Queue acceptance; honeypot decoys deliberately receive the same `202` without enqueueing. Neither path means completed Sheet persistence. | [Understand the case study](docs/case-study/05-queue-to-sheets-interface.md) · [Inspect the decision](docs/decisions/003-queue-before-google-sheets.md) · [Inspect implementation and tests](workers/contact-sheet-consumer/) |
+
+<a id="evidence-boundaries"></a>
+<!-- section:evidence-boundaries -->
+## What the evidence does—and does not—show
+
+This case study separates implementation proof, production observations and outcomes that were not measured. That distinction matters more than a larger collection of vanity metrics.
+
+| Evaluation question | Evidence available | Status | Claim boundary |
+| --- | --- | --- | --- |
+| Was a reviewable product delivered against the project timeline? | Timestamped private project records, the sanitised chronology and the domain record | **Supported** | Establishes the 5 August preview, 20 August production URL and 21 August internal target; it does not quantify an AI productivity uplift |
+| Are the bilingual content and Guidebook rules internally consistent? | Typed routes, a pseudonymous 48-profile audit and automated content checks | **Verified in the public edition** | Confirms structure and evidence status without republishing private identities or source copy |
+| Do the external interfaces preserve authority and fail deliberately? | Runtime schemas, HKT date tests, Queue/consumer tests and architecture decisions | **Verified in the reference implementation** | Tests behaviour under defined cases; they do not guarantee permanent availability of The Ground, Google or Cloudflare |
+| Did the production site handle a real event-window workload within the recorded cost boundary? | Cloudflare edge, runtime and billing evidence plus the direct domain invoice | **Observed in production** | Requests are not people; zero usage charges are not zero total cost or a project-only invoice |
+| Was the site discoverable through Google during the event-aligned period? | Verified Search Console property, sitemap and aggregate performance records | **Observed in production** | Search clicks and indexing do not establish attendance, bookings or commercial return |
+| Did the website improve comprehension, booking conversion or satisfaction? | No controlled baseline or task-based user study was collected | **Not measured** | No causal UX or business-impact claim is made |
+
+[Read how to interpret the evidence, the future measurement plan and full limitations](docs/case-study/09-lessons-and-limitations.md) · [Trace individual claims through the evidence index](docs/case-study/10-evidence-index.md)
 
 <!-- section:system-overview -->
 ## System overview

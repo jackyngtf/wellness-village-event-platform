@@ -63,6 +63,7 @@
 | **AI 輔助交付** | 證據邊界、範圍明確的 Agent brief 及人工審核，如何把零散輸入轉化為經驗證的實作 | [以證據為先的 Agent 工作流程](docs/case-study/02-evidence-first-agent-workflow.md) |
 | **正式環境與成本** | 活動時段流量、Cloudflare 帳單邊界、直接 domain 成本及搜尋證據實際能支持甚麼結論 | [正式環境成本與可觀測性](docs/case-study/07-production-economics-and-observability.md) · [搜尋可見性](docs/case-study/08-search-discoverability.md) |
 | **技術證據** | 每項主要陳述如何對應至精選程式碼、測試、圖表及決策紀錄 | [證據索引](docs/case-study/10-evidence-index.md) |
+| **批判性檢視** | 哪些結果已獲驗證、哪些只是正式環境觀察、哪些尚未量度，以及日後活動可如何補足 | [經驗、證據與限制](docs/case-study/09-lessons-and-limitations.md) |
 
 <!-- section:problem -->
 ## 起始問題
@@ -86,6 +87,23 @@
 | **Guidebook → 48 個專題及經核實的目的地** | 經視覺審閱後確立四個主題支柱及 48 個各佔兩頁的專題。全部 48 個專題均有客戶確認的 Instagram 目的地；其中 29 個另有獨立核實的官方網站，其餘 19 個保留為沒有網站操作，而非加入推測連結。 | [了解案例研究](docs/case-study/02-evidence-first-agent-workflow.md) · [查閱決策](docs/decisions/004-guidebook-content-boundaries.md) · [查閱已移除身份資料的稽核紀錄](src/content/guidebook-audit.ts) · [查閱相關測試](src/content/guidebook-audit.test.ts) |
 | **The Ground → 以日期為本的活動探索及標準預約** | 僅在伺服器執行並經個人資料篩選的整合，把精確活動階段與香港曆日分開處理，並維持可重現的探索結果。經核實的即時記錄會把報名交回標準 The Ground 頁面；預設合成示範則使用清楚標示的保留 `example.com` 目的地。 | [了解案例研究](docs/case-study/04-the-ground-event-interface.md) · [查閱決策](docs/decisions/001-the-ground-is-the-live-source.md) · [查閱實作與測試](src/features/programme/) |
 | **聯絡表格 → Queue → 私人 Worker → Google Sheets** | 公開 route 驗證最小化資料合約；真實且未觸發 honeypot 的提交會送入 Queue，而非公開 consumer 則隔離 Google 憑證，以穩定提交識別碼去除重複資料，並把原始值加入客戶擁有的 Sheet。真實提交只會在等待 Queue 接受訊息後收到 `202 Accepted`；honeypot 誘餌則刻意收到相同 `202` 而不會加入 Queue。兩者均不代表 Sheet 已完成寫入。 | [了解案例研究](docs/case-study/05-queue-to-sheets-interface.md) · [查閱決策](docs/decisions/003-queue-before-google-sheets.md) · [查閱實作與測試](workers/contact-sheet-consumer/) |
+
+<a id="evidence-boundaries"></a>
+<!-- section:evidence-boundaries -->
+## 證據可以支持甚麼，也不能支持甚麼
+
+本案例把實作證明、正式環境觀察，以及未有量度的成果清楚分開。這種界線比堆砌更多表面數字更重要。
+
+| 評估問題 | 現有證據 | 狀態 | 陳述邊界 |
+| --- | --- | --- | --- |
+| 項目有否按時間表交付可供審閱的產品？ | 帶時間紀錄的私人項目資料、刪除敏感內容後的時間線及網域紀錄 | **有證據支持** | 可支持 8 月 5 日預覽版、8 月 20 日正式網址及 8 月 21 日內部目標；不能量化 AI 帶來的生產力提升 |
+| 雙語內容與 Guidebook 規則是否保持內部一致？ | 型別化 routes、匿名化 48 個 profile 審計及自動內容檢查 | **已在公開版本驗證** | 可確認結構與證據狀態，而毋須重新公開私人身份或原始文案 |
+| 外部介面有否保留各系統權威，並在失敗時作出明確處理？ | Runtime schemas、香港時間日期測試、Queue／consumer 測試及架構決策 | **已在參考實作驗證** | 測試可驗證指定情況下的行為，但不能保證 The Ground、Google 或 Cloudflare 永久可用 |
+| 正式網站有否處理真實活動時段工作量，並維持在已記錄的成本邊界內？ | Cloudflare 邊緣、runtime、帳單證據及可直接歸屬的網域發票 | **已在正式環境觀察** | Requests 並非人數；零 usage charge 亦不等於零總成本或項目專屬帳單 |
+| 活動對齊時段內，網站能否透過 Google 被找到？ | 已驗證 Search Console property、sitemap 及匯總成效紀錄 | **已在正式環境觀察** | 搜尋點擊與索引狀態不能證明入場、報名或商業回報 |
+| 網站有否改善理解程度、報名轉換或滿意度？ | 項目沒有收集受控基準或 task-based user study | **未有量度** | 因此不會作出 UX 因果或商業成效陳述 |
+
+[閱讀證據解讀方式、日後量度方案及完整限制](docs/case-study/09-lessons-and-limitations.md) · [透過證據索引追查個別陳述](docs/case-study/10-evidence-index.md)
 
 <!-- section:system-overview -->
 ## 系統概覽
