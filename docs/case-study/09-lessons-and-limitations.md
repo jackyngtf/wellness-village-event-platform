@@ -28,7 +28,7 @@ Edge requests, HTML page views, Worker invocations, included quantities, usage c
 
 ### Treat search measurement as a launch dependency
 
-Serving a valid bilingual sitemap and `robots.txt` makes discovery possible; it does not prove indexing or organic performance. Search Console verification belongs before launch if clicks, impressions and indexed-page outcomes will matter after the event. The portfolio preserves the technical endpoints but leaves unavailable search outcomes unclaimed.
+Serving a valid bilingual sitemap and `robots.txt` makes discovery possible; it does not prove indexing or organic performance. The pre-event Search Console verification and sitemap submission made a bounded post-event readout possible. The important discipline is to retain the report timezone, aggregation mode and snapshot dates instead of turning a verified dashboard into stronger claims than it supports.
 
 ## Limitations
 
@@ -42,7 +42,9 @@ Serving a valid bilingual sitemap and `robots.txt` makes discovery possible; it 
 - Cloudflare event analytics include crawlers and threats, and adaptive Worker datasets may be sampled. Requests, page views and runtime invocations are not people, visits or attendance.
 - Cloudflare billing evidence is account-level and can include other workloads. It establishes a zero usage charge for one complete billing period, not a project-only invoice or total cost of ownership.
 - The first-year Porkbun domain registration is directly attributable; future renewal prices are not claimed.
-- No verified Search Console property was available during curation, so organic clicks, impressions, ranking and Google's final indexed-page count remain unmeasured.
+- Search Console performance dates use PT. The selected 30 August–10 September dates mirror the Hong Kong event calendar but do not reproduce the exact HKT-hour window.
+- Search Console property totals and page-grouped rows use different aggregation rules, while the 6-of-12 sitemap indexing result is a 14 September snapshot rather than permanent coverage.
+- Mobile and desktop Core Web Vitals lacked enough 90-day field data, so no real-user performance result is claimed.
 - No conversion uplift, productivity percentage, reliability SLA or business ROI is claimed without measurement.
 - The live event URL may eventually be retired; the media and runnable demo are the durable record.
 

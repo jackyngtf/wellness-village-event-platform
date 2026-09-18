@@ -15,7 +15,7 @@ flowchart TB
         RATE_CARD[公開價目表<br/>額度比較]
         ACCOUNT_BILLING[已驗證的帳戶帳單<br/>完整週期用量費為零]
         DOMAIN_INVOICE[Porkbun domain 帳單<br/>首年 US$11.08]
-        SEARCH_CONSOLE[已驗證的 Search Console<br/>點擊、曝光及索引]
+        SEARCH_CONSOLE[已驗證的 Search Console<br/>112 次點擊 · 362 次曝光<br/>已索引 6/12 個已提交 URL]
     end
 
     PORTFOLIO[受證據界限約束的作品集陳述]
@@ -38,13 +38,11 @@ flowchart TB
     RATE_CARD --> PORTFOLIO
     ACCOUNT_BILLING -->|共享帳戶，並非項目成本分攤| PORTFOLIO
     DOMAIN_INVOICE -->|可直接歸屬項目的成本| PORTFOLIO
-    SEARCH_CONSOLE -.->|沒有可用的已驗證資源| PORTFOLIO
+    SEARCH_CONSOLE -->|與活動日期對齊的 PT 時段及後續快照| PORTFOLIO
 
     classDef observed fill:#eaf4e1,stroke:#48633c,color:#20301b
     classDef system fill:#e4f1f7,stroke:#356a7d,color:#16333d
-    classDef unavailable fill:#f7eadf,stroke:#8a5834,color:#442a18
     classDef conclusion fill:#f0eef5,stroke:#675b79,color:#312a3a
     class EDGE,WORKER,R2,QUEUE,EXTERNAL system
-    class ZONE_ANALYTICS,WORKER_ANALYTICS,RATE_CARD,ACCOUNT_BILLING,DOMAIN_INVOICE observed
-    class SEARCH_CONSOLE unavailable
+    class ZONE_ANALYTICS,WORKER_ANALYTICS,RATE_CARD,ACCOUNT_BILLING,DOMAIN_INVOICE,SEARCH_CONSOLE observed
     class PORTFOLIO conclusion

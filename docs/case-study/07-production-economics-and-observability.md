@@ -34,6 +34,8 @@ Edge requests, page views and Worker invocations are intentionally not merged. T
 
 Cloudflare documents that Free-plan HTTP traffic includes legitimate users, crawlers and threats, that one page view typically requires many requests and that page views count successful HTML responses. Adaptive GraphQL datasets may be estimates. The [evidence note](../evidence/production-metrics/README.md) retains these definitions beside the figures.
 
+A separate verified Search Console report recorded 112 Web Search clicks from 362 impressions, a displayed 30.9% CTR and 3.5 average position for the Pacific Time calendar dates aligned to the 12 event dates. Search clicks are not edge requests, page views or attendance; the [search-discoverability chapter](08-search-discoverability.md) preserves the reporting and indexing boundaries.
+
 ## Cost evidence without false precision
 
 Three cost layers are deliberately separated:
@@ -66,7 +68,7 @@ Cloudflare Pages remains a useful product, and Pages Functions use Workers billi
 
 ## Measurement boundaries
 
-![Diagram separating project analytics, shared-account billing, the direct domain invoice, public rate cards and unavailable search evidence.](../diagrams/production-measurement-boundaries.svg)
+![Diagram separating project analytics, verified search evidence, shared-account billing, the direct domain invoice and public rate cards.](../diagrams/production-measurement-boundaries.svg)
 
 [Inspect the Mermaid source](../diagrams/production-measurement-boundaries.mmd) · [Read the aggregate evidence note](../evidence/production-metrics/README.md)
 
@@ -77,5 +79,6 @@ Cloudflare Pages remains a useful product, and Pages Functions use Workers billi
 - They do not establish a long-term SLA from a 12-day event window.
 - They do not establish a project-only Cloudflare invoice, total cost of ownership or engineering labour.
 - They do not turn shared-account billing-cycle usage into project-specific traffic.
+- They do not turn an event-aligned Search Console property total or dated indexing snapshot into broad SEO success or permanent index coverage.
 
 Those exclusions are part of the result: the portfolio shows how operational evidence was interpreted, not only how it was collected.

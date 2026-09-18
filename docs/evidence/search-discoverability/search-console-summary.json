@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "capturedOn": "2026-09-18",
+  "source": {
+    "provider": "Google Search Console",
+    "propertyType": "Domain",
+    "property": "wellnessvillagehk.com",
+    "access": "authorised read-only inspection of a verified-owner account",
+    "accountIdentifiersRetained": false
+  },
+  "property": {
+    "addedOn": "2026-08-21",
+    "ownershipStatus": "verified owner",
+    "robotsTxtStatus": "all files valid"
+  },
+  "performance": {
+    "report": "Search results",
+    "searchType": "web",
+    "startDate": "2026-08-30",
+    "endDateInclusive": "2026-09-10",
+    "dateTimezone": "Pacific Time (PT)",
+    "alignmentNote": "The selected calendar dates mirror the Hong Kong event dates; because Search Console uses PT for this report, the result is event-aligned rather than an exact HKT-hour window.",
+    "clicks": 112,
+    "impressions": 362,
+    "displayedCtr": "30.9%",
+    "averagePosition": 3.5,
+    "daily": [
+      {
+        "date": "2026-08-30",
+        "clicks": 12,
+        "impressions": 37
+      },
+      {
+        "date": "2026-08-31",
+        "clicks": 9,
+        "impressions": 32
+      },
+      {
+        "date": "2026-09-01",
+        "clicks": 14,
+        "impressions": 41
+      },
+      {
+        "date": "2026-09-02",
+        "clicks": 8,
+        "impressions": 39
+      },
+      {
+        "date": "2026-09-03",
+        "clicks": 19,
+        "impressions": 41
+      },
+      {
+        "date": "2026-09-04",
+        "clicks": 7,
+        "impressions": 37
+      },
+      {
+        "date": "2026-09-05",
+        "clicks": 4,
+        "impressions": 26
+      },
+      {
+        "date": "2026-09-06",
+        "clicks": 4,
+        "impressions": 18
+      },
+      {
+        "date": "2026-09-07",
+        "clicks": 7,
+        "impressions": 20
+      },
+      {
+        "date": "2026-09-08",
+        "clicks": 12,
+        "impressions": 28
+      },
+      {
+        "date": "2026-09-09",
+        "clicks": 9,
+        "impressions": 27
+      },
+      {
+        "date": "2026-09-10",
+        "clicks": 7,
+        "impressions": 16
+      }
+    ],
+    "topLandingPageObservation": {
+      "path": "/zh-hk",
+      "clicks": 98,
+      "impressions": 315,
+      "aggregationNote": "This is a page-grouped row. Page rows are not additive to property totals because Search Console aggregates property and page dimensions differently."
+    }
+  },
+  "sitemap": {
+    "url": "https://www.wellnessvillagehk.com/sitemap.xml",
+    "submittedOn": "2026-08-21",
+    "lastReadOn": "2026-09-14",
+    "status": "success",
+    "discoveredPages": 12,
+    "discoveredVideos": 0
+  },
+  "indexingSnapshots": {
+    "asOf": "2026-09-14",
+    "allKnownPages": {
+      "indexed": 6,
+      "notIndexed": 15,
+      "notIndexedReasons": [
+        {
+          "reason": "page with redirect",
+          "pages": 4
+        },
+        {
+          "reason": "not found (404)",
+          "pages": 3
+        },
+        {
+          "reason": "excluded by noindex",
+          "pages": 2
+        },
+        {
+          "reason": "discovered - currently not indexed",
+          "pages": 4
+        },
+        {
+          "reason": "crawled - currently not indexed",
+          "pages": 2
+        }
+      ]
+    },
+    "submittedSitemapPages": {
+      "indexed": 6,
+      "notIndexed": 6,
+      "notIndexedReasons": [
+        {
+          "reason": "excluded by noindex",
+          "pages": 1
+        },
+        {
+          "reason": "not found (404)",
+          "pages": 1
+        },
+        {
+          "reason": "discovered - currently not indexed",
+          "pages": 4
+        }
+      ]
+    },
+    "interpretationNote": "Indexing is a point-in-time Google report that may lag site changes; the reported reason categories do not establish a root-cause audit."
+  },
+  "enhancements": {
+    "eventStructuredData": {
+      "asOf": "2026-09-16",
+      "validItems": 1,
+      "invalidItems": 0,
+      "nonCriticalImprovementNotices": [
+        "offers missing",
+        "performer missing",
+        "organizer missing"
+      ]
+    }
+  },
+  "coreWebVitals": {
+    "asOf": "2026-09-16",
+    "source": "Chrome User Experience Report",
+    "mobile": "insufficient usage data in the previous 90 days",
+    "desktop": "insufficient usage data in the previous 90 days"
+  },
+  "httpsSnapshot": {
+    "asOf": "2026-09-11",
+    "httpsUrls": 1,
+    "nonHttpsUrls": 0,
+    "interpretationNote": "This Search Console summary is not treated as a crawl of every public route."
+  },
+  "excludedFromPublicRecord": [
+    "account name and email address",
+    "user and permission listings",
+    "account screenshots",
+    "raw low-volume search queries",
+    "country and device breakdowns",
+    "unnecessary account or resource identifiers"
+  ]
+}

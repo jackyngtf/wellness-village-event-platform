@@ -15,7 +15,7 @@ flowchart TB
         RATE_CARD[Public rate cards<br/>Allowance comparison]
         ACCOUNT_BILLING[Authenticated account billing<br/>Zero usage charge in complete cycle]
         DOMAIN_INVOICE[Porkbun domain invoice<br/>US$11.08 first year]
-        SEARCH_CONSOLE[Verified Search Console<br/>Clicks, impressions and indexing]
+        SEARCH_CONSOLE[Verified Search Console<br/>112 clicks · 362 impressions<br/>6 of 12 submitted URLs indexed]
     end
 
     PORTFOLIO[Evidence-bounded portfolio claims]
@@ -38,13 +38,11 @@ flowchart TB
     RATE_CARD --> PORTFOLIO
     ACCOUNT_BILLING -->|Shared account, not project allocation| PORTFOLIO
     DOMAIN_INVOICE -->|Direct project cost| PORTFOLIO
-    SEARCH_CONSOLE -.->|No verified property available| PORTFOLIO
+    SEARCH_CONSOLE -->|Event-aligned PT window and later snapshots| PORTFOLIO
 
     classDef observed fill:#eaf4e1,stroke:#48633c,color:#20301b
     classDef system fill:#e4f1f7,stroke:#356a7d,color:#16333d
-    classDef unavailable fill:#f7eadf,stroke:#8a5834,color:#442a18
     classDef conclusion fill:#f0eef5,stroke:#675b79,color:#312a3a
     class EDGE,WORKER,R2,QUEUE,EXTERNAL system
-    class ZONE_ANALYTICS,WORKER_ANALYTICS,RATE_CARD,ACCOUNT_BILLING,DOMAIN_INVOICE observed
-    class SEARCH_CONSOLE unavailable
+    class ZONE_ANALYTICS,WORKER_ANALYTICS,RATE_CARD,ACCOUNT_BILLING,DOMAIN_INVOICE,SEARCH_CONSOLE observed
     class PORTFOLIO conclusion

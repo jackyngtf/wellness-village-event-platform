@@ -29,6 +29,7 @@
 | **完成的體驗** | 英文與繁體中文共用同一資訊架構，涵蓋活動導覽、節目、到訪、品牌及 Guidebook 旅程 |
 | **核心技術** | Next.js、React、TypeScript、Zod、OpenNext、Cloudflare Workers、Queues、R2、Durable Objects、Turnstile 及 Google Sheets API |
 | **正式環境證據** | 活動時段錄得 108,443 個邊緣請求、4,322 次 HTML 頁面瀏覽及 4.34 GB 傳輸量；成本與指標邊界詳列於下文 |
+| **搜尋證據** | 經驗證的 Domain 資源在與 12 個活動日曆日期對齊的 PT 時段錄得 112 次網頁搜尋點擊、362 次曝光（CTR 30.9%；平均排名 3.5） |
 | **作品集狀態** | 活動後整理的獨立版本；本機使用合成示範資料，無須正式環境憑證 |
 | **再使用狀態** | 原始碼只供作品集閱覽；沒有軟件授權或再使用許可 |
 
@@ -100,13 +101,15 @@
 [閱讀正式環境成本章節](docs/case-study/07-production-economics-and-observability.md) · [查閱活動時段彙總紀錄](docs/evidence/production-metrics/event-window-aggregates.json) · [查閱帳單與 domain 紀錄](docs/evidence/production-metrics/billing-and-domain-summary.json) · [查看量度邊界圖](docs/diagrams/production-measurement-boundaries.zh-Hant.svg)
 
 <!-- section:search-discoverability -->
-## 搜尋可見性：技術已實作，證據缺口如實保留
+## 搜尋可見性：已驗證結果，並清楚界定解讀範圍
 
 2026 年 9 月 18 日的唯讀擷取確認正式網站提供 `robots.txt`，允許公開 routes、排除 `/api/` 並指向 sitemap。Sitemap 共列出 12 個語系 URL，即英文與繁體中文各六條 routes，並包含 `en`、`zh-HK` 及 `x-default` alternates。
 
-經授權的帳戶沒有可用的已驗證 Google Search Console 資源，因此本作品集**不會宣稱**自然搜尋點擊、曝光、排名、CTR 或 Google 最終索引頁數。整理作品集期間沒有建立資源，亦沒有更改 DNS 設定。
+經授權的 Chrome 工作階段亦顯示原有而且已驗證的 Google Search Console Domain 資源。在 **Search Console 以 Pacific Time 計算的 2026 年 8 月 30 日至 9 月 10 日（首尾兩日均包括）**，網頁搜尋錄得 **112 次點擊及 362 次曝光**，畫面顯示 **CTR 30.9%** 及**平均排名 3.5**。這組日期與香港活動的 12 個日曆日期對齊，但並非精確的香港時間小時窗口。
 
-[閱讀搜尋可見性章節](docs/case-study/08-search-discoverability.md) · [查閱保留的 endpoint snapshots](docs/evidence/search-discoverability/)
+已提交的 sitemap 在 9 月 14 日最後一次成功讀取，共列出 12 個 URL。同日 Google 以 sitemap 為範圍的索引快照顯示**已索引 6 個、未索引 6 個**。Core Web Vitals 的 90 日實際使用者資料不足，因此本作品集不會宣稱真實使用者效能分數。
+
+[閱讀搜尋可見性章節](docs/case-study/08-search-discoverability.md) · [查閱已移除敏感資料的 Search Console 紀錄](docs/evidence/search-discoverability/search-console-summary.json) · [查閱保留的 endpoint snapshots](docs/evidence/search-discoverability/)
 
 <!-- section:visitor-perspective -->
 ## 訪客角度：一條連貫旅程
@@ -170,7 +173,7 @@ Agent 加快工作，但不擁有產品判斷權。
 | **TypeScript 與 Next.js** | 把證據轉換成型別化雙語內容及 App Router 體驗 | [應用程式 routes 與測試](src/app/) · [型別化內容與測試](src/content/) |
 | **API 與資料建模** | 建立有明確限制的 runtime schemas、經個人資料篩選的供應商合約、HKT 日期邏輯及可重現分類 | [The Ground 整合與測試](src/integrations/the-ground/) · [節目資料建模與測試](src/features/programme/) · [證據索引](docs/case-study/10-evidence-index.md) |
 | **Cloudflare 交付** | 把 full-stack Next.js runtime 封裝至 Workers，配合 R2 快取、Durable Object revalidation 及 dry-run 檢查 | [交付章節](docs/case-study/06-cloudflare-delivery.md) · [OpenNext 設定](open-next.config.ts) · [Wrangler 設定](wrangler.jsonc) |
-| **可觀測性與成本控制** | 分開邊緣流量、runtime 用量、帳單週期超額費、直接 domain 支出及公開價目表，不把請求當作訪客，亦不把共享帳戶收費當作項目成本 | [正式環境成本章節](docs/case-study/07-production-economics-and-observability.md) · [已移除敏感資料的證據](docs/evidence/production-metrics/) · [量度邊界圖](docs/diagrams/production-measurement-boundaries.zh-Hant.svg) |
+| **可觀測性與成本控制** | 分開邊緣流量、runtime 用量、已驗證搜尋結果、帳單週期超額費、直接 domain 支出及公開價目表，不把請求當作訪客，亦不把共享帳戶收費當作項目成本 | [正式環境成本章節](docs/case-study/07-production-economics-and-observability.md) · [已移除敏感資料的證據](docs/evidence/) · [量度邊界圖](docs/diagrams/production-measurement-boundaries.zh-Hant.svg) |
 | **個人資料保護** | 為個人資料處理加設閘門、隔離 Google 憑證，並把 payload 排除於應用程式日誌之外 | [Queue-to-Sheets 章節](docs/case-study/05-queue-to-sheets-interface.md) · [公開 producer 與測試](src/features/interest/) · [私人 consumer 與測試](workers/contact-sheet-consumer/) |
 | **可靠性** | 使用設有明確界限的資料擷取、runtime validation、明確 fallback、穩定 ID、retry、deduplication 及發佈證據 | [發佈檢查清單](docs/agent-workflow/release-checklist.md) · [整合測試](src/integrations/the-ground/) · [consumer 測試](workers/contact-sheet-consumer/) |
 | **雙語產品交付** | 讓英文與繁體中文 routes、紀錄媒體及公開文件維持一致的結構 | [應用程式 routes 與測試](src/app/) · [訪客旅程](docs/case-study/03-visitor-journey.md) · [媒體文件](docs/media/README.md) |
@@ -268,7 +271,8 @@ npm run contact-consumer:dry-run
 - Queue delivery 及 deduplication 可減少一般 retry 造成的重複資料，但不構成分散式 transaction 保證。資料保留、撤回及 dead-letter 復原仍由人負責營運。
 - Google Sheets 適合這個範圍有限的客戶工作流程，但並非通用 transactional datastore。
 - 邊緣請求、頁面瀏覽及 Worker 調用量度不同層次，不能當作訪客或入場人數。Cloudflare 帳單紀錄屬帳戶層面；Porkbun 註冊費才是可直接歸屬項目的成本。
-- 因沒有可用的已驗證 Search Console 資源，自然搜尋表現及 Google 最終索引結果仍未量度。
+- Search Console 的成效日期採用 PT。8 月 30 日至 9 月 10 日的選擇與活動日曆日期對齊，但並非精確的香港時間小時窗口；12 個已提交 URL 中有 6 個已索引，只是 9 月 14 日的快照，並非永久索引保證。
+- Search Console 的流動裝置及桌面版 Core Web Vitals 均缺乏足夠的 90 日實際使用者資料，因此不會宣稱真實使用者效能結果。
 - 不會宣稱任何未經量度的商業成果、交付速度提升或長期可靠性結果。
 - 原始 Guidebook PDF 與頁面封存、客戶字體、活動原始素材、正式環境識別碼、憑證、個人資料、私人通訊及原始 Agent transcripts 均不包括在內。
 - 本儲存庫只供作品集閱覽，並刻意不附軟件授權。公開可見並不授予複製、修改、再分發或商業部署原創程式碼的權利。

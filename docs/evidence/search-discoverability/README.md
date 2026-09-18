@@ -4,9 +4,14 @@ This directory preserves public, read-only snapshots of the production discovery
 
 - [`robots.txt`](robots.txt) allowed public crawling, excluded `/api/` and identified the sitemap.
 - [`sitemap.xml`](sitemap.xml) contained 12 canonical locale URLs: six routes in Traditional Chinese and English, with `zh-HK`, `en` and `x-default` alternates.
+- [`search-console-summary.json`](search-console-summary.json) preserves authorised, aggregate Search Console performance, sitemap, indexing and enhancement results without account identity or raw low-volume queries.
 
 The snapshots establish what the production website served at capture time. They do not prove that Google fetched, accepted or indexed every URL.
 
-An authorised read-only Search Console check exposed no verified site property in the available account. No property was created and no DNS setting was changed. Therefore this portfolio does not claim organic clicks, impressions, CTR, average position or indexed-page totals.
+An authorised read-only Chrome inspection confirmed the pre-existing verified Domain property. For the inclusive 30 August–10 September 2026 calendar dates in Search Console's Pacific Time reporting basis, Web Search recorded 112 clicks, 362 impressions, a displayed 30.9% CTR and 3.5 average position. The selected dates mirror the Hong Kong event calendar but are not an exact HKT-hour window.
 
-Google notes that the Sitemaps report lists only sitemaps submitted through Search Console or its API, even when a sitemap can be discovered through `robots.txt`. See the official [Sitemaps report](https://support.google.com/webmasters/answer/7451001?hl=en), [Performance report](https://support.google.com/webmasters/answer/7576553?hl=en) and [Page indexing report](https://support.google.com/webmasters/answer/7440203?hl=en).
+The submitted sitemap was last read successfully on 14 September, with 12 discovered pages. The sitemap-scoped Page indexing snapshot on that date showed 6 indexed and 6 not indexed. These are dated Google reports, not permanent coverage guarantees. Core Web Vitals had insufficient 90-day field data for both mobile and desktop, so no real-user performance result is claimed.
+
+No property was created, no sitemap was submitted and no DNS or Search Console setting was changed during curation. Account identifiers, screenshots, permission listings and raw low-volume query rows remain excluded.
+
+See the official [Performance report](https://support.google.com/webmasters/answer/7576553?hl=en), [Performance data and aggregation](https://support.google.com/webmasters/answer/17011364?hl=en), [Sitemaps report](https://support.google.com/webmasters/answer/7451001?hl=en), [Page indexing report](https://support.google.com/webmasters/answer/7440203?hl=en) and [Core Web Vitals report](https://support.google.com/webmasters/answer/9205520?hl=en).

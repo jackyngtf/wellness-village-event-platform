@@ -29,6 +29,7 @@ I led the product direction, evidence model, bilingual UX, full-stack implementa
 | **Delivered experience** | Shared English and Traditional Chinese information architecture across orientation, programme, visit, brand and Guidebook journeys |
 | **Core stack** | Next.js, React, TypeScript, Zod, OpenNext, Cloudflare Workers, Queues, R2, Durable Objects, Turnstile and Google Sheets API |
 | **Production evidence** | 108,443 edge requests, 4,322 HTML page views and 4.34 GB delivered in the event window; cost and metric boundaries are documented below |
+| **Search evidence** | A verified Domain property recorded 112 Web Search clicks from 362 impressions (30.9% CTR; average position 3.5) in the PT date range aligned to the 12 event calendar dates |
 | **Portfolio status** | Post-event curated edition; synthetic demo data and no production credentials are required for local use |
 | **Reuse status** | Source-available for review; no software licence or reuse permission is granted |
 
@@ -100,13 +101,15 @@ The complete **12 August–11 September 2026 Cloudflare account billing period**
 [Read the production economics chapter](docs/case-study/07-production-economics-and-observability.md) · [Inspect the aggregate event record](docs/evidence/production-metrics/event-window-aggregates.json) · [Inspect the billing and domain record](docs/evidence/production-metrics/billing-and-domain-summary.json) · [View the measurement-boundary diagram](docs/diagrams/production-measurement-boundaries.svg)
 
 <!-- section:search-discoverability -->
-## Search discoverability: implemented, with an honest evidence gap
+## Search discoverability: verified outcomes, bounded interpretation
 
 A read-only capture on 18 September 2026 confirmed a production `robots.txt` that allowed public routes, excluded `/api/` and identified the sitemap. The sitemap exposed 12 locale URLs—six routes in English and Traditional Chinese—with `en`, `zh-HK` and `x-default` alternates.
 
-No verified Google Search Console property was available in the authorised account, so this portfolio makes **no claim** about organic clicks, impressions, ranking, CTR or Google's final indexed-page count. No property was created and no DNS setting was changed during curation.
+The authorised Chrome session also exposed the pre-existing, verified Google Search Console Domain property. For **30 August–10 September 2026 inclusive in Search Console's Pacific Time calendar**, Web Search recorded **112 clicks from 362 impressions**, a displayed **30.9% CTR** and **3.5 average position**. The dates mirror the 12 Hong Kong event calendar dates; they are not an exact HKT-hour window.
 
-[Read the discoverability chapter](docs/case-study/08-search-discoverability.md) · [Inspect the retained endpoint snapshots](docs/evidence/search-discoverability/)
+The submitted sitemap was last read successfully on 14 September and exposed 12 URLs. Google's same-day sitemap-scoped index snapshot showed **6 indexed and 6 not indexed**. Core Web Vitals had insufficient 90-day field data, so no real-user performance score is claimed.
+
+[Read the discoverability chapter](docs/case-study/08-search-discoverability.md) · [Inspect the sanitised Search Console record](docs/evidence/search-discoverability/search-console-summary.json) · [Inspect the retained endpoint snapshots](docs/evidence/search-discoverability/)
 
 <!-- section:visitor-perspective -->
 ## Visitor perspective: one connected journey
@@ -170,7 +173,7 @@ The public workflow is explicit: **Inventory → Bound claims → Model content 
 | **TypeScript and Next.js** | Converted evidence into typed bilingual content and App Router experiences | [Application routes and tests](src/app/) · [Typed content and tests](src/content/) |
 | **API and data modelling** | Built bounded runtime schemas, privacy-filtered provider contracts, HKT date logic and deterministic categories | [The Ground integration and tests](src/integrations/the-ground/) · [Programme modelling and tests](src/features/programme/) · [Evidence index](docs/case-study/10-evidence-index.md) |
 | **Cloudflare delivery** | Packaged the full-stack Next.js runtime for Workers with R2 caching, Durable Object revalidation and dry-run checks | [Delivery chapter](docs/case-study/06-cloudflare-delivery.md) · [OpenNext configuration](open-next.config.ts) · [Wrangler configuration](wrangler.jsonc) |
-| **Observability and cost control** | Separated edge traffic, runtime usage, billing-cycle overage, direct domain spend and public rate cards without turning requests into visitors or shared-account charges into project cost | [Production economics](docs/case-study/07-production-economics-and-observability.md) · [Sanitised evidence](docs/evidence/production-metrics/) · [Measurement diagram](docs/diagrams/production-measurement-boundaries.svg) |
+| **Observability and cost control** | Separated edge traffic, runtime usage, verified search outcomes, billing-cycle overage, direct domain spend and public rate cards without turning requests into visitors or shared-account charges into project cost | [Production economics](docs/case-study/07-production-economics-and-observability.md) · [Sanitised evidence](docs/evidence/) · [Measurement diagram](docs/diagrams/production-measurement-boundaries.svg) |
 | **Privacy** | Gated personal-data processing, isolated Google credentials and excluded payloads from application logs | [Queue-to-Sheets chapter](docs/case-study/05-queue-to-sheets-interface.md) · [Public producer and tests](src/features/interest/) · [Private consumer and tests](workers/contact-sheet-consumer/) |
 | **Reliability** | Used bounded fetches, runtime validation, explicit fallbacks, stable IDs, retries, deduplication and release evidence | [Release checklist](docs/agent-workflow/release-checklist.md) · [Integration tests](src/integrations/the-ground/) · [Consumer tests](workers/contact-sheet-consumer/) |
 | **Bilingual product delivery** | Kept English and Traditional Chinese routes, documentary media and public documentation structurally aligned | [Application routes and tests](src/app/) · [Visitor journey](docs/case-study/03-visitor-journey.md) · [Media documentation](docs/media/README.md) |
@@ -268,7 +271,8 @@ The optional live catalogue reads `THE_GROUND_LIVE_ENABLED` and `THE_GROUND_ORGA
 - Queue delivery and deduplication reduce ordinary retry duplicates but do not create a distributed transaction guarantee. Retention, withdrawal and dead-letter recovery remain human operational responsibilities.
 - Google Sheets is suitable for this bounded client workflow, not a general-purpose transactional datastore.
 - Edge requests, page views and Worker invocations measure different layers and are not visitor or attendance counts. The Cloudflare billing record is account-level, while the Porkbun registration is a direct project cost.
-- No verified Search Console property was available, so organic search performance and Google's final indexing outcome remain unmeasured.
+- Search Console performance dates use PT. The 30 August–10 September selection mirrors the event calendar dates but is not an exact HKT-hour window; the 6-of-12 indexing result is a 14 September snapshot, not a guarantee of permanent coverage.
+- Search Console had insufficient 90-day Core Web Vitals field data for mobile and desktop, so no real-user performance result is claimed.
 - No unmeasured business, delivery-speed or long-term reliability outcome is claimed.
 - The original Guidebook PDF and page archive, client fonts, campaign source assets, production identifiers, credentials, personal data, private correspondence and raw Agent transcripts are excluded.
 - This repository is source-available for portfolio review but deliberately carries no software licence. Public visibility grants no permission to copy, modify, redistribute or commercially deploy its original code.
