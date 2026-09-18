@@ -1,0 +1,50 @@
+flowchart TB
+    VISITOR[Visitors, crawlers and other clients]
+
+    subgraph DELIVERY[Delivered system]
+        EDGE[Cloudflare edge and cached assets]
+        WORKER[OpenNext Worker runtime]
+        R2[R2 incremental cache]
+        QUEUE[Cloudflare Queue]
+        EXTERNAL[The Ground and Google Sheets]
+    end
+
+    subgraph EVIDENCE[Evidence layers]
+        ZONE_ANALYTICS[Zone analytics<br/>Requests, HTML page views, bytes and cache]
+        WORKER_ANALYTICS[Runtime analytics<br/>Invocations and CPU]
+        RATE_CARD[Public rate cards<br/>Allowance comparison]
+        ACCOUNT_BILLING[Authenticated account billing<br/>Zero usage charge in complete cycle]
+        DOMAIN_INVOICE[Porkbun domain invoice<br/>US$11.08 first year]
+        SEARCH_CONSOLE[Verified Search Console<br/>Clicks, impressions and indexing]
+    end
+
+    PORTFOLIO[Evidence-bounded portfolio claims]
+
+    VISITOR --> EDGE
+    EDGE --> WORKER
+    WORKER <--> R2
+    WORKER --> QUEUE
+    WORKER --> EXTERNAL
+    QUEUE --> EXTERNAL
+
+    EDGE -.->|Aggregate delivery| ZONE_ANALYTICS
+    WORKER -.->|Aggregate runtime| WORKER_ANALYTICS
+    WORKER -.->|Observed usage| RATE_CARD
+    R2 -.->|Observed usage| RATE_CARD
+    QUEUE -.->|Usage position only| RATE_CARD
+
+    ZONE_ANALYTICS --> PORTFOLIO
+    WORKER_ANALYTICS --> PORTFOLIO
+    RATE_CARD --> PORTFOLIO
+    ACCOUNT_BILLING -->|Shared account, not project allocation| PORTFOLIO
+    DOMAIN_INVOICE -->|Direct project cost| PORTFOLIO
+    SEARCH_CONSOLE -.->|No verified property available| PORTFOLIO
+
+    classDef observed fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef system fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef unavailable fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef conclusion fill:#f0eef5,stroke:#675b79,color:#312a3a
+    class EDGE,WORKER,R2,QUEUE,EXTERNAL system
+    class ZONE_ANALYTICS,WORKER_ANALYTICS,RATE_CARD,ACCOUNT_BILLING,DOMAIN_INVOICE observed
+    class SEARCH_CONSOLE unavailable
+    class PORTFOLIO conclusion

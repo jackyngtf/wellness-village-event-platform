@@ -1,0 +1,50 @@
+flowchart TB
+    VISITOR[訪客、爬蟲及其他用戶端]
+
+    subgraph DELIVERY[已交付系統]
+        EDGE[Cloudflare 邊緣網絡及快取資產]
+        WORKER[OpenNext Worker 執行環境]
+        R2[R2 增量快取]
+        QUEUE[Cloudflare 佇列]
+        EXTERNAL[The Ground 與 Google 試算表]
+    end
+
+    subgraph EVIDENCE[證據層]
+        ZONE_ANALYTICS[網域分析<br/>請求、HTML 頁面瀏覽、位元組及快取]
+        WORKER_ANALYTICS[執行環境分析<br/>調用次數及 CPU]
+        RATE_CARD[公開價目表<br/>額度比較]
+        ACCOUNT_BILLING[已驗證的帳戶帳單<br/>完整週期用量費為零]
+        DOMAIN_INVOICE[Porkbun domain 帳單<br/>首年 US$11.08]
+        SEARCH_CONSOLE[已驗證的 Search Console<br/>點擊、曝光及索引]
+    end
+
+    PORTFOLIO[受證據界限約束的作品集陳述]
+
+    VISITOR --> EDGE
+    EDGE --> WORKER
+    WORKER <--> R2
+    WORKER --> QUEUE
+    WORKER --> EXTERNAL
+    QUEUE --> EXTERNAL
+
+    EDGE -.->|彙總交付數據| ZONE_ANALYTICS
+    WORKER -.->|彙總執行數據| WORKER_ANALYTICS
+    WORKER -.->|觀察所得用量| RATE_CARD
+    R2 -.->|觀察所得用量| RATE_CARD
+    QUEUE -.->|只披露用量位置| RATE_CARD
+
+    ZONE_ANALYTICS --> PORTFOLIO
+    WORKER_ANALYTICS --> PORTFOLIO
+    RATE_CARD --> PORTFOLIO
+    ACCOUNT_BILLING -->|共享帳戶，並非項目成本分攤| PORTFOLIO
+    DOMAIN_INVOICE -->|可直接歸屬項目的成本| PORTFOLIO
+    SEARCH_CONSOLE -.->|沒有可用的已驗證資源| PORTFOLIO
+
+    classDef observed fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef system fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef unavailable fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef conclusion fill:#f0eef5,stroke:#675b79,color:#312a3a
+    class EDGE,WORKER,R2,QUEUE,EXTERNAL system
+    class ZONE_ANALYTICS,WORKER_ANALYTICS,RATE_CARD,ACCOUNT_BILLING,DOMAIN_INVOICE observed
+    class SEARCH_CONSOLE unavailable
+    class PORTFOLIO conclusion

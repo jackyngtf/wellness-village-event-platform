@@ -22,6 +22,14 @@ The useful public artefact is not a dump of private history. It is a new, audita
 
 A passing content test proves a content invariant, a build proves buildability and a smoke check proves an observed response. None should be stretched into a business outcome or long-term reliability claim. Keeping those scopes explicit made the release record more credible.
 
+### Separate workload, allowance and spend
+
+Edge requests, HTML page views, Worker invocations, included quantities, usage charges and invoices answer different questions. The useful cost story was not “the site was free”; it was that the architecture kept the observed workload inside included Cloudflare quantities, while the direct first-year domain cost was independently evidenced and fixed subscriptions, shared-account services, labour and external systems remained separate.
+
+### Treat search measurement as a launch dependency
+
+Serving a valid bilingual sitemap and `robots.txt` makes discovery possible; it does not prove indexing or organic performance. Search Console verification belongs before launch if clicks, impressions and indexed-page outcomes will matter after the event. The portfolio preserves the technical endpoints but leaves unavailable search outcomes unclaimed.
+
 ## Limitations
 
 - The Ground feed used a public endpoint, not a formal partner API documented in this repository.
@@ -31,6 +39,10 @@ A passing content test proves a content invariant, a build proves buildability a
 - Read-before-append deduplication, retention, withdrawal and DLQ recovery still require bounded operation and human ownership.
 - The public documentary media preserves the delivered interface, but campaign imagery inside it remains subject to the approved portfolio scope.
 - The reconstructed prompt explains a bounded starting brief; it is not a verbatim historical record or a claim that one prompt built the product.
+- Cloudflare event analytics include crawlers and threats, and adaptive Worker datasets may be sampled. Requests, page views and runtime invocations are not people, visits or attendance.
+- Cloudflare billing evidence is account-level and can include other workloads. It establishes a zero usage charge for one complete billing period, not a project-only invoice or total cost of ownership.
+- The first-year Porkbun domain registration is directly attributable; future renewal prices are not claimed.
+- No verified Search Console property was available during curation, so organic clicks, impressions, ranking and Google's final indexed-page count remain unmeasured.
 - No conversion uplift, productivity percentage, reliability SLA or business ROI is claimed without measurement.
 - The live event URL may eventually be retired; the media and runnable demo are the durable record.
 
@@ -39,4 +51,5 @@ A passing content test proves a content invariant, a build proves buildability a
 - Implementation: [public Agent rules](../../AGENTS.md) and [public-edition release checklist](../agent-workflow/release-checklist.md)
 - Tests: [application checks](../../src/) and [consumer checks](../../workers/contact-sheet-consumer/)
 - Diagram: [architecture diagram index](../diagrams/README.md)
+- Production evidence: [economics and observability](07-production-economics-and-observability.md) and [search discoverability](08-search-discoverability.md)
 - Decision record: [live event source](../decisions/001-the-ground-is-the-live-source.md), [Workers runtime](../decisions/002-workers-not-static-pages.md), [Queue before Sheets](../decisions/003-queue-before-google-sheets.md) and [Guidebook boundaries](../decisions/004-guidebook-content-boundaries.md)

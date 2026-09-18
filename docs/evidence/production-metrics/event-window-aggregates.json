@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "capturedOn": "2026-09-18",
+  "source": {
+    "provider": "Cloudflare GraphQL Analytics API",
+    "access": "authorised read-only aggregate query",
+    "datasets": [
+      "httpRequests1dGroups",
+      "workersInvocationsAdaptive",
+      "r2OperationsAdaptiveGroups",
+      "r2StorageAdaptiveGroups"
+    ]
+  },
+  "reportingWindows": {
+    "zoneTraffic": {
+      "startDate": "2026-08-30",
+      "endDateInclusive": "2026-09-10",
+      "calendarTimezone": "UTC",
+      "grain": "daily roll-up"
+    },
+    "runtimeAndStorage": {
+      "startInclusive": "2026-08-29T16:00:00Z",
+      "endExclusive": "2026-09-10T16:00:00Z",
+      "equivalentLocalWindow": "2026-08-30 00:00 through 2026-09-11 00:00 Asia/Hong_Kong"
+    }
+  },
+  "zoneTraffic": {
+    "edgeRequests": 108443,
+    "htmlPageViews": 4322,
+    "responseBytes": 4335500808,
+    "cachedRequests": 52892,
+    "cachedResponseBytes": 3404742604,
+    "encryptedRequests": 107022,
+    "reportedThreats": 23,
+    "derived": {
+      "cacheRequestRatio": 0.4877,
+      "cacheByteRatio": 0.7853,
+      "encryptedRequestRatio": 0.9869
+    }
+  },
+  "workerRuntime": {
+    "requestsApproximate": 35604,
+    "cpuTimeMicrosecondsApproximate": 2334775583,
+    "subrequestsApproximate": 11613,
+    "averageSampleInterval": 1.1103
+  },
+  "r2IncrementalCache": {
+    "latestStorageBytesInWindow": 68777091,
+    "latestObjectCountInWindow": 696,
+    "successfulPutObjectOperations": 6849,
+    "successfulGetObjectOperations": 32509
+  },
+  "excludedFromPublicRecord": [
+    "account, zone, Worker, Queue and bucket identifiers",
+    "IP, path, query-string and user-level records",
+    "daily unique-IP totals",
+    "exact Queue operations or lead-level volumes",
+    "billing and payment identifiers"
+  ]
+}

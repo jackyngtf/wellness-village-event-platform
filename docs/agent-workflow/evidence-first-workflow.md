@@ -83,7 +83,7 @@ The release sequence was inspect → test → build → dry run → preview → 
 
 Create a new, sanitised public edition rather than exporting private history. Include only reviewed implementation, synthetic fixtures, approved documentary media, concise decisions, limitations and reproducible checks. Exclude credentials, production identifiers, personal data, private correspondence, raw Agent transcripts and material without redistribution rights.
 
-**Project example:** the portfolio edition uses an independent publication boundary, an [evidence index](../case-study/08-evidence-index.md) and a [public-edition release checklist](release-checklist.md) so useful evidence can survive after the campaign URL is retired.
+**Project example:** the portfolio edition uses an independent publication boundary, an [evidence index](../case-study/10-evidence-index.md) and a [public-edition release checklist](release-checklist.md) so useful evidence can survive after the campaign URL is retired.
 
 ## Working rule
 

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "capturedOn": "2026-09-18",
+  "cloudflareBilling": {
+    "source": "authorised read-only Cloudflare account billing dashboard",
+    "scope": "shared account; not exclusively attributable to this project",
+    "billingPeriod": {
+      "startDate": "2026-08-12",
+      "endDateInclusive": "2026-09-11",
+      "status": "complete"
+    },
+    "usageCostUsd": 0,
+    "allDisplayedUsageWithinIncludedQuantities": true,
+    "workersPaidActive": true,
+    "selectedAccountUsage": {
+      "workersStandardRequests": {
+        "observedDisplayed": "46.46k requests",
+        "precision": "dashboard-rounded",
+        "billable": 0,
+        "usageCostUsd": 0
+      },
+      "workersCpuMilliseconds": {
+        "observedDisplayed": "2.9M ms",
+        "precision": "dashboard-rounded",
+        "billable": 0,
+        "usageCostUsd": 0
+      },
+      "r2ClassAOperations": {
+        "observedDisplayed": "9.21k operations",
+        "precision": "dashboard-rounded",
+        "billable": 0,
+        "usageCostUsd": 0
+      },
+      "r2ClassBOperations": {
+        "observedDisplayed": "51.74k operations",
+        "precision": "dashboard-rounded",
+        "billable": 0,
+        "usageCostUsd": 0
+      },
+      "r2StorageGbMonth": {
+        "observedDisplayed": "0.04 GB-month",
+        "precision": "dashboard-displayed",
+        "billable": 0,
+        "usageCostUsd": 0
+      },
+      "workerBuildMinutes": {
+        "observedDisplayed": "11 minutes",
+        "precision": "dashboard-displayed",
+        "billable": 0,
+        "usageCostUsd": 0
+      },
+      "queueOperations": {
+        "observed": "withheld from the public edition",
+        "billable": 0,
+        "usageCostUsd": 0
+      }
+    },
+    "excludedInterpretations": [
+      "usage cost is not the account's total invoice",
+      "shared-account usage is not project-only usage",
+      "an active paid subscription is not a zero-cost service"
+    ]
+  },
+  "domainRegistration": {
+    "source": "authorised read-only Porkbun invoice",
+    "domain": "wellnessvillagehk.com",
+    "registrar": "Porkbun",
+    "registeredOn": "2026-08-19",
+    "termYears": 1,
+    "expiresOn": "2027-08-19",
+    "amountPaidUsd": 11.08,
+    "renewalPriceClaimed": false
+  },
+  "excludedFromPublicRecord": [
+    "account, order and invoice identifiers",
+    "names, addresses and email addresses",
+    "payment method and card details",
+    "Cloudflare invoice totals without project-attributable line items",
+    "exact Queue operations and lead-level volumes"
+  ]
+}

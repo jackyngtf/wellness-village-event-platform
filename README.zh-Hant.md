@@ -11,11 +11,11 @@
 
 我主導產品方向、證據模型、雙語使用者體驗、全端實作、Cloudflare 交付及發佈作業。Agent 協助加快研究整理、實作與驗證；產品判斷、客戶事實、個人資料處理決定及發佈權限始終由人負責。
 
-> **作品集版本。** 這是經整理及刪除敏感資訊的案例研究與可執行參考實作，刻意與私人正式版本的儲存庫及歷史分開。當中不包含憑證、個人資料、私人交接資料，亦不包含不可再分發的原始素材。
+> **作品集版本。** 這是經整理及刪除敏感資訊的案例研究與可執行參考實作，刻意與私人正式版本的儲存庫及歷史分開。當中不包含憑證、個人資料、私人交接資料，亦不包含不可再分發的原始素材。本儲存庫只屬**原始碼可供閱覽（source-available），並非開放原始碼**；並無授予複製、修改、再分發或商業部署原創程式碼的權利。詳見[法律聲明](NOTICE.md)及[素材政策](ASSET_POLICY.md)。
 
 [瀏覽活動正式網站](https://www.wellnessvillagehk.com/)——這個限時活動網址日後可能停止使用。本儲存庫內的紀錄媒體與可執行示範才是可長期保存的紀錄。
 
-[開啟案例研究索引](docs/case-study/README.md) · [在證據索引追查主要陳述](docs/case-study/08-evidence-index.md)
+[開啟案例研究索引](docs/case-study/README.md) · [在證據索引追查主要陳述](docs/case-study/10-evidence-index.md)
 
 <!-- section:at-a-glance -->
 ## 項目概覽
@@ -23,11 +23,21 @@
 | | |
 | --- | --- |
 | **背景** | 於香港中環街市舉行、設有雙語內容並有指定期限的 Wellness Village 活動 |
+| **公開活動規模** | ELLE Hong Kong 報道活動一連 12 日、橫跨三個樓層，集合超過 50 個品牌及 30 多項工作坊與體驗 |
 | **我的職責** | 產品定位、資訊架構、證據規則、使用者體驗、全端實作、系統整合、Cloudflare 交付及發佈檢查 |
 | **人與客戶掌握的權限** | 客戶確認、個人資料處理決定、事實審批及最終發佈決定 |
 | **完成的體驗** | 英文與繁體中文共用同一資訊架構，涵蓋活動導覽、節目、到訪、品牌及 Guidebook 旅程 |
 | **核心技術** | Next.js、React、TypeScript、Zod、OpenNext、Cloudflare Workers、Queues、R2、Durable Objects、Turnstile 及 Google Sheets API |
+| **正式環境證據** | 活動時段錄得 108,443 個邊緣請求、4,322 次 HTML 頁面瀏覽及 4.34 GB 傳輸量；成本與指標邊界詳列於下文 |
 | **作品集狀態** | 活動後整理的獨立版本；本機使用合成示範資料，無須正式環境憑證 |
+| **再使用狀態** | 原始碼只供作品集閱覽；沒有軟件授權或再使用許可 |
+
+<!-- section:event-context -->
+## 這是具活動規模的正式交付，而非單純的宣傳頁面
+
+[ELLE Hong Kong 的活動介紹](https://www.elle.com.hk/life/wellness-village-elle-hong-kong-issmen)記錄 Wellness Village 於 2026 年 8 月 30 日至 9 月 10 日在中環街市舉行，一連 12 日橫跨地下、一樓及二樓，集合超過 50 個精選品牌、30 多項工作坊與體驗，市集可免費入場。活動由 ELLE Hong Kong 與 IŚSMEN 呈獻。
+
+這個公開規模說明為何內容權威、最新時間表、雙語導覽、個人資料保護及發佈營運同樣重要；但它本身並不證明入場人數、轉換、商業回報，亦不代表網站造成活動成果。[閱讀完整背景與職責邊界](docs/case-study/01-context-and-role.md)。
 
 <!-- section:choose-perspective -->
 ## 選擇閱讀角度
@@ -37,7 +47,8 @@
 | **訪客體驗** | 首次到訪的使用者如何由活動導覽，前往場次選擇、行前準備、場地支援及延伸探索 | [導覽式訪客旅程](docs/case-study/03-visitor-journey.md) |
 | **客戶與營運** | 網站如何配合 The Ground 與 Google Sheets，同時不取代兩個營運系統各自的權責 | [The Ground 介面](docs/case-study/04-the-ground-event-interface.md) · [Queue-to-Sheets 介面](docs/case-study/05-queue-to-sheets-interface.md) |
 | **AI 輔助交付** | 證據邊界、範圍明確的 Agent brief 及人工審核，如何把零散輸入轉化為經驗證的實作 | [以證據為先的 Agent 工作流程](docs/case-study/02-evidence-first-agent-workflow.md) |
-| **技術證據** | 每項主要陳述如何對應至精選程式碼、測試、圖表及決策紀錄 | [證據索引](docs/case-study/08-evidence-index.md) |
+| **正式環境與成本** | 活動時段流量、Cloudflare 帳單邊界、直接 domain 成本及搜尋證據實際能支持甚麼結論 | [正式環境成本與可觀測性](docs/case-study/07-production-economics-and-observability.md) · [搜尋可見性](docs/case-study/08-search-discoverability.md) |
+| **技術證據** | 每項主要陳述如何對應至精選程式碼、測試、圖表及決策紀錄 | [證據索引](docs/case-study/10-evidence-index.md) |
 
 <!-- section:problem -->
 ## 起始問題
@@ -70,6 +81,32 @@
 [查看系統概覽 SVG](docs/diagrams/system-overview.zh-Hant.svg) · [查閱 Mermaid 原始檔](docs/diagrams/system-overview.zh-Hant.mmd)
 
 整個體驗把三條證據路徑連接起來，同時不混淆各自的權威：經整理的 Guidebook 內容支援探索；The Ground 擁有即時活動及預約紀錄；經同意的聯絡意向則以非同步方式通過私人憑證邊界。OpenNext 在 Cloudflare Workers 上執行 Next.js 應用程式，而 R2 與 Durable Object 用於應用程式快取及 revalidation，並非用作潛在客戶資料儲存。
+
+<!-- section:production-evidence -->
+## 正式環境證據：工作量與成本控制
+
+經授權的唯讀 Cloudflare 分析保留了一個界限明確的活動時段，而非只展示累積總數：
+
+| 觀察層 | 活動時段結果 | 正確解讀 |
+| --- | ---: | --- |
+| 邊緣請求 | 108,443 | 包括文件、素材、爬蟲及威脅，並非訪客數目 |
+| HTML 頁面瀏覽 | 4,322 | 成功回傳的 HTML 回應，並非獨立使用者 |
+| 回應傳輸量 | 4.34 GB | 經邊緣網絡傳送的流量 |
+| 經快取傳送的位元組 | 78.5% | 大部分傳輸量由快取提供 |
+| Worker 調用 | 約 35,600 | 到達 OpenNext runtime 的請求；adaptive 數據可能經抽樣 |
+
+完整的 **2026 年 8 月 12 日至 9 月 11 日 Cloudflare 帳戶帳單週期**顯示**用量費為 US$0.00**，畫面所列用量全部在已包括的額度內。這只是帳戶層面的超額用量結果，並不代表項目或整個帳戶零成本：Workers Paid 當時有效，帳戶亦可能包含其他服務，而工程人力及第三方系統並不在該帳單畫面內。可直接歸屬本項目的 domain 註冊費為 **Porkbun 一年 US$11.08**；本案例不宣稱續期價格。
+
+[閱讀正式環境成本章節](docs/case-study/07-production-economics-and-observability.md) · [查閱活動時段彙總紀錄](docs/evidence/production-metrics/event-window-aggregates.json) · [查閱帳單與 domain 紀錄](docs/evidence/production-metrics/billing-and-domain-summary.json) · [查看量度邊界圖](docs/diagrams/production-measurement-boundaries.zh-Hant.svg)
+
+<!-- section:search-discoverability -->
+## 搜尋可見性：技術已實作，證據缺口如實保留
+
+2026 年 9 月 18 日的唯讀擷取確認正式網站提供 `robots.txt`，允許公開 routes、排除 `/api/` 並指向 sitemap。Sitemap 共列出 12 個語系 URL，即英文與繁體中文各六條 routes，並包含 `en`、`zh-HK` 及 `x-default` alternates。
+
+經授權的帳戶沒有可用的已驗證 Google Search Console 資源，因此本作品集**不會宣稱**自然搜尋點擊、曝光、排名、CTR 或 Google 最終索引頁數。整理作品集期間沒有建立資源，亦沒有更改 DNS 設定。
+
+[閱讀搜尋可見性章節](docs/case-study/08-search-discoverability.md) · [查閱保留的 endpoint snapshots](docs/evidence/search-discoverability/)
 
 <!-- section:visitor-perspective -->
 ## 訪客角度：一條連貫旅程
@@ -131,8 +168,9 @@ Agent 加快工作，但不擁有產品判斷權。
 | **使用者體驗與無障礙設計** | 設計共用的雙語流動優先路徑，加入穩定 anchors、文字替代內容、鍵盤操作及誠實故障狀態 | [訪客旅程](docs/case-study/03-visitor-journey.md) · [導覽首頁實作與測試](src/features/home/) |
 | **Agent orchestration** | 定義證據層級、範圍明確的 brief、審核循環及由人掌握的發佈權限 | [Agent 工作流程](docs/agent-workflow/evidence-first-workflow.md) · [公開 Agent 規則](AGENTS.md) · [重建版 brief](docs/agent-workflow/reconstructed-mvp-brief.md) |
 | **TypeScript 與 Next.js** | 把證據轉換成型別化雙語內容及 App Router 體驗 | [應用程式 routes 與測試](src/app/) · [型別化內容與測試](src/content/) |
-| **API 與資料建模** | 建立有明確限制的 runtime schemas、經個人資料篩選的供應商合約、HKT 日期邏輯及可重現分類 | [The Ground 整合與測試](src/integrations/the-ground/) · [節目資料建模與測試](src/features/programme/) · [證據索引](docs/case-study/08-evidence-index.md) |
+| **API 與資料建模** | 建立有明確限制的 runtime schemas、經個人資料篩選的供應商合約、HKT 日期邏輯及可重現分類 | [The Ground 整合與測試](src/integrations/the-ground/) · [節目資料建模與測試](src/features/programme/) · [證據索引](docs/case-study/10-evidence-index.md) |
 | **Cloudflare 交付** | 把 full-stack Next.js runtime 封裝至 Workers，配合 R2 快取、Durable Object revalidation 及 dry-run 檢查 | [交付章節](docs/case-study/06-cloudflare-delivery.md) · [OpenNext 設定](open-next.config.ts) · [Wrangler 設定](wrangler.jsonc) |
+| **可觀測性與成本控制** | 分開邊緣流量、runtime 用量、帳單週期超額費、直接 domain 支出及公開價目表，不把請求當作訪客，亦不把共享帳戶收費當作項目成本 | [正式環境成本章節](docs/case-study/07-production-economics-and-observability.md) · [已移除敏感資料的證據](docs/evidence/production-metrics/) · [量度邊界圖](docs/diagrams/production-measurement-boundaries.zh-Hant.svg) |
 | **個人資料保護** | 為個人資料處理加設閘門、隔離 Google 憑證，並把 payload 排除於應用程式日誌之外 | [Queue-to-Sheets 章節](docs/case-study/05-queue-to-sheets-interface.md) · [公開 producer 與測試](src/features/interest/) · [私人 consumer 與測試](workers/contact-sheet-consumer/) |
 | **可靠性** | 使用設有明確界限的資料擷取、runtime validation、明確 fallback、穩定 ID、retry、deduplication 及發佈證據 | [發佈檢查清單](docs/agent-workflow/release-checklist.md) · [整合測試](src/integrations/the-ground/) · [consumer 測試](workers/contact-sheet-consumer/) |
 | **雙語產品交付** | 讓英文與繁體中文 routes、紀錄媒體及公開文件維持一致的結構 | [應用程式 routes 與測試](src/app/) · [訪客旅程](docs/case-study/03-visitor-journey.md) · [媒體文件](docs/media/README.md) |
@@ -149,14 +187,15 @@ src/features/interest/              表格驗證及 Queue producer
 src/integrations/the-ground/        有明確限制且僅在伺服器執行的活動 adapter
 workers/contact-sheet-consumer/     私人 Queue consumer 及 Sheets adapter
 fixtures/demo/                      只包含合成活動與品牌資料
-docs/case-study/                    八個以證據支持的章節
+docs/case-study/                    十個以證據支持的章節
 docs/agent-workflow/                工作流程、重建版 brief 及發佈閘門
 docs/decisions/                     架構決策紀錄
 docs/diagrams/                      已渲染 SVG 及可查閱 Mermaid 原始檔
+docs/evidence/                      已移除敏感資料的正式環境及搜尋紀錄
 docs/media/                         經批准的作品集紀錄媒體
 ```
 
-透過[證據索引](docs/case-study/08-evidence-index.md)，可由公開陳述追查至其實作、測試及限制該陳述的決策。
+透過[證據索引](docs/case-study/10-evidence-index.md)，可由公開陳述追查至其實作、測試及限制該陳述的決策。
 
 <!-- section:run-locally -->
 ## 在本機執行
@@ -218,7 +257,7 @@ npm run contact-consumer:dry-run
 | **個人資料保護** | 讀取 request body 前先檢查功能與設定；使用嚴格而最小化的 payload；伺服器端 Turnstile；Google 憑證只存在於私人 consumer；應用程式日誌不包含個人欄位；以 `RAW` 寫入 Sheet |
 | **無障礙設計** | 共用雙語架構；語意化 headings 與 landmarks；鍵盤操作；清楚可見的 focus；touch target 及 overflow 檢查；地圖文字替代內容；減少動態效果的靜態媒體；瀏覽器與自動化無障礙品質檢查 |
 
-[檢閱安全邊界](SECURITY.md) · [查閱公開發佈檢查清單](docs/agent-workflow/release-checklist.md) · [閱讀經驗與限制](docs/case-study/07-lessons-and-limitations.md)
+[檢閱安全邊界](SECURITY.md) · [查閱公開發佈檢查清單](docs/agent-workflow/release-checklist.md) · [閱讀經驗與限制](docs/case-study/09-lessons-and-limitations.md)
 
 <!-- section:limitations -->
 ## 刻意排除的內容與限制
@@ -228,11 +267,13 @@ npm run contact-consumer:dry-run
 - 記憶體內的 warm snapshot 只能應付短暫上游中斷，並非持久快取或可靠性承諾。
 - Queue delivery 及 deduplication 可減少一般 retry 造成的重複資料，但不構成分散式 transaction 保證。資料保留、撤回及 dead-letter 復原仍由人負責營運。
 - Google Sheets 適合這個範圍有限的客戶工作流程，但並非通用 transactional datastore。
+- 邊緣請求、頁面瀏覽及 Worker 調用量度不同層次，不能當作訪客或入場人數。Cloudflare 帳單紀錄屬帳戶層面；Porkbun 註冊費才是可直接歸屬項目的成本。
+- 因沒有可用的已驗證 Search Console 資源，自然搜尋表現及 Google 最終索引結果仍未量度。
 - 不會宣稱任何未經量度的商業成果、交付速度提升或長期可靠性結果。
 - 原始 Guidebook PDF 與頁面封存、客戶字體、活動原始素材、正式環境識別碼、憑證、個人資料、私人通訊及原始 Agent transcripts 均不包括在內。
-- 本儲存庫未包含軟件授權條款；授權選擇及任何對外發佈均須由擁有者另行批准。
+- 本儲存庫只供作品集閱覽，並刻意不附軟件授權。公開可見並不授予複製、修改、再分發或商業部署原創程式碼的權利。
 
-另請參閱[素材政策](ASSET_POLICY.md)、[安全政策](SECURITY.md)及[完整限制章節](docs/case-study/07-lessons-and-limitations.md)。
+另請參閱[法律聲明](NOTICE.md)、[素材政策](ASSET_POLICY.md)、[安全政策](SECURITY.md)及[完整限制章節](docs/case-study/09-lessons-and-limitations.md)。
 
 <!-- section:contact -->
 ## 聯絡方式

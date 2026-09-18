@@ -8,7 +8,8 @@ This checklist prepares a candidate for owner review; it does not authorise remo
 - [ ] Confirm that documentary media is within the client-approved portfolio scope.
 - [ ] Keep the Guidebook master, page archive, client fonts and campaign source assets out of the working tree and history.
 - [ ] Preserve every required third-party notice, including the `liquidframe` notice if its CSS or source is distributed.
-- [ ] Obtain separate owner approval for the final software licence before adding a `LICENSE` or describing the repository as open-source.
+- [ ] Confirm the deliberate source-available policy remains accurate: no `LICENSE`, package metadata marked `UNLICENSED`, and no description of the repository as open-source.
+- [ ] Obtain fresh owner approval before replacing that position with any future software licence.
 
 ## 2. Identifier, secret and privacy scans
 
@@ -34,6 +35,10 @@ This checklist prepares a candidate for owner review; it does not authorise remo
 - [ ] Review reconstructed prompts and retrospective diagrams for clear disclosure; none may be presented as verbatim history.
 - [ ] Search for prohibited claims and manually review every negation. Do not claim documented partner status for The Ground, synchronous Google Sheets persistence, distributed exactly-once delivery, Cloudflare Pages as the delivered runtime, one-prompt production delivery, or unmeasured conversion, productivity, SLA or ROI outcomes.
 - [ ] Describe the campaign URL as optional and time-limited; the repository media and runnable demo are the durable record.
+- [ ] Recompute every published aggregate metric from its retained sanitised record; keep requests, page views, Worker invocations, visitors and business outcomes distinct.
+- [ ] Confirm direct project spend, shared-account billing, usage charges and public rate-card comparisons remain separate. A zero usage charge must never be described as zero total cost.
+- [ ] Confirm every retained invoice-derived fact excludes account, order, payment and personal identifiers, and publish no shared-account total as a project-only cost without attributable line items.
+- [ ] Publish Search Console outcomes only from an authorised verified property; otherwise state the evidence gap without inferring indexing or organic performance.
 
 ## 5. Code, build and runtime verification
 

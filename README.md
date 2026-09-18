@@ -11,11 +11,11 @@
 
 I led the product direction, evidence model, bilingual UX, full-stack implementation, Cloudflare delivery and release operations. Agent assistance accelerated research organisation, implementation and verification; product judgement, client facts, privacy decisions and release authority remained human-owned.
 
-> **Portfolio edition.** This is a curated, sanitised case study and runnable reference implementation, intentionally separate from the private production repository and history. It excludes credentials, personal data, private handover material and source assets that cannot be redistributed.
+> **Portfolio edition.** This is a curated, sanitised case study and runnable reference implementation, intentionally separate from the private production repository and history. It excludes credentials, personal data, private handover material and source assets that cannot be redistributed. It is **source-available, not open-source**: no permission to copy, modify, redistribute or commercially deploy the original code is granted. See the [notice](NOTICE.md) and [asset policy](ASSET_POLICY.md).
 
 [Visit the live campaign site](https://www.wellnessvillagehk.com/) — this time-limited URL may later be retired. The documentary media and runnable demo in this repository are the durable record.
 
-[Open the case-study index](docs/case-study/README.md) · [Trace headline claims in the evidence index](docs/case-study/08-evidence-index.md)
+[Open the case-study index](docs/case-study/README.md) · [Trace headline claims in the evidence index](docs/case-study/10-evidence-index.md)
 
 <!-- section:at-a-glance -->
 ## At a glance
@@ -23,11 +23,21 @@ I led the product direction, evidence model, bilingual UX, full-stack implementa
 | | |
 | --- | --- |
 | **Context** | A bilingual, time-limited Wellness Village event at Central Market, Hong Kong |
+| **Public event scale** | 12 days across three floors, with 50+ brands and 30+ workshops and experiences reported by ELLE Hong Kong |
 | **My ownership** | Product framing, information architecture, evidence rules, UX, full-stack implementation, integrations, Cloudflare delivery and release checks |
 | **Human and client authority** | Client confirmations, privacy decisions, factual approvals and final release go/no-go |
 | **Delivered experience** | Shared English and Traditional Chinese information architecture across orientation, programme, visit, brand and Guidebook journeys |
 | **Core stack** | Next.js, React, TypeScript, Zod, OpenNext, Cloudflare Workers, Queues, R2, Durable Objects, Turnstile and Google Sheets API |
+| **Production evidence** | 108,443 edge requests, 4,322 HTML page views and 4.34 GB delivered in the event window; cost and metric boundaries are documented below |
 | **Portfolio status** | Post-event curated edition; synthetic demo data and no production credentials are required for local use |
+| **Reuse status** | Source-available for review; no software licence or reuse permission is granted |
+
+<!-- section:event-context -->
+## A campaign-sized delivery, not a microsite exercise
+
+[ELLE Hong Kong's event introduction](https://www.elle.com.hk/life/wellness-village-elle-hong-kong-issmen) records a 12-day Wellness Village at Central Market from 30 August to 10 September 2026, spanning G/F, 1/F and 2/F, with more than 50 selected brands, more than 30 workshops and experiences, and free market entry. ELLE Hong Kong and IŚSMEN presented the event.
+
+That public scale explains why content authority, current schedules, bilingual orientation, privacy and release operations mattered. It does not prove attendance, conversion, commercial return or that the website caused the event's outcome. [Read the full context and role boundary](docs/case-study/01-context-and-role.md).
 
 <!-- section:choose-perspective -->
 ## Choose your perspective
@@ -37,7 +47,8 @@ I led the product direction, evidence model, bilingual UX, full-stack implementa
 | **Visitor experience** | How a first-time visitor moves from orientation to an activity, preparation, venue support and continued discovery | [Guided visitor journey](docs/case-study/03-visitor-journey.md) |
 | **Client and operations** | How the website works with The Ground and Google Sheets without taking ownership away from either operational system | [The Ground interface](docs/case-study/04-the-ground-event-interface.md) · [Queue-to-Sheets interface](docs/case-study/05-queue-to-sheets-interface.md) |
 | **AI-enabled delivery** | How evidence boundaries, bounded Agent briefs and human review turned fragmented inputs into verified implementation | [Evidence-first Agent workflow](docs/case-study/02-evidence-first-agent-workflow.md) |
-| **Technical evidence** | How each headline claim maps to selected code, tests, diagrams and decision records | [Evidence index](docs/case-study/08-evidence-index.md) |
+| **Production and economics** | What the event-window traffic, Cloudflare billing boundary, direct domain cost and search evidence actually establish | [Production economics](docs/case-study/07-production-economics-and-observability.md) · [Search discoverability](docs/case-study/08-search-discoverability.md) |
+| **Technical evidence** | How each headline claim maps to selected code, tests, diagrams and decision records | [Evidence index](docs/case-study/10-evidence-index.md) |
 
 <!-- section:problem -->
 ## The starting problem
@@ -70,6 +81,32 @@ The product therefore had to solve four connected problems:
 [View the rendered system overview](docs/diagrams/system-overview.svg) · [Inspect the Mermaid source](docs/diagrams/system-overview.mmd)
 
 The experience brings three evidence paths together without blurring their authority: curated Guidebook content supports discovery; The Ground owns live event and booking records; and approved contact interest moves asynchronously through a private credential boundary. OpenNext runs the Next.js application on Cloudflare Workers. R2 and Durable Objects are Next.js cache and revalidation infrastructure, not lead storage.
+
+<!-- section:production-evidence -->
+## Production evidence: workload and cost control
+
+Authorised read-only Cloudflare analytics captured a bounded event window rather than a vanity total:
+
+| Observed layer | Event-window result | Interpretation |
+| --- | ---: | --- |
+| Edge requests | 108,443 | Documents, assets, crawlers and threats—not visitors |
+| HTML page views | 4,322 | Successful HTML responses—not distinct people |
+| Response bytes | 4.34 GB | Traffic delivered at the edge |
+| Cached response bytes | 78.5% | Most delivered bytes were served from cache |
+| Worker invocations | approximately 35,600 | Requests reaching the OpenNext runtime; adaptive data may be sampled |
+
+The complete **12 August–11 September 2026 Cloudflare account billing period** showed **US$0.00 in usage charges**, with all displayed usage inside included quantities. That is an account-level overage result, not a claim that the project or account cost nothing: Workers Paid was active, the account can contain other services, and engineering labour and third-party systems sit outside that dashboard. The directly attributable domain registration was **US$11.08 for one year through Porkbun**; renewal pricing is not claimed.
+
+[Read the production economics chapter](docs/case-study/07-production-economics-and-observability.md) · [Inspect the aggregate event record](docs/evidence/production-metrics/event-window-aggregates.json) · [Inspect the billing and domain record](docs/evidence/production-metrics/billing-and-domain-summary.json) · [View the measurement-boundary diagram](docs/diagrams/production-measurement-boundaries.svg)
+
+<!-- section:search-discoverability -->
+## Search discoverability: implemented, with an honest evidence gap
+
+A read-only capture on 18 September 2026 confirmed a production `robots.txt` that allowed public routes, excluded `/api/` and identified the sitemap. The sitemap exposed 12 locale URLs—six routes in English and Traditional Chinese—with `en`, `zh-HK` and `x-default` alternates.
+
+No verified Google Search Console property was available in the authorised account, so this portfolio makes **no claim** about organic clicks, impressions, ranking, CTR or Google's final indexed-page count. No property was created and no DNS setting was changed during curation.
+
+[Read the discoverability chapter](docs/case-study/08-search-discoverability.md) · [Inspect the retained endpoint snapshots](docs/evidence/search-discoverability/)
 
 <!-- section:visitor-perspective -->
 ## Visitor perspective: one connected journey
@@ -131,8 +168,9 @@ The public workflow is explicit: **Inventory → Bound claims → Model content 
 | **UX and accessibility** | Designed one bilingual, mobile-first path with stable anchors, text alternatives, keyboard support and honest failure states | [Visitor journey](docs/case-study/03-visitor-journey.md) · [Guided-home implementation and tests](src/features/home/) |
 | **Agent orchestration** | Defined the evidence hierarchy, bounded briefs, review loops and human release authority | [Agent workflow](docs/agent-workflow/evidence-first-workflow.md) · [Public Agent rules](AGENTS.md) · [Reconstructed brief](docs/agent-workflow/reconstructed-mvp-brief.md) |
 | **TypeScript and Next.js** | Converted evidence into typed bilingual content and App Router experiences | [Application routes and tests](src/app/) · [Typed content and tests](src/content/) |
-| **API and data modelling** | Built bounded runtime schemas, privacy-filtered provider contracts, HKT date logic and deterministic categories | [The Ground integration and tests](src/integrations/the-ground/) · [Programme modelling and tests](src/features/programme/) · [Evidence index](docs/case-study/08-evidence-index.md) |
+| **API and data modelling** | Built bounded runtime schemas, privacy-filtered provider contracts, HKT date logic and deterministic categories | [The Ground integration and tests](src/integrations/the-ground/) · [Programme modelling and tests](src/features/programme/) · [Evidence index](docs/case-study/10-evidence-index.md) |
 | **Cloudflare delivery** | Packaged the full-stack Next.js runtime for Workers with R2 caching, Durable Object revalidation and dry-run checks | [Delivery chapter](docs/case-study/06-cloudflare-delivery.md) · [OpenNext configuration](open-next.config.ts) · [Wrangler configuration](wrangler.jsonc) |
+| **Observability and cost control** | Separated edge traffic, runtime usage, billing-cycle overage, direct domain spend and public rate cards without turning requests into visitors or shared-account charges into project cost | [Production economics](docs/case-study/07-production-economics-and-observability.md) · [Sanitised evidence](docs/evidence/production-metrics/) · [Measurement diagram](docs/diagrams/production-measurement-boundaries.svg) |
 | **Privacy** | Gated personal-data processing, isolated Google credentials and excluded payloads from application logs | [Queue-to-Sheets chapter](docs/case-study/05-queue-to-sheets-interface.md) · [Public producer and tests](src/features/interest/) · [Private consumer and tests](workers/contact-sheet-consumer/) |
 | **Reliability** | Used bounded fetches, runtime validation, explicit fallbacks, stable IDs, retries, deduplication and release evidence | [Release checklist](docs/agent-workflow/release-checklist.md) · [Integration tests](src/integrations/the-ground/) · [Consumer tests](workers/contact-sheet-consumer/) |
 | **Bilingual product delivery** | Kept English and Traditional Chinese routes, documentary media and public documentation structurally aligned | [Application routes and tests](src/app/) · [Visitor journey](docs/case-study/03-visitor-journey.md) · [Media documentation](docs/media/README.md) |
@@ -149,14 +187,15 @@ src/features/interest/              form validation and Queue producer
 src/integrations/the-ground/        bounded server-only event adapter
 workers/contact-sheet-consumer/     private Queue consumer and Sheets adapter
 fixtures/demo/                      synthetic events and brands only
-docs/case-study/                    eight evidence-backed chapters
+docs/case-study/                    ten evidence-backed chapters
 docs/agent-workflow/                workflow, reconstructed brief and release gates
 docs/decisions/                     architecture decision records
 docs/diagrams/                      rendered SVGs and inspectable Mermaid sources
+docs/evidence/                      sanitised production and discovery records
 docs/media/                         approved documentary portfolio media
 ```
 
-Use the [evidence index](docs/case-study/08-evidence-index.md) to move from a public claim to its implementation, tests and limiting decision.
+Use the [evidence index](docs/case-study/10-evidence-index.md) to move from a public claim to its implementation, tests and limiting decision.
 
 <!-- section:run-locally -->
 ## Run locally
@@ -218,7 +257,7 @@ The optional live catalogue reads `THE_GROUND_LIVE_ENABLED` and `THE_GROUND_ORGA
 | **Privacy** | Feature and configuration gates before request-body processing; strict minimal payloads; server-side Turnstile; Google credentials only in the private consumer; no personal fields in application logs; `RAW` Sheet writes |
 | **Accessibility** | Shared bilingual structure; semantic headings and landmarks; keyboard paths; visible focus; touch-target and overflow checks; map text alternative; reduced-motion static media; browser and automated accessibility QA |
 
-[Review the security boundary](SECURITY.md) · [Inspect the public release checklist](docs/agent-workflow/release-checklist.md) · [Read lessons and limitations](docs/case-study/07-lessons-and-limitations.md)
+[Review the security boundary](SECURITY.md) · [Inspect the public release checklist](docs/agent-workflow/release-checklist.md) · [Read lessons and limitations](docs/case-study/09-lessons-and-limitations.md)
 
 <!-- section:limitations -->
 ## Deliberate exclusions and limitations
@@ -228,11 +267,13 @@ The optional live catalogue reads `THE_GROUND_LIVE_ENABLED` and `THE_GROUND_ORGA
 - A warm in-memory snapshot covers only a short upstream interruption; it is not a durable cache or reliability commitment.
 - Queue delivery and deduplication reduce ordinary retry duplicates but do not create a distributed transaction guarantee. Retention, withdrawal and dead-letter recovery remain human operational responsibilities.
 - Google Sheets is suitable for this bounded client workflow, not a general-purpose transactional datastore.
+- Edge requests, page views and Worker invocations measure different layers and are not visitor or attendance counts. The Cloudflare billing record is account-level, while the Porkbun registration is a direct project cost.
+- No verified Search Console property was available, so organic search performance and Google's final indexing outcome remain unmeasured.
 - No unmeasured business, delivery-speed or long-term reliability outcome is claimed.
 - The original Guidebook PDF and page archive, client fonts, campaign source assets, production identifiers, credentials, personal data, private correspondence and raw Agent transcripts are excluded.
-- No software licence is included; licence selection and any remote publication require separate owner approval.
+- This repository is source-available for portfolio review but deliberately carries no software licence. Public visibility grants no permission to copy, modify, redistribute or commercially deploy its original code.
 
-See the [asset policy](ASSET_POLICY.md), [security policy](SECURITY.md) and [full limitations chapter](docs/case-study/07-lessons-and-limitations.md).
+See the [notice](NOTICE.md), [asset policy](ASSET_POLICY.md), [security policy](SECURITY.md) and [full limitations chapter](docs/case-study/09-lessons-and-limitations.md).
 
 <!-- section:contact -->
 ## Contact

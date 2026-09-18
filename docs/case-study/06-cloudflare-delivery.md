@@ -59,9 +59,12 @@ These stages prove buildability, configuration validity and observed route avail
 
 Pages is useful for static sites and may be part of a broader Cloudflare learning narrative, but it was not the evidenced production runtime for this full-stack delivery. Keeping that distinction in the case study is more credible than listing every Cloudflare product as if it were used.
 
+The separate [production economics and observability chapter](07-production-economics-and-observability.md) connects this runtime decision to event-window traffic, cache delivery, a complete account billing period and the direct domain cost. It keeps project analytics, shared-account charges and public rate cards distinct instead of presenting infrastructure as “free.”
+
 ## Related evidence
 
 - Implementation: [OpenNext configuration](../../open-next.config.ts), [website Worker configuration](../../wrangler.jsonc) and [private consumer](../../workers/contact-sheet-consumer/)
 - Tests: [Cloudflare configuration-contract checks](../../tests/cloudflare-config.test.ts) and [consumer configuration/runtime checks](../../workers/contact-sheet-consumer/)
 - Diagram: [system overview SVG](../diagrams/system-overview.svg) and [Mermaid source](../diagrams/system-overview.mmd)
 - Decision record: [Use OpenNext on Cloudflare Workers](../decisions/002-workers-not-static-pages.md) and [release checklist](../agent-workflow/release-checklist.md)
+- Operations: [production economics and observability](07-production-economics-and-observability.md) and [sanitised metrics](../evidence/production-metrics/)

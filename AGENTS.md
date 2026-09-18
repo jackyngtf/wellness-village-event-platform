@@ -29,6 +29,16 @@ When evidence is insufficient, use `Unknown`, pending or unavailable, or omit th
 - Keep software-licence approval separate from media and client-rights approval. Do not call the repository open-source or add a final `LICENSE` without owner approval.
 - Remote repository creation, push and publication require an explicit owner instruction after the [public-edition release checklist](docs/agent-workflow/release-checklist.md) passes.
 
+## Production evidence and economics
+
+- Publish only aggregate, sanitised operational evidence. Never commit raw analytics exports containing IP addresses, full query strings, account identifiers, production resource names, personal data or lead-level activity.
+- State the exact reporting window, timezone, dataset and capture date for every operational metric. Distinguish observed values from estimates, samples and later snapshots.
+- Requests are not visitors. Cloudflare edge requests include documents, assets, crawlers and threats; HTML page views and Worker invocations measure different layers. Never add daily unique-IP counts and present the sum as total people.
+- Separate four cost questions: observed project workload, direct project spend, shared-account billing and the public rate card at a stated date. One does not prove any of the others. A zero usage charge is not zero total cost; never claim a saving without a supported baseline.
+- Do not reveal Queue message counts when they could disclose client lead volume. It is acceptable to state that the observed workload sat below an included allowance when the underlying comparison is retained privately.
+- A live sitemap, canonical metadata or `robots.txt` proves implementation and availability, not Google indexing or organic-search performance. Publish Search Console clicks, impressions, CTR, position or indexing outcomes only from an authorised verified property.
+- Technical checks, traffic and cost position do not establish attendance, conversion, campaign success or causal business impact. Those outcomes need separately authorised client evidence.
+
 ## Data and privacy rules
 
 - Keep Google credentials and the destination Sheet identifier inside the private Queue consumer only. They must never enter the browser, website Worker, fixtures, logs or documentation.

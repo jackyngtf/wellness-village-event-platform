@@ -4,15 +4,15 @@ This repository deliberately separates software rights from documentary media, c
 
 ## Software code
 
-No software `LICENSE` is included yet. A licence will be added only after the project owner confirms the final publication scope. If an MIT licence is later approved, it will apply only to original public-edition code expressly covered by that licence; it will not relicense dependencies, screenshots, brand material, copy, data or other third-party rights.
+No software `LICENSE` is included by design. This is a source-available portfolio edition, not an open-source distribution. The package metadata is marked `UNLICENSED`, and [NOTICE.md](NOTICE.md) records the no-reuse position.
 
-Until that approval is recorded in a `LICENSE` file, do not assume permission to copy, modify or redistribute the repository's original code.
+Do not assume permission to copy, modify, redistribute, sublicense or commercially deploy the repository's original code. A future software licence would require a separate owner decision and would apply only to original public-edition code expressly covered by that licence; it would not relicense dependencies, screenshots, brand material, copy, data or other third-party rights.
 
 ## Documentary portfolio media
 
 The PNG, GIF and MP4 files in `docs/media/` document the delivered bilingual interface within the client-approved portfolio scope. The application pixels are browser captures, not a generated reconstruction. Presentation layers add device and browser geometry without redrawing the captured interface.
 
-Those rendered files may be viewed as part of this case study. Their inclusion does **not** grant permission to extract, reproduce or reuse any depicted campaign artwork, brand mark, photography, font, copy or other client/third-party material. A future software licence will not change that boundary.
+Those rendered files may be viewed as part of this case study. Their inclusion does **not** grant permission to extract, reproduce or reuse any depicted campaign artwork, brand mark, photography, font, copy or other client/third-party material. Any future software licence would not change that boundary.
 
 The laptop frame was derived from `react-mockframe`; the iPhone geometry and compact Safari chrome were derived from `liquidframe`. Both are MIT-licensed sources and are credited in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This repository distributes rendered portfolio outputs, not either library's source or CSS. If source or CSS is added later, its complete applicable licence notice must be added at the same time.
 

@@ -6,6 +6,12 @@ Wellness Village was a bilingual, time-limited event at Central Market in Hong K
 
 The starting material was not one clean product database. It included a 184-page editorial Guidebook, campaign artwork, venue information, public brand records, The Ground event listings, registration rules and privacy requirements. Those sources had different owners, purposes, authority and rates of change. The central product problem was therefore not simply to publish pages; it was to decide what the interface could say, which system remained authoritative and what should happen when evidence was absent or stale.
 
+## Public event scale
+
+[ELLE Hong Kong's public event introduction](https://www.elle.com.hk/life/wellness-village-elle-hong-kong-issmen) describes ELLE Hong Kong and IŚSMEN bringing Wellness Village to Central Market from 30 August to 10 September 2026. It records a 12-day experience across G/F, 1/F and 2/F, more than 50 selected local and international brands, more than 30 workshops and experiences, and free market entry.
+
+Those facts establish campaign context and delivery scope. They do not, by themselves, prove attendance, registration conversion, commercial return or that the website caused the event to succeed. This case study keeps event scale separate from product outcomes and uses only evidence that matches each claim.
+
 ## My ownership
 
 I owned the translation from that ambiguity into a working product and its technical delivery:
