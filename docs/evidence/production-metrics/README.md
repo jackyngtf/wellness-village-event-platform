@@ -1,6 +1,6 @@
-# Sanitised production-metrics evidence
+# Traffic and cost records
 
-This directory preserves a public, aggregate record of the Wellness Village event-window workload. It exists so the portfolio can retain inspectable operational evidence after the time-limited campaign URL or account dashboards are no longer available.
+This directory keeps an aggregate record of the Wellness Village website during the event dates. It lets the portfolio retain the main operational figures after the campaign URL or account dashboards are no longer available.
 
 ## Source and capture
 
@@ -25,7 +25,7 @@ The second JSON file combines two separately verified cost facts without merging
 
 Cloudflare documents that Free-plan HTTP traffic can include legitimate users, crawlers and threats, that one page view can generate many requests, and that a page view is a successful HTML response. See [Zone Analytics](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/) and [GraphQL sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/).
 
-## Deliberate exclusions
+## What is not published
 
 Daily unique-IP values are not published or added together as a visitor total. The same person or automated client can appear on multiple days, and IP address is not a stable person-level identity.
 
@@ -33,4 +33,4 @@ Exact Queue operation counts are retained outside this public edition because th
 
 Account-level billing-cycle values are not used as project-specific traffic. The event-window file supplies the project-scoped analytics; the billing file supplies only the account's included-usage and overage position. The Porkbun amount is retained because its invoice directly identifies the project domain, while all identifying invoice and payment fields are removed.
 
-No traffic metric is presented as evidence of event attendance, registration conversion, commercial return or causation.
+None of these traffic figures is presented as event attendance, registration conversion, commercial return or proof that the website caused an outcome.

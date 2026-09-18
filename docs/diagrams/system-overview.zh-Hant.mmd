@@ -1,55 +1,63 @@
-flowchart LR
-    subgraph SOURCES[來源]
-        GUIDEBOOK[客戶指南手冊]
-        PUBLIC_EVIDENCE[已驗證的公開證據]
-        CATALOGUE[以機構為範圍的 The Ground 活動目錄]
-        VISITOR_FORM[訪客意向表格]
+flowchart TB
+    subgraph EDITORIAL[1. 固定 Guidebook 內容]
+        direction LR
+        GUIDEBOOK[客戶 Guidebook]
+        PUBLIC_LINKS[已核對的公開品牌連結]
+        SOURCE_NOTES[來源清單與審閱記錄]
+        TYPED_CONTENT[雙語型別化內容]
+        BILINGUAL_INTERFACE[品牌與 Guidebook 頁面]
+
+        GUIDEBOOK --> SOURCE_NOTES
+        PUBLIC_LINKS --> SOURCE_NOTES
+        SOURCE_NOTES --> TYPED_CONTENT
+        TYPED_CONTENT --> BILINGUAL_INTERFACE
     end
 
-    subgraph PRODUCT_RUNTIME[產品與執行環境]
-        EVIDENCE_REGISTER[證據登錄冊]
-        TYPED_CONTENT[雙語型別化內容]
-        BILINGUAL_INTERFACE[品牌與指南手冊介面]
-        EVENT_ADAPTER[僅限伺服器端的活動轉接器]
-        PROGRAMME_INTERFACE[首頁與節目介面]
+    subgraph PROGRAMME[2. 節目與報名]
+        direction LR
+        CATALOGUE[以機構為範圍的 The Ground 活動目錄]
+        EVENT_ADAPTER[僅在伺服器執行的活動轉接器]
+        PROGRAMME_INTERFACE[首頁與節目頁面]
+        BOOKING[相應的 The Ground 報名頁面]
+
+        CATALOGUE --> EVENT_ADAPTER
+        EVENT_ADAPTER --> PROGRAMME_INTERFACE
+        PROGRAMME_INTERFACE --> BOOKING
+    end
+
+    subgraph CONTACT[3. 聯絡表格]
+        direction LR
+        VISITOR_FORM[訪客意向表格]
         WEBSITE_API[已驗證的網站 API]
         QUEUE[Cloudflare 佇列]
-        OPENNEXT[OpenNext Worker 執行環境]
-        R2_CACHE[R2 增量快取<br/>絕不儲存潛在客戶提交資料]
-        REVALIDATION[Durable Object 重新驗證協調]
+        PRIVATE_CONSUMER[私人 consumer Worker]
+        GOOGLE_SHEET[客戶的 Google 試算表]
+
+        VISITOR_FORM --> WEBSITE_API
+        WEBSITE_API -->|只轉送真實提交| QUEUE
+        QUEUE --> PRIVATE_CONSUMER
+        PRIVATE_CONSUMER --> GOOGLE_SHEET
     end
 
-    subgraph DESTINATIONS[目的地]
-        BOOKING[標準 The Ground 報名頁面]
-        PRIVATE_CONSUMER[私有消費者 Worker]
-        GOOGLE_SHEET[客戶擁有的 Google 試算表]
+    subgraph RUNTIME[Cloudflare 應用程式執行環境]
+        direction LR
+        OPENNEXT[OpenNext Worker]
+        R2_CACHE[R2 增量快取<br/>不儲存聯絡表格內容]
+        REVALIDATION[Durable Object<br/>協調重新驗證]
+
+        OPENNEXT -.->|只處理增量快取| R2_CACHE
+        OPENNEXT -.->|協調重新驗證| REVALIDATION
     end
-
-    GUIDEBOOK --> EVIDENCE_REGISTER
-    PUBLIC_EVIDENCE --> EVIDENCE_REGISTER
-    EVIDENCE_REGISTER --> TYPED_CONTENT
-    TYPED_CONTENT --> BILINGUAL_INTERFACE
-
-    CATALOGUE --> EVENT_ADAPTER
-    EVENT_ADAPTER --> PROGRAMME_INTERFACE
-    PROGRAMME_INTERFACE --> BOOKING
-
-    VISITOR_FORM --> WEBSITE_API
-    WEBSITE_API -->|僅限真實且未觸發 honeypot 的提交| QUEUE
-    QUEUE --> PRIVATE_CONSUMER
-    PRIVATE_CONSUMER --> GOOGLE_SHEET
 
     BILINGUAL_INTERFACE -.->|由此提供服務| OPENNEXT
     PROGRAMME_INTERFACE -.->|由此提供服務| OPENNEXT
     WEBSITE_API -.->|由此處理| OPENNEXT
-    OPENNEXT -.->|僅限增量快取| R2_CACHE
-    OPENNEXT -.->|協調重新驗證| REVALIDATION
 
-    classDef evidence fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef editorial fill:#eaf4e1,stroke:#48633c,color:#20301b
     classDef programme fill:#e4f1f7,stroke:#356a7d,color:#16333d
     classDef submission fill:#f7eadf,stroke:#8a5834,color:#442a18
     classDef runtime fill:#f0eef5,stroke:#675b79,color:#312a3a
-    class GUIDEBOOK,PUBLIC_EVIDENCE,EVIDENCE_REGISTER,TYPED_CONTENT,BILINGUAL_INTERFACE evidence
+    class GUIDEBOOK,PUBLIC_LINKS,SOURCE_NOTES,TYPED_CONTENT,BILINGUAL_INTERFACE editorial
     class CATALOGUE,EVENT_ADAPTER,PROGRAMME_INTERFACE,BOOKING programme
     class VISITOR_FORM,WEBSITE_API,QUEUE,PRIVATE_CONSUMER,GOOGLE_SHEET submission
     class OPENNEXT,R2_CACHE,REVALIDATION runtime

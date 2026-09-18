@@ -8,13 +8,13 @@ flowchart TB
         CANDIDATE[候選目的地]
     end
 
-    subgraph HUMAN_VERIFICATION[人工驗證與核准]
+    subgraph HUMAN_VERIFICATION[人工審閱與客戶確認]
         direction LR
         VISUAL_REVIEW[逐頁進行視覺驗證]
         CONTENT_MODEL[確認 48 個簡介、四大支柱<br/>及準確頁面範圍]
-        EVIDENCE_GATE{證據關卡}
-        PUBLISH[發布標準目的地]
-        PENDING[省略或保留待定狀態]
+        EVIDENCE_GATE{來源是否已確認？}
+        PUBLISH[加入官方連結]
+        PENDING[不顯示該連結]
     end
 
     subgraph AUTOMATED_TESTS[自動化驗證]
@@ -32,10 +32,10 @@ flowchart TB
     CONTENT_MODEL --> RESEARCH
     RESEARCH --> CANDIDATE
     CANDIDATE --> EVIDENCE_GATE
-    EVIDENCE_GATE -->|證據充分| PUBLISH
-    EVIDENCE_GATE -.->|證據不足| PENDING
+    EVIDENCE_GATE -->|是| PUBLISH
+    EVIDENCE_GATE -.->|否| PENDING
     PUBLISH --> TYPED_CONTENT
-    PENDING -.->|記錄為缺省或待定狀態| TYPED_CONTENT
+    PENDING -.->|保留沒有連結的狀態| TYPED_CONTENT
     TYPED_CONTENT --> CONTENT_TESTS
     CONTENT_TESTS --> INTERFACE_TESTS
     INTERFACE_TESTS --> INTERFACE

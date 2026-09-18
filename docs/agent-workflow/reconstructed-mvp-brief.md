@@ -1,10 +1,10 @@
-# Reconstructed MVP brief
+# Reconstructed brief for the first MVP
 
-> **Disclosure — reconstructed, edited and sanitised:** This retrospective brief was reconstructed from the delivered requirements. It is not the verbatim first prompt and does not imply that one prompt produced the final production system. Product direction, source authority, client decisions, privacy boundaries, architecture and release approval remained human-owned.
+> I wrote this example after the project by working back from the delivered requirements. It is edited, removes private details and is not the original first prompt. It also does not mean that one prompt produced the finished website.
 
-The historical first reviewable MVP was deployed from a home server on 5 August 2026, before the production domain was purchased. This reconstructed brief models the bounded vertical-slice intent; the [delivery timeline](../case-study/delivery-timeline.md) records how review, integration and production hardening continued afterwards.
+The first reviewable MVP went onto my home server on 5 August 2026, before the production domain was purchased. This brief shows the intended scope of that first slice. The [delivery timeline](../case-study/delivery-timeline.md) covers the reviews, integrations and production work that followed.
 
-## Prompt
+## Reconstructed prompt
 
 You are helping me build the first working vertical slice of a bilingual visitor website for Wellness Village, a time-limited event at Central Market in Hong Kong.
 
@@ -21,13 +21,13 @@ Create a mobile-first website that helps a person who knows nothing about the ev
 
 The interface must support English and Hong Kong Traditional Chinese with the same core information architecture.
 
-### Evidence rules
+### Source rules
 
 - Use only supplied or explicitly verified sources.
-- Treat the Guidebook as editorial evidence, not a live timetable or evidence of a booth, sponsorship, attendance or booking state.
+- Use the Guidebook for editorial content, not as a live timetable or proof of a booth, sponsorship, attendance or booking state.
 - Treat The Ground organisation-scoped public catalogue as the source for live event time, fee, public availability and canonical registration destination.
 - Use approved venue records for arrival and map guidance; do not invent accessibility or operational details.
-- Use first-party public brand sources only to verify an official destination or identity; they do not prove organiser endorsement or participation.
+- Use first-party public brand pages only to check an official destination or identity; they do not prove organiser endorsement or participation.
 - If a value is unsupported, model it as `Unknown`, pending or unavailable, or omit it.
 - Keep source references and publication status close to the structured content they support.
 
@@ -59,7 +59,7 @@ The interface must support English and Hong Kong Traditional Chinese with the sa
 - No credential, private URL or production identifier belongs in browser code, fixtures, logs or source control.
 - Do not add a database solely to collect contact interest. Define a minimal validated delivery interface for an approved destination.
 
-### Exact data-interface non-goals
+### What this version should not own
 
 - Do not fetch a global event catalogue and guess Wellness Village ownership from titles; use an organisation-scoped configuration boundary.
 - Do not pass provider contacts, members, coaches, unsupported images or provider-only state into the public event model.
@@ -79,7 +79,7 @@ The interface must support English and Hong Kong Traditional Chinese with the sa
 - Make synthetic fixtures or disabled integrations the no-secret default.
 - Add an `.env.example`; never add real values.
 
-### Content and publication non-goals
+### Content that stays out of scope
 
 - Do not rebuild the complete Guidebook as interactive content.
 - Do not invent event schedules, venue maps, accessibility details or health claims.
@@ -88,22 +88,22 @@ The interface must support English and Hong Kong Traditional Chinese with the sa
 
 ### Acceptance checks
 
-- English and Traditional Chinese render the same core routes, navigation tasks and source boundaries.
+- English and Traditional Chinese render the same core routes and navigation tasks, and use the same source for each type of information.
 - On mobile, a first-time visitor can move from orientation to activity choice, preparation guidance, venue support and continued brand exploration.
 - Unsupported facts render as `Unknown`, pending or unavailable, or remain absent; no test fixture relies on production identifiers.
-- External event and registration data pass through one server-only typed adapter with bounded failure behaviour and canonical HTTPS links.
+- External event and registration data pass through one server-only typed adapter with page, size and time limits and HTTPS registration links.
 - HKT phase and calendar behaviour are tested independently of the machine timezone, including midnight and multi-day boundaries.
 - Core routes, locale parity, content counts, source status, external-link safety, keyboard focus and 44 CSS-pixel touch targets have automated or browser checks appropriate to the behaviour.
 - Mobile Chromium and WebKit show no document-level horizontal overflow.
 - Install, tests and the production build succeed without production secrets; integrations remain safely synthetic, disabled or fail-closed.
 - Assumptions and unresolved source or client decisions are listed separately from completed behaviour.
 
-Implement the smallest coherent vertical slice and report the exact checks run. Do not infer approval, production readiness or business impact from generated code or a passing build.
+Implement the smallest working vertical slice and report the checks that ran. Do not treat generated code or a passing build as client approval, production readiness or business impact.
 
 ## What changed after the MVP
 
-- **Client decisions:** five editorial activity categories and destination approvals were incorporated. The final evidence record contains four Guidebook pillars and 48 profiles: all 48 have client-confirmed Instagram destinations, 29 have independently verified official websites and 19 correctly retain no website action. See [Evidence-first Agent workflow](../case-study/02-evidence-first-agent-workflow.md).
-- **Production hardening:** The Ground acquisition gained bounded pagination, schemas, explicit HKT handling, deterministic derivation and honest cache fallbacks. Visitor interest gained privacy gates, awaited Queue acceptance for genuine non-honeypot submissions, an indistinguishable non-forwarding honeypot response, a separate private Sheets consumer, an exact 14-field contract, stable IDs, retries, deduplication and DLQ handling. See [The Ground interface](../case-study/04-the-ground-event-interface.md) and [Queue-to-Sheets interface](../case-study/05-queue-to-sheets-interface.md).
-- **Release evidence:** the full-stack application was delivered through OpenNext on Cloudflare Workers, with R2 incremental caching and Durable Object revalidation, then evaluated through inspect, test, build, dry-run, preview, deploy and read-only smoke-check stages. See [Cloudflare delivery](../case-study/06-cloudflare-delivery.md) and the [release checklist](release-checklist.md).
+- **Content and client decisions:** the final site used five activity categories, four Guidebook themes and 48 profiles. The client confirmed all 48 Instagram links; I checked 29 official websites, while 19 profiles remained without a website button. See [the Guidebook and Agent chapter](../case-study/02-guidebook-and-agent-workflow.md).
+- **Production work:** I added pagination and response limits, runtime checks, HKT handling and cache fallbacks to The Ground integration. The contact flow gained privacy checks, Queue acknowledgement, a separate Sheets consumer, a 14-field internal format, stable IDs, retries, duplicate checks and dead-letter handling. See [The Ground integration](../case-study/04-the-ground-event-interface.md) and [Queue-to-Sheets](../case-study/05-queue-to-sheets-interface.md).
+- **Release:** the full application ran through OpenNext on Cloudflare Workers, with R2 for incremental caching and a Durable Object for revalidation. I used inspect, test, build, dry-run, preview, deploy and read-only smoke checks. See [Cloudflare delivery](../case-study/06-cloudflare-delivery.md) and the [release checklist](release-checklist.md).
 
-These changes are later human-directed delivery evidence, not capabilities attributed retrospectively to the initial brief.
+These were later changes that I made after the first MVP; they are not being attributed to the reconstructed prompt.

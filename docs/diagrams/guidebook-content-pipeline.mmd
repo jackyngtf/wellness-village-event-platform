@@ -8,13 +8,13 @@ flowchart TB
         CANDIDATE[Candidate destination]
     end
 
-    subgraph HUMAN_VERIFICATION[Human verification and approval]
+    subgraph HUMAN_VERIFICATION[Human review and client approval]
         direction LR
         VISUAL_REVIEW[Visually verify every page]
         CONTENT_MODEL[Confirm 48 profiles, four pillars<br/>and exact page ranges]
-        EVIDENCE_GATE{Evidence gate}
-        PUBLISH[Publish canonical destination]
-        PENDING[Omit or keep pending]
+        EVIDENCE_GATE{Source confirmed?}
+        PUBLISH[Add the official destination]
+        PENDING[Leave the link out]
     end
 
     subgraph AUTOMATED_TESTS[Automated verification]
@@ -32,10 +32,10 @@ flowchart TB
     CONTENT_MODEL --> RESEARCH
     RESEARCH --> CANDIDATE
     CANDIDATE --> EVIDENCE_GATE
-    EVIDENCE_GATE -->|Evidence supported| PUBLISH
-    EVIDENCE_GATE -.->|Evidence unsupported| PENDING
+    EVIDENCE_GATE -->|Yes| PUBLISH
+    EVIDENCE_GATE -.->|No| PENDING
     PUBLISH --> TYPED_CONTENT
-    PENDING -.->|Record absent or pending state| TYPED_CONTENT
+    PENDING -.->|Keep the missing-link state| TYPED_CONTENT
     TYPED_CONTENT --> CONTENT_TESTS
     CONTENT_TESTS --> INTERFACE_TESTS
     INTERFACE_TESTS --> INTERFACE

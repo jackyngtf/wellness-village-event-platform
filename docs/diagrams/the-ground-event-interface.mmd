@@ -8,7 +8,7 @@ flowchart TB
         PAGINATION[Parallel bounded pagination<br/>Maximum 50 records per page<br/>Maximum 20 pages per feed]
     end
 
-    subgraph TRUST[2. Trust boundary]
+    subgraph TRUST[2. Check the response]
         direction LR
         LIMITS[Eight-second timeout<br/>Two MiB response limit]
         SCHEMA[Runtime schema and pagination validation]
@@ -19,7 +19,7 @@ flowchart TB
         direction LR
         FILTER[Strip provider-only and unsupported fields]
         HKT[Convert timestamps explicitly to HKT +08:00]
-        LINKS[Generate canonical HTTPS registration links]
+        LINKS[Generate matching HTTPS registration links]
         DEDUP[Deduplicate by event ID]
         SORT[Sort deterministically]
         CACHE[Five-minute normalised cache]
@@ -37,7 +37,7 @@ flowchart TB
     FALLBACK{Provider request fails}
     WARM{Valid warm snapshot exists}
     COLD[Honest unavailable state]
-    BOOKING[Canonical The Ground booking hand-off]
+    BOOKING[Matching The Ground booking page]
 
     CONFIG --> CATALOGUE
     CATALOGUE --> UPCOMING

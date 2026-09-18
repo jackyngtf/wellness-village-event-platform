@@ -1,55 +1,63 @@
-flowchart LR
-    subgraph SOURCES[Sources]
+flowchart TB
+    subgraph EDITORIAL[1. Fixed Guidebook content]
+        direction LR
         GUIDEBOOK[Client Guidebook]
-        PUBLIC_EVIDENCE[Verified public evidence]
-        CATALOGUE[The Ground organisation-scoped catalogue]
-        VISITOR_FORM[Visitor interest form]
+        PUBLIC_LINKS[Checked public brand links]
+        SOURCE_NOTES[Source list and review notes]
+        TYPED_CONTENT[Typed bilingual content]
+        BILINGUAL_INTERFACE[Brand and Guidebook pages]
+
+        GUIDEBOOK --> SOURCE_NOTES
+        PUBLIC_LINKS --> SOURCE_NOTES
+        SOURCE_NOTES --> TYPED_CONTENT
+        TYPED_CONTENT --> BILINGUAL_INTERFACE
     end
 
-    subgraph PRODUCT_RUNTIME[Product and runtime]
-        EVIDENCE_REGISTER[Evidence register]
-        TYPED_CONTENT[Typed bilingual content]
-        BILINGUAL_INTERFACE[Brand and Guidebook interface]
+    subgraph PROGRAMME[2. Programme and registration]
+        direction LR
+        CATALOGUE[The Ground organisation-scoped catalogue]
         EVENT_ADAPTER[Server-only event adapter]
-        PROGRAMME_INTERFACE[Homepage and programme interface]
+        PROGRAMME_INTERFACE[Homepage and programme pages]
+        BOOKING[Matching The Ground booking page]
+
+        CATALOGUE --> EVENT_ADAPTER
+        EVENT_ADAPTER --> PROGRAMME_INTERFACE
+        PROGRAMME_INTERFACE --> BOOKING
+    end
+
+    subgraph CONTACT[3. Contact form]
+        direction LR
+        VISITOR_FORM[Visitor interest form]
         WEBSITE_API[Validated website API]
         QUEUE[Cloudflare Queue]
-        OPENNEXT[OpenNext Worker runtime]
-        R2_CACHE[R2 incremental cache<br/>Never stores lead submissions]
-        REVALIDATION[Durable Object revalidation coordination]
-    end
-
-    subgraph DESTINATIONS[Destinations]
-        BOOKING[Canonical The Ground booking page]
         PRIVATE_CONSUMER[Private consumer Worker]
         GOOGLE_SHEET[Client-owned Google Sheet]
+
+        VISITOR_FORM --> WEBSITE_API
+        WEBSITE_API -->|Genuine submissions only| QUEUE
+        QUEUE --> PRIVATE_CONSUMER
+        PRIVATE_CONSUMER --> GOOGLE_SHEET
     end
 
-    GUIDEBOOK --> EVIDENCE_REGISTER
-    PUBLIC_EVIDENCE --> EVIDENCE_REGISTER
-    EVIDENCE_REGISTER --> TYPED_CONTENT
-    TYPED_CONTENT --> BILINGUAL_INTERFACE
+    subgraph RUNTIME[Cloudflare application runtime]
+        direction LR
+        OPENNEXT[OpenNext Worker]
+        R2_CACHE[R2 incremental cache<br/>No contact submissions]
+        REVALIDATION[Durable Object<br/>Revalidation coordination]
 
-    CATALOGUE --> EVENT_ADAPTER
-    EVENT_ADAPTER --> PROGRAMME_INTERFACE
-    PROGRAMME_INTERFACE --> BOOKING
-
-    VISITOR_FORM --> WEBSITE_API
-    WEBSITE_API -->|Genuine non-honeypot submissions only| QUEUE
-    QUEUE --> PRIVATE_CONSUMER
-    PRIVATE_CONSUMER --> GOOGLE_SHEET
+        OPENNEXT -.->|Incremental cache only| R2_CACHE
+        OPENNEXT -.->|Coordinates revalidation| REVALIDATION
+    end
 
     BILINGUAL_INTERFACE -.->|Served by| OPENNEXT
     PROGRAMME_INTERFACE -.->|Served by| OPENNEXT
     WEBSITE_API -.->|Handled by| OPENNEXT
-    OPENNEXT -.->|Incremental cache only| R2_CACHE
-    OPENNEXT -.->|Coordinates revalidation| REVALIDATION
 
-    classDef evidence fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef editorial fill:#eaf4e1,stroke:#48633c,color:#20301b
     classDef programme fill:#e4f1f7,stroke:#356a7d,color:#16333d
     classDef submission fill:#f7eadf,stroke:#8a5834,color:#442a18
     classDef runtime fill:#f0eef5,stroke:#675b79,color:#312a3a
-    class GUIDEBOOK,PUBLIC_EVIDENCE,EVIDENCE_REGISTER,TYPED_CONTENT,BILINGUAL_INTERFACE evidence
+    class GUIDEBOOK,PUBLIC_LINKS,SOURCE_NOTES,TYPED_CONTENT,BILINGUAL_INTERFACE editorial
     class CATALOGUE,EVENT_ADAPTER,PROGRAMME_INTERFACE,BOOKING programme
     class VISITOR_FORM,WEBSITE_API,QUEUE,PRIVATE_CONSUMER,GOOGLE_SHEET submission
     class OPENNEXT,R2_CACHE,REVALIDATION runtime

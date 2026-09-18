@@ -1,14 +1,14 @@
-# The Ground event-data interface
+# How programme data comes from The Ground
 
-## Responsibility boundary
+## What stays on The Ground
 
-The Ground is the operational source of truth for event time, price, availability and registration. In verified live mode, the Wellness Village website provides discovery and context, then hands booking back to the canonical The Ground page. The default synthetic demo stays on reserved example destinations.
+Current activity times, prices, availability and registration remain on The Ground. The Wellness Village website makes those listings easier to browse, then sends visitors to the relevant The Ground page to register. The synthetic demo uses reserved example destinations and never contacts a real booking page.
 
-This avoids a second hand-maintained timetable. The Guidebook can add editorial context, but it cannot overwrite a live operational record.
+This avoids maintaining a second timetable by hand. The Guidebook provides fixed editorial content, but it does not change a current activity listing.
 
-## Acquisition contract
+## How the website fetches the listings
 
-The server-only adapter uses the verified organisation-scoped public catalogue rather than fetching a global catalogue and guessing ownership from titles. It:
+The server-side adapter reads the public catalogue for the configured organisation. It does not fetch a global catalogue and guess which events belong to Wellness Village from their titles. It:
 
 - requests `upcoming` and `past` feeds in parallel;
 - asks for at most 50 records per page and follows no more than 20 pages per feed;
@@ -20,11 +20,11 @@ The server-only adapter uses the verified organisation-scoped public catalogue r
 - deduplicates by event ID, normalises and sorts before presentation; and
 - caches the fully normalised catalogue for five minutes.
 
-The historical production integration also checked that any separately requested public event detail belonged to the expected organisation. The curated reference keeps its runnable scope at the catalogue boundary, so it does not imply that a detail endpoint is required for the demonstrated programme explorer.
+The production version also checked that any separately requested event detail belonged to the expected organisation. This public demo only needs the catalogue flow and does not depend on a detail endpoint.
 
-The original endpoint-discovery session is not preserved, so this case study documents the verified adapter behaviour without inventing a historical research transcript.
+I did not preserve the original endpoint-discovery session. This page therefore describes the adapter that was implemented and tested; it does not recreate that research history.
 
-## From provider payload to interface
+## From response data to a programme card
 
 | Layer | Example fields or decisions |
 | --- | --- |
@@ -32,9 +32,9 @@ The original endpoint-discovery session is not preserved, so this case study doc
 | Normalised contract | `eventId`, `title`, explicit HKT timestamps, public location, mode-safe booking URL and price/registration/availability unions |
 | Derived interface | Exact phase, Today/Upcoming/Past bucket, category IDs, display order and CTA |
 
-Only a privacy-filtered event contract reaches the presentation layer: source and event ID, title, explicit `+08:00` start and end times, public location, an allow-listed image URL or no image, a mode-safe booking URL, normalised price, registration-open state and deadline, and public-or-hidden capacity information. The provider `companyId` is used only for live membership verification; it is removed alongside provider contacts, members, coaches, unsupported images and provider-only state.
+The page only receives the fields it needs: source and event ID, title, `+08:00` start and end times, public location, an approved image URL or no image, a safe booking URL, price, registration state and public capacity information. The adapter uses `companyId` to check the organisation, then removes it together with provider contacts, members, coaches, unsupported images and internal provider state.
 
-## Exact phase and Hong Kong calendar dates
+## Live status and Hong Kong calendar dates
 
 Card status uses absolute timestamps:
 
@@ -51,15 +51,15 @@ Calendar navigation answers a different question: which Hong Kong dates does the
 - An overnight or multi-day event belongs to every Hong Kong date it occupies.
 - Intervals are treated as `[start, end)`, so an event ending exactly at midnight does not occupy the following date.
 
-This separation prevents a calendar label from silently changing the exact event phase.
+Keeping these two calculations separate means a date tab cannot accidentally change whether a card says Upcoming, Live or Ended.
 
-## Sorting, filters and deterministic categories
+## Ordering, filters and categories
 
 Default order is live events chronologically, then upcoming events chronologically, then past events by most recently ended. Booking availability is only a tie-breaker for simultaneous actionable events; it cannot move a later session ahead of a nearer one.
 
 Valid URL-backed filters cover broad temporal state, exact Hong Kong date, client-confirmed category, location, price and booking state.
 
-Admitted location labels are limited to 120 characters. Their filter keys use reversible UTF-8 base64url encoding instead of lossy ASCII slugging, so labels such as `A+B`, `A B` and `中環` remain distinct without truncated collisions while keeping query strings bounded.
+Location labels are limited to 120 characters. Their filter keys use reversible UTF-8 base64url encoding, so labels such as `A+B`, `A B` and `中環` remain different without making the query string unreasonably long.
 
 The five editorial categories are:
 
@@ -71,15 +71,15 @@ The five editorial categories are:
 
 Classification normalises Unicode and punctuation, then matches exact confirmed activity phrases and reviewed provider-title aliases. Broad keyword inference is excluded. One event can belong to more than one category; an unmatched title stays visible under All events and receives the internal `other` classification.
 
-The runnable public tests use deliberately fictional phrases and aliases to demonstrate this algorithm. They preserve the control method without reproducing production activity titles or provider payloads.
+The public tests use fictional phrases and aliases. They show how the matching works without reproducing production activity titles or provider responses.
 
-## Failure and booking semantics
+## If The Ground is unavailable
 
-After a valid fetch, a later provider failure can use the last valid warm-instance snapshot and label it stale. On a cold failure, the interface shows an unavailable state and a deliberate direct The Ground homepage link instead of a second schedule. Only organisation-verified live rows can generate canonical The Ground event URLs. Demo event CTAs use reserved `example.com` destinations and explicitly synthetic wording, so fictional IDs never contact the real provider. The website never claims to own registration or payment.
+After one successful fetch, a later failure can use the most recent in-memory copy and label it as older data. If no copy exists, the page shows an unavailable message and a direct link to The Ground instead of inventing a schedule. Only live rows checked against the configured organisation can create real The Ground event links. Demo buttons use `example.com`, so fictional IDs never reach the provider. Registration and payment remain on The Ground.
 
-The integration uses a bounded, replaceable public endpoint, not a documented partner API in this repository. A formal long-term contract would require documented access, polling and content-reuse terms.
+This repository documents a limited public integration, not a formal partner API. A long-term commercial integration would need agreed access, polling and content-reuse terms.
 
-## Related evidence
+## Related code and notes
 
 - Implementation: [The Ground adapter](../../src/integrations/the-ground/) and [programme derivation](../../src/features/programme/)
 - Tests: [adapter contract tests](../../src/integrations/the-ground/) and [HKT/category boundary tests](../../src/features/programme/)

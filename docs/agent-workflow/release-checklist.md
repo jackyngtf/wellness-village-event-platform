@@ -8,7 +8,7 @@ This checklist prepares a candidate for owner review; it does not authorise remo
 - [ ] Confirm that documentary media is within the client-approved portfolio scope.
 - [ ] Keep the Guidebook master, page archive, client fonts and campaign source assets out of the working tree and history.
 - [ ] Preserve every required third-party notice, including the `liquidframe` notice if its CSS or source is distributed.
-- [ ] Confirm the deliberate source-available policy remains accurate: no `LICENSE`, package metadata marked `UNLICENSED`, and no description of the repository as open-source.
+- [ ] Confirm the source-available policy remains accurate: no `LICENSE`, package metadata marked `UNLICENSED`, and no description of the repository as open-source.
 - [ ] Obtain fresh owner approval before replacing that position with any future software licence.
 
 ## 2. Identifier, secret and privacy scans
@@ -23,14 +23,14 @@ This checklist prepares a candidate for owner review; it does not authorise remo
 
 - [ ] Confirm that names, email addresses, phone numbers, organisation IDs, event IDs, submission IDs, URLs and account-like values are synthetic and neutral.
 - [ ] Confirm that synthetic mode is the no-secret default and install, test and local startup do not contact production services.
-- [ ] Confirm that The Ground live access and Queue/Sheets delivery remain explicit opt-ins and fail closed when configuration is absent.
+- [ ] Confirm that The Ground live access and Queue/Sheets delivery remain opt-in and fail closed when configuration is absent.
 
 ## 4. Documentation, claims and bilingual parity
 
 - [ ] Resolve every local Markdown link and remove line-number anchors from durable evidence links.
 - [ ] Confirm English and Traditional Chinese README section markers, claims, limitations, links, diagrams and media references are structurally aligned.
 - [ ] Parse every Mermaid source and confirm each English source has a formal written Traditional Chinese partner with equivalent topology.
-- [ ] Confirm every ADR contains Status, Context, Decision, Consequences and Evidence, and every major claim maps to an implementation, test, decision or explicit historical source note.
+- [ ] Confirm every ADR contains Status, Context, Decision, Consequences and References, and every major claim maps to code, a test, a decision or a dated source note.
 - [ ] Confirm every `202 Accepted` claim distinguishes genuine non-honeypot submissions, which await Queue acceptance, from honeypot decoys, which deliberately receive the same status without enqueueing; neither path may be described as Sheet persistence.
 - [ ] Review reconstructed prompts and retrospective diagrams for clear disclosure; none may be presented as verbatim history.
 - [ ] Search for prohibited claims and manually review every negation. Do not claim documented partner status for The Ground, synchronous Google Sheets persistence, distributed exactly-once delivery, Cloudflare Pages as the delivered runtime, one-prompt production delivery, or unmeasured conversion, productivity, SLA or ROI outcomes.
@@ -49,7 +49,7 @@ This checklist prepares a candidate for owner review; it does not authorise remo
 - [ ] `npm run cf:typegen:check`
 - [ ] `npm run cf:build`
 - [ ] `npm run cf:dry-run`
-- [ ] Start `npm run cf:preview` in a bounded local session, request representative English and Traditional Chinese routes, then terminate it cleanly.
+- [ ] Start `npm run cf:preview` in a short local session, request representative English and Traditional Chinese routes, then terminate it cleanly.
 - [ ] Run configuration validation and Worker dry runs with neutral example configuration.
 - [ ] Record build and dry-run evidence separately from any future deployment claim. A dry run neither uploads nor deploys.
 - [ ] Before a future deployment, provision the documented R2 cache, revalidation Durable Object migration, contact Queue/consumer/DLQ, rate-limit namespaces and approved secrets; keep both live integrations disabled until every dependency is present.
@@ -75,6 +75,6 @@ This checklist prepares a candidate for owner review; it does not authorise remo
 ## 8. Owner publication gate
 
 - [ ] Present the final rights record, audit results, history review, unresolved limitations and exact candidate commit to the owner.
-- [ ] Obtain an explicit owner instruction before creating a GitHub repository or any other remote.
-- [ ] Obtain an explicit owner instruction for the exact push/publication action; local readiness is not publication authority.
+- [ ] Obtain the owner's instruction before creating a GitHub repository or any other remote.
+- [ ] Obtain the owner's instruction for the exact push/publication action; passing local checks does not authorise publication.
 - [ ] After an authorised push, verify the public repository and links from a signed-out view before using it in portfolio or social material.

@@ -348,7 +348,7 @@ describe("Cloudflare delivery documentation", () => {
       expect(document.text).toMatch(/R2/i);
       expect(document.text).toMatch(/Durable Object/i);
       expect(document.text).toMatch(
-        /(?:not lead stor|not lead stores|並非.*潛在客戶資料儲存|並非.*客戶資料)/i,
+        /(?:not (?:used to )?store.*contact submissions|do not store contact submissions|not lead storage|不會儲存聯絡表格內容|並非.*(?:潛在客戶資料儲存|客戶資料))/i,
       );
     }
   });
@@ -369,14 +369,16 @@ describe("Cloudflare delivery documentation", () => {
     expect(checklist).toMatch(/future deployment/i);
   });
 
-  it("states in both landing pages that synthetic local mode needs no production resources", async () => {
+  it("states in both landing pages that the synthetic demo needs no production credentials or live services", async () => {
     const english = await readRequiredText("README.md");
     const traditionalChinese = await readRequiredText("README.zh-Hant.md");
     expectRequired(english, "README.md");
     expectRequired(traditionalChinese, "README.zh-Hant.md");
-    expect(english).toMatch(/synthetic local mode requires no production resources/i);
-    expect(traditionalChinese).toMatch(/合成本機模式.*無須.*正式環境資源/);
-    expect(english).toMatch(/Cloudflare currently recommends vinext/i);
-    expect(traditionalChinese).toMatch(/Cloudflare.*目前.*建議.*vinext/i);
+    expect(english).toMatch(
+      /demo uses synthetic events and brands by default[\s\S]*does not need production credentials or a live connection to The Ground, Google or Cloudflare/i,
+    );
+    expect(traditionalChinese).toMatch(
+      /示範版本預設使用合成活動及品牌資料[\s\S]*不需要正式環境憑證[\s\S]*不需要連接 The Ground、Google 或 Cloudflare/,
+    );
   });
 });

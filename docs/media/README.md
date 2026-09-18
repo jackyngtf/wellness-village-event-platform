@@ -1,4 +1,4 @@
-# Portfolio media provenance
+# Portfolio media
 
 These files preserve the delivered bilingual interface if the production URL later becomes unavailable. The website areas are unredrawn browser captures; the laptop, Chrome, iPhone, Safari and portfolio board are presentation layers.
 
@@ -23,7 +23,7 @@ Suggested Traditional Chinese alt text:
 
 > MacBook 與 iPhone 畫面展示 Wellness Village 繁體中文體驗，依序呈現活動導覽、節目探索、品牌故事及聯絡流程。
 
-## Capture sources and method
+## How the captures were made
 
 - English interface: <https://www.wellnessvillagehk.com/en>
 - Traditional Chinese interface: <https://www.wellnessvillagehk.com/zh-hk>
@@ -35,13 +35,13 @@ Captures used fresh, isolated browser contexts with service workers blocked, red
 
 Any names, email addresses or phone-number strings visible in the contact section are placeholders published by the production form. They are not submitted personal data and no values were entered during capture.
 
-## Device-frame attribution
+## Device-frame credits
 
 - MacBook geometry: [react-mockframe](https://github.com/mbdev3/react-mockframe), source revision `c2e114b46cc252aedb8701d5e7b7a532b5fa2cc6`, MIT, © 2026 Mohammed Banani. Its styles are adapted from Marvel `devices.css`, MIT, © 2014 Marvelapp.
 - iPhone geometry, Dynamic Island, safe areas and compact Safari chrome: [liquidframe](https://github.com/CVERInc/liquidframe), repository `main` inspected 17 September 2026, MIT, © 2026 liquidframe contributors.
 
 Both libraries provide only the rendered presentation frame. They do not replace, generate or redraw the production interface. This repository contains the rendered PNG, GIF and MP4 outputs, not either library's source or CSS; see [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
 
-## Documentary-use boundary
+## How these captures may be used
 
 These captures are approved documentary portfolio material. They do not grant downstream users permission to extract or reuse campaign artwork, brand marks, photography, fonts, copy or other client/third-party material visible inside the interface. A future software licence will apply only to expressly covered original code and will not relicense these media. See [ASSET_POLICY.md](../../ASSET_POLICY.md).

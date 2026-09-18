@@ -9,7 +9,7 @@ flowchart TB
         EXTERNAL[The Ground 與 Google 試算表]
     end
 
-    subgraph EVIDENCE[證據層]
+    subgraph EVIDENCE[報表與記錄]
         ZONE_ANALYTICS[網域分析<br/>請求、HTML 頁面瀏覽、位元組及快取]
         WORKER_ANALYTICS[執行環境分析<br/>調用次數及 CPU]
         RATE_CARD[公開價目表<br/>額度比較]
@@ -18,7 +18,7 @@ flowchart TB
         SEARCH_CONSOLE[已驗證的 Search Console<br/>112 次點擊 · 362 次曝光<br/>已索引 6/12 個已提交 URL]
     end
 
-    PORTFOLIO[受證據界限約束的作品集陳述]
+    PORTFOLIO[本作品集所報告的內容]
 
     VISITOR --> EDGE
     EDGE --> WORKER

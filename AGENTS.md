@@ -1,95 +1,88 @@
 # AGENTS.md
 
-## Purpose
+## What this repository is
 
-This curated public repository is both a runnable reference implementation and an evidence-backed portfolio case study. Keep it useful without private context: preserve technical accuracy, privacy, human ownership and the distinction between historical production facts, current demo behaviour and future work.
+This is a cleaned-up public edition of the Wellness Village website. It serves two purposes: a runnable reference and a portfolio case study. It is not the private production repository, and it must remain useful without access to client accounts or secrets.
 
-Treat every Agent output as a draft until its source, implementation or observable verification supports it. The Agent may accelerate inventory, research, implementation, tests and documentation. Product direction, source authority, client decisions, privacy boundaries, architecture and release approval remain human-owned.
+An Agent can help inspect source material, research links, write code, run tests and prepare documentation. Its output is always a draft. Product decisions, client approvals, privacy choices and release decisions stay with a person.
 
-## Source hierarchy
+## Understand the content model first
 
-Use the narrowest authoritative source for each claim:
+- **Brand profiles are fixed editorial content.** They were prepared from the approved Guidebook and checked public brand links. They do not update from The Ground or another live feed.
+- **Programme data is separate.** Current session times, availability, prices and registration destinations come from The Ground's organisation-scoped public catalogue.
+- **Registration stays on The Ground.** The website helps visitors discover sessions, then sends them to the matching The Ground page to book.
+- **Contact details follow a one-way path.** The website Worker validates a submission, puts a small message on a Cloudflare Queue, and a private consumer writes it to the client's Google Sheet.
+- **The public demo uses synthetic data by default.** Live integrations are opt-in and must fail closed when their configuration is missing.
 
-1. The Ground organisation-scoped public catalogue is authoritative for live event times, prices, public availability and canonical registration destinations.
-2. Client-approved venue and campaign records are authoritative for address, arrival guidance, maps and approved campaign presentation.
-3. The Guidebook supports editorial profiles, campaign narrative, four pillars and page ranges. It is not a live timetable or evidence of a physical booth, sponsorship, attendance or booking state.
-4. First-party public brand sources may verify an official destination or identity, but they do not establish organiser endorsement or campaign participation.
-5. The current public implementation and tests establish demo behaviour. Historical production claims also need an explicit case-study source note or decision record.
+Do not fill gaps by guessing. Use `Unknown`, unavailable or no action when the available material does not support a value.
 
-When evidence is insufficient, use `Unknown`, pending or unavailable, or omit the value. Never infer a fact from layout, imagery, nearby copy, title similarity or search-result similarity.
+## Which source to use
 
-## Public-repository boundary
+Use the source that actually owns the information:
 
-- This is a sanitised public edition with an independent history, not a copy of the private production repository or its Git history.
-- Use synthetic fixtures and neutral identifiers in code, tests, examples, screenshots of demo data and documentation. Never use production-shaped values as “examples”.
-- Do not add a production organisation identifier, Cloudflare account ID, Queue name, Worker name, Sheet ID, private URL, credential, personal record, client correspondence, raw Agent transcript or private filesystem path.
-- Never add the original Guidebook PDF, Guidebook page archive, client fonts or campaign source assets. No rights record changes this exclusion.
-- Other third-party material may be added only when its redistribution rights are recorded in [ASSET_POLICY.md](ASSET_POLICY.md).
-- Documentary screenshots must come from the real application. Generated or redrawn interface pixels must not be presented as product evidence.
-- Keep software-licence approval separate from media and client-rights approval. Do not call the repository open-source or add a final `LICENSE` without owner approval.
-- Remote repository creation, push and publication require an explicit owner instruction after the [public-edition release checklist](docs/agent-workflow/release-checklist.md) passes.
+1. Use The Ground for current programme times, prices, availability and registration links.
+2. Use approved client material for venue details, directions, campaign wording and presentation.
+3. Use the Guidebook for the four themes and fixed brand profiles. A Guidebook entry does not by itself prove booth location, sponsorship, attendance or booking status.
+4. Use a brand's own public website or social profile only to check its identity or official link.
+5. Use the code and tests for current demo behaviour. Use dated records in `docs/evidence/` for historical traffic, cost, search and delivery facts.
 
-## Production evidence and economics
+## Keep private material out
 
-- Publish only aggregate, sanitised operational evidence. Never commit raw analytics exports containing IP addresses, full query strings, account identifiers, production resource names, personal data or lead-level activity.
-- State the exact reporting window, timezone, dataset and capture date for every operational metric. Distinguish observed values from estimates, samples and later snapshots.
-- Requests are not visitors. Cloudflare edge requests include documents, assets, crawlers and threats; HTML page views and Worker invocations measure different layers. Never add daily unique-IP counts and present the sum as total people.
-- Separate four cost questions: observed project workload, direct project spend, shared-account billing and the public rate card at a stated date. One does not prove any of the others. A zero usage charge is not zero total cost; never claim a saving without a supported baseline.
-- Do not reveal Queue message counts when they could disclose client lead volume. It is acceptable to state that the observed workload sat below an included allowance when the underlying comparison is retained privately.
-- A live sitemap, canonical metadata or `robots.txt` proves implementation and availability, not Google indexing or organic-search performance. Publish Search Console clicks, impressions, CTR, position or indexing outcomes only from an authorised verified property.
-- Technical checks, traffic and cost position do not establish attendance, conversion, campaign success or causal business impact. Those outcomes need separately authorised client evidence.
+- Never add production organisation IDs, Cloudflare account IDs, resource names, Sheet IDs, private URLs, credentials, personal records, client messages, raw Agent transcripts or private filesystem paths.
+- Never add the original Guidebook PDF, its page archive, client fonts or campaign source files.
+- Use neutral identifiers and synthetic people, events and submissions in fixtures, examples and tests.
+- Product screenshots must come from the real interface. Do not present a generated or redrawn screen as a product capture.
+- Check third-party media against [ASSET_POLICY.md](ASSET_POLICY.md) before adding it.
+- Do not add a `LICENSE`, describe the repository as open source, create a remote or publish it without the owner's instruction. The [release checklist](docs/agent-workflow/release-checklist.md) must be complete first.
 
-## Data and privacy rules
+## Programme integration
 
-- Keep Google credentials and the destination Sheet identifier inside the private Queue consumer only. They must never enter the browser, website Worker, fixtures, logs or documentation.
-- Resolve the collection feature gate, published privacy version, Turnstile configuration, Queue destination and both required rate-limiter bindings before reading submitted personal data.
-- Require JSON, bounded bodies, strict runtime schemas, server-side Turnstile verification, rate limits and a non-forwarding honeypot path.
-- Minimise the Queue payload and retain a stable logical submission ID. Treat Queue delivery as at-least-once and use idempotent convergence for ordinary retries; do not claim distributed exactly-once delivery.
-- For a genuine non-honeypot submission, `202 Accepted` follows awaited Queue acceptance. A honeypot decoy deliberately receives the same `202` without enqueueing; neither path means synchronous persistence to Google Sheets.
-- Never log submission bodies, names, contact details, tokens, Sheet IDs, credentials or Queue payloads.
-- Fail closed when a privacy, verification, rate-limit, Queue or consumer-secret dependency is missing or invalid.
+- Access The Ground from the server only. Keep the organisation setting replaceable and use a neutral value in public fixtures.
+- Fetch upcoming and past feeds with firm limits: 50 records per page, 20 pages per feed, an eight-second request timeout and a 2 MiB response limit.
+- Validate responses and pagination at runtime. Keep only public event fields; exclude provider contacts, members, coaches and provider-only state.
+- Convert dates using `Asia/Hong_Kong` / HKT (`+08:00`). Work out event phase separately from the Hong Kong calendar dates occupied by an event, including midnight and multi-day cases.
+- Produce HTTPS registration links only, remove duplicate event IDs, and keep ordering and categories deterministic.
+- Cache the cleaned programme for five minutes. If an upstream request fails, use the last valid warm snapshot. If there is no snapshot, show an unavailable state and a direct link to The Ground.
 
-## The Ground integration rules
+## Contact form and Google Sheets
 
-- Describe the source as an **organisation-scoped public catalogue** or **organisation-scoped public integration**. Do not imply documented partner status.
-- Keep access server-only, configuration-scoped, feature-flagged and replaceable. Public fixtures must use a neutral organisation identifier.
-- Fetch upcoming and past feeds within finite limits: at most 50 records per page, 20 pages per feed, an eight-second request timeout and a 2 MiB response ceiling.
-- Validate response and pagination schemas at runtime. Admit only the documented public event contract; exclude provider contacts, members, coaches and provider-only state.
-- Convert timestamps explicitly to `Asia/Hong_Kong` / HKT (`+08:00`). Keep absolute event phase separate from occupied Hong Kong calendar dates, including midnight and multi-day boundaries. Never depend on the deployment host timezone.
-- Generate only canonical HTTPS registration links, deduplicate by event ID and preserve deterministic sorting and categories.
-- Cache the normalised catalogue for five minutes. Use only a last valid warm snapshot on an upstream failure; on a cold failure show an honest unavailable state and a direct The Ground hand-off.
-- Keep The Ground as the booking authority. Do not create a second hand-maintained timetable or booking system.
+- Google credentials and the destination Sheet ID belong only in the private Queue consumer. They must not enter browser code, the website Worker, fixtures, logs or documentation.
+- Before reading personal data, resolve the feature flag, privacy version, Turnstile setting, Queue binding and both rate-limit bindings.
+- Accept JSON only. Enforce the body-size limit and runtime schema, verify Turnstile on the server, rate-limit requests and keep the honeypot path from reaching the Queue.
+- Keep the Queue message small and give it a stable submission ID. Queue delivery is at least once; the consumer checks IDs before appending so ordinary retries do not create another row. Do not call this distributed exactly-once delivery.
+- A genuine submission receives `202 Accepted` only after the Queue accepts it. A honeypot receives the same response without being queued. Neither response means Google Sheets has already been updated.
+- Never log form bodies, contact details, tokens, Sheet IDs, credentials or Queue payloads.
 
-## Agent workflow
+## How to work on a change
 
-Follow the seven-stage loop in [Evidence-first Agent workflow](docs/agent-workflow/evidence-first-workflow.md):
+1. Identify the source and the user-visible result.
+2. Read the relevant code, tests and decision note before editing.
+3. Make the smallest complete change.
+4. Add a useful regression test for changed behaviour, external-service failures or date/time edge cases.
+5. Check the result a user can actually see.
+6. Update the case study only when the implementation or a dated project record supports the new wording.
 
-1. Inventory sources, owners, rights and freshness.
-2. Bound claims by recording what each source can and cannot establish.
-3. Model content with source status and explicit unsupported states.
-4. Brief the smallest coherent vertical slice with non-goals and acceptance checks.
-5. Harden every external interface at its trust boundary.
-6. Verify observable outcomes with checks proportionate to the changed behaviour.
-7. Curate only public evidence that passes rights, privacy and accuracy gates.
+Read the installed Next.js guidance before changing framework-specific code. Keep external-service adapters and runtime schemas separate from presentation components.
 
-Before changing behaviour, state the source boundary and user-visible acceptance criteria, inspect the relevant implementation and tests, make the narrowest coherent change, and update the case study or decision records only when their claims remain evidenced. Record unresolved source or client decisions separately; do not silently choose for the owner.
+## Checks before calling work complete
 
-## Implementation and verification
+For changes to the runnable application, run:
 
-- Keep synthetic mode as the no-secret default. Live The Ground and Queue/Sheets behaviour must remain explicit opt-ins.
-- Read the repository's installed Next.js guidance before changing framework-specific code; do not rely on remembered APIs.
-- Keep integration adapters, runtime schemas and private consumers separate from presentation components.
-- Add meaningful regression coverage for substantive behaviour changes, trust-boundary failures and time/date edges.
-- Run checks proportionate to the change. Before claiming the runnable reference is ready, run `npm run lint`, `npm run typecheck`, `npm run test` and `npm run build`.
-- Run browser QA when routes, navigation, responsive layout, keyboard behaviour, accessibility or live-integration presentation changes.
-- Validate local links, bilingual Mermaid pairs and architecture claims after documentation changes.
-- Never report a build, deployment, smoke check, accessibility result or user outcome as passing unless that exact result was observed. Do not turn technical checks into unmeasured conversion, productivity, SLA or ROI claims.
+```sh
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```
 
-## Bilingual documentation style
+Also run browser checks when navigation, responsive layout, keyboard use, accessibility or live-integration presentation changes. After documentation work, check local links, English/Traditional Chinese section parity and Mermaid source pairs.
 
-- Lead with the decision or outcome, distinguish history from demo behaviour, then link to stable relative evidence paths without line anchors.
-- Keep `README.md` as the canonical English landing page and `README.zh-Hant.md` as a substantial formal written Traditional Chinese companion readable in Hong Kong and Taiwan.
-- Translate meaning rather than syntax. Keep brand names, APIs, paths and technical identifiers unchanged where translation would alter the evidence.
-- Preserve parity across languages for claims, section structure, diagrams, links, media, limitations and publication boundaries.
-- Use unsuffixed documentation and media for English and `-zh-Hant` for Traditional Chinese. The production route name `/zh-hk` does not change the documentation language tag.
-- Label reconstructed prompts and retrospective diagrams honestly. Never present reconstructed, edited or sanitised material as a verbatim transcript.
+Report only checks that were actually run. Requests are not visitors, page views are not registrations, and technical health does not prove attendance, conversion or return on investment.
+
+## Writing the portfolio documentation
+
+- Keep `README.md` as the short English overview. Keep `README.zh-Hant.md` as a formal written Traditional Chinese version that reads naturally in Hong Kong and Taiwan.
+- Match the meaning, main sections, diagrams, media and limitations across both languages; do not translate technical names when that would make them less precise.
+- Use unsuffixed English files and `-zh-Hant` for Traditional Chinese files. The production route `/zh-hk` does not change that documentation tag.
+- Say when a prompt, timeline or diagram was reconstructed after the project. Do not present edited material as a verbatim record.
+- Keep dates and scopes beside traffic, cost and Search Console figures. Do not turn an account-level number into a project number or publish lead volume.

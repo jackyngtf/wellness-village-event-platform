@@ -1,6 +1,6 @@
-# Delivery-timeline evidence note
+# How the delivery dates were checked
 
-This directory documents the provenance and limits of the public delivery chronology without publishing private client correspondence.
+This note explains how I checked the public delivery timeline without publishing private client messages.
 
 ## Sources reviewed
 
@@ -10,7 +10,7 @@ The chronology was reconstructed on 18 September 2026 from:
 - the owner's first-hand delivery record, including sole-development responsibility, the home-server preview and web preparation of supplied print assets;
 - the authorised Porkbun invoice retained in the [billing and domain summary](../production-metrics/billing-and-domain-summary.json);
 - the public event dates recorded by ELLE Hong Kong; and
-- the authorised post-event Cloudflare and Search Console captures retained elsewhere in this evidence directory.
+- the authorised post-event Cloudflare and Search Console captures retained elsewhere in the project-records directory.
 
 ## What is retained publicly
 
@@ -31,5 +31,4 @@ The chronology was reconstructed on 18 September 2026 from:
 
 The 5 August preview was a reviewable vertical slice, not the final system. The 20 August production milestone was a working public release, not a final content freeze: smaller corrections and operational hardening continued before the event opened on 30 August. "On time" refers only to that release-versus-target comparison.
 
-The underlying private correspondence remains with the owner and is not redistributed by this portfolio edition. Readers can inspect the public implementation, tests, domain record, aggregate production evidence and documentary media, but not the private messages themselves.
-
+The underlying private correspondence remains with the owner and is not redistributed by this portfolio edition. Readers can inspect the public implementation, tests, domain record, aggregate production figures and documentary media, but not the private messages themselves.

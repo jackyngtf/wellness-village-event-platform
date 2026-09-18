@@ -1,6 +1,6 @@
-# Search-discoverability evidence
+# Search and indexing records
 
-This directory preserves public, read-only snapshots of the production discovery endpoints on 18 September 2026:
+This directory keeps read-only snapshots of the production search endpoints captured on 18 September 2026:
 
 - [`robots.txt`](robots.txt) allowed public crawling, excluded `/api/` and identified the sitemap.
 - [`sitemap.xml`](sitemap.xml) contained 12 canonical locale URLs: six routes in Traditional Chinese and English, with `zh-HK`, `en` and `x-default` alternates.

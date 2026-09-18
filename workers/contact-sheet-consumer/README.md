@@ -1,8 +1,8 @@
-# Private contact-to-Sheets consumer reference
+# Contact-to-Sheets consumer
 
-This standalone Cloudflare Worker demonstrates the private half of a bounded contact-interest workflow. For a genuine non-honeypot submission, the website producer returns `202 Accepted` only after awaited Cloudflare Queue acceptance; a honeypot decoy deliberately receives the same `202` without enqueueing. This consumer later validates an enqueued exact 14-field message, obtains a least-scope Google OAuth token, reads column A for stable submission IDs and appends unseen rows to `A:N` with `valueInputOption=RAW`.
+This standalone Cloudflare Worker shows the private half of the contact-form flow. For a genuine submission, the website returns `202 Accepted` only after Cloudflare Queue accepts the message. A honeypot receives the same response without being added to the Queue. The consumer then checks the exact 14-field message, requests a Sheets-only Google OAuth token, reads column A for existing submission IDs and appends unseen rows to `A:N` with `valueInputOption=RAW`.
 
-It avoids introducing a general-purpose application database for this deliberately small workflow; it does not remove persistence. Cloudflare Queue provides durable asynchronous transport, and Google Sheets remains the operational destination owned by the client.
+This avoids adding a general-purpose application database to a small workflow; it does not remove persistence. Cloudflare Queue carries the message asynchronously, and Google Sheets remains the client's working destination.
 
 ## Trust boundary
 
@@ -50,5 +50,5 @@ The dry run bundles locally and does not deploy. Logs are structured and limited
 ## Limits
 
 - Sheet retention, withdrawal, access review, dead-letter recovery and monitoring remain operational responsibilities.
-- Read-before-append is not a transaction and is suitable only for this bounded single-writer shape.
+- Read-before-append is not a transaction and is suitable only for this small, single-writer setup.
 - The public portfolio keeps website collection disabled by default and contains no live resource identifiers or credentials.

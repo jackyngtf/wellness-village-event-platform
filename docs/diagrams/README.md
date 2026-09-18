@@ -1,6 +1,6 @@
 # Architecture diagrams
 
-Each diagram is maintained as an English and formal written Traditional Chinese Mermaid source. A matching SVG fallback is provided for readers and renderers that do not execute Mermaid.
+Each diagram has an English and formal written Traditional Chinese Mermaid source, plus a matching SVG that GitHub can display directly.
 
 | Diagram | English | Traditional Chinese |
 | --- | --- | --- |
@@ -12,4 +12,4 @@ Each diagram is maintained as an English and formal written Traditional Chinese 
 | Queue-to-Sheets sequence | [Mermaid source](queue-to-sheets-sequence.mmd) · [SVG fallback](queue-to-sheets-sequence.svg) | [Mermaid source](queue-to-sheets-sequence.zh-Hant.mmd) · [SVG fallback](queue-to-sheets-sequence.zh-Hant.svg) |
 | Production measurement boundaries | [Mermaid source](production-measurement-boundaries.mmd) · [SVG fallback](production-measurement-boundaries.svg) | [Mermaid source](production-measurement-boundaries.zh-Hant.mmd) · [SVG fallback](production-measurement-boundaries.zh-Hant.svg) |
 
-The source pairs deliberately preserve node or participant identifiers, relationship endpoints and sequence branch structure across languages. The diagrams are retrospective architecture documentation; they do not replace the runnable implementation and tests cited by the case study.
+The English and Chinese versions use the same nodes and connections. I drew these diagrams after the project to explain the delivered design; the linked code and tests remain the place to check implementation details.

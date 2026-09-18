@@ -1,25 +1,25 @@
-# ADR 001: The Ground owns live schedule and booking authority
+# ADR 001: Keep current schedules and booking on The Ground
 
 ## Status
 
-Accepted for the delivered event platform.
+Used in the delivered website.
 
 ## Context
 
-The website needed to make the programme discoverable while live times, prices, public availability and registration already belonged to The Ground. The Guidebook supplied editorial context but was not an operational timetable. The available endpoint is evidenced here as an organisation-scoped public catalogue, not a documented partner API.
+The website needed to make the programme easier to browse, while current times, prices, availability and registration were already managed on The Ground. The Guidebook supplied fixed editorial content but was not a current timetable. The integration uses an organisation-specific public catalogue, not a documented partner API.
 
 ## Decision
 
-Read upcoming and past records through a bounded, server-only, organisation-scoped adapter. Validate and privacy-filter the public event contract, derive HKT presentation state, and hand booking back to canonical The Ground pages. Do not maintain a second manually edited timetable or booking system.
+Read upcoming and past records through a server-side adapter with page, time and response-size limits. Check and trim the response, calculate the HKT display state and send booking back to the matching The Ground page. Do not maintain a second timetable or booking system by hand.
 
 ## Consequences
 
-- Visitors can discover sessions in the campaign experience without creating a second booking authority.
-- Pagination, response size, request duration, schema, event-ID deduplication and canonical links require explicit controls.
-- A five-minute normalised cache and last valid warm snapshot cover short upstream failures; a cold failure remains visibly unavailable with a direct hand-off.
+- Visitors can find sessions on the campaign site while booking remains on The Ground.
+- Pagination, response size, request duration, schema checks, event-ID duplicate checks and safe links need to be maintained.
+- A five-minute cache and the last valid in-memory copy can cover a short upstream failure. With no usable copy, the programme shows as unavailable and links directly to The Ground.
 - The integration remains feature-flagged, configuration-scoped and replaceable.
 
-## Evidence
+## References
 
 - [The Ground event-interface case study](../case-study/04-the-ground-event-interface.md)
 - [The Ground event-interface diagram](../diagrams/the-ground-event-interface.svg) and [Mermaid source](../diagrams/the-ground-event-interface.mmd)

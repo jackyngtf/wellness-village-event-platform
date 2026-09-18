@@ -8,7 +8,7 @@ flowchart TB
         PAGINATION[並行且受限的分頁擷取<br/>每頁最多 50 筆記錄<br/>每個資料流最多 20 頁]
     end
 
-    subgraph TRUST[2. 信任邊界]
+    subgraph TRUST[2. 檢查回應]
         direction LR
         LIMITS[八秒逾時限制<br/>兩 MiB 回應大小限制]
         SCHEMA[執行階段結構描述與分頁驗證]
@@ -19,7 +19,7 @@ flowchart TB
         direction LR
         FILTER[移除供應者專用及不支援的欄位]
         HKT[明確轉換為 HKT +08:00 時間]
-        LINKS[產生標準 HTTPS 報名連結]
+        LINKS[產生相應的 HTTPS 報名連結]
         DEDUP[依活動識別碼去除重複項目]
         SORT[以確定性規則排序]
         CACHE[五分鐘正規化快取]
@@ -37,7 +37,7 @@ flowchart TB
     FALLBACK{供應者請求失敗}
     WARM{是否存在有效的暖實例快照}
     COLD[如實顯示無法使用狀態]
-    BOOKING[標準 The Ground 報名交接]
+    BOOKING[相應的 The Ground 報名頁面]
 
     CONFIG --> CATALOGUE
     CATALOGUE --> UPCOMING

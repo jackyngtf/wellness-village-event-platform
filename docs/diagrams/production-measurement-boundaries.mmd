@@ -9,7 +9,7 @@ flowchart TB
         EXTERNAL[The Ground and Google Sheets]
     end
 
-    subgraph EVIDENCE[Evidence layers]
+    subgraph EVIDENCE[Reports and records]
         ZONE_ANALYTICS[Zone analytics<br/>Requests, HTML page views, bytes and cache]
         WORKER_ANALYTICS[Runtime analytics<br/>Invocations and CPU]
         RATE_CARD[Public rate cards<br/>Allowance comparison]
@@ -18,7 +18,7 @@ flowchart TB
         SEARCH_CONSOLE[Verified Search Console<br/>112 clicks · 362 impressions<br/>6 of 12 submitted URLs indexed]
     end
 
-    PORTFOLIO[Evidence-bounded portfolio claims]
+    PORTFOLIO[What this portfolio reports]
 
     VISITOR --> EDGE
     EDGE --> WORKER
