@@ -5,7 +5,7 @@
 
 ![Laptop and iPhone views of the English Wellness Village website, moving through the introduction, programme, brand stories, contact form and footer.](docs/media/responsive-scroll-walkthrough.gif)
 
-[View the static poster](docs/media/responsive-scroll-walkthrough-poster.png) · [Download the H.264 walkthrough](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/responsive-scroll-walkthrough.mp4)
+[Download the H.264 walkthrough](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/responsive-scroll-walkthrough.mp4)
 
 Wellness Village had a 184-page Guidebook, programme listings on The Ground and a need to collect enquiries—but those pieces lived in different places. As sole developer, I turned them into one bilingual website for a 12-day event at Central Market in Hong Kong.
 
@@ -35,7 +35,7 @@ I took the project from a same-day home-server MVP to event support. The client 
 
 The film above reaches the contact form and footer. Expand any of the four sections below to see the visitor journey on desktop and iPhone, even if the campaign URL is retired.
 
-These detailed animations are large files and may take a moment to load. If an animation stays blank, use its static poster or MP4 download link below.
+These detailed animations are large files and may take a moment to load. If an animation stays blank or does not play, use the MP4 download link below.
 
 <details>
 <summary><strong>Programme and before-you-go guidance</strong> — 40 seconds</summary>
@@ -46,7 +46,7 @@ Select the animation to download the full MP4, rather than open GitHub's image p
 
 Use the visible next arrow on desktop or swipe on iPhone to move through the Experience 101 reminders, filter the post-event activity records, then open the corresponding public page on The Ground. The recording keeps the provider's “This event has ended” state rather than implying that registration is still open.
 
-[View the static poster](docs/media/programme-walkthrough-poster.png) · [Download the MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/programme-walkthrough.mp4) · [Follow the programme data](docs/case-study/04-the-ground-event-interface.md)
+[Download the MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/programme-walkthrough.mp4) · [Follow the programme data](docs/case-study/04-the-ground-event-interface.md)
 
 </details>
 
@@ -57,7 +57,7 @@ Use the visible next arrow on desktop or swipe on iPhone to move through the Exp
 
 Keep the address and arrival notes together, then move between both map pages with the desktop arrows or an iPhone swipe. In the enlarged desktop viewer, the controls stay fixed while each portrait map scrolls from top to bottom; the phone keeps the complete page in view.
 
-[View the static poster](docs/media/venue-guide-walkthrough-poster.png) · [Download the MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/venue-guide-walkthrough.mp4) · [Read the visitor-journey notes](docs/case-study/03-visitor-journey.md)
+[Download the MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/venue-guide-walkthrough.mp4) · [Read the visitor-journey notes](docs/case-study/03-visitor-journey.md)
 
 </details>
 
@@ -68,7 +68,7 @@ Keep the address and arrival notes together, then move between both map pages wi
 
 Search for event presenter IŚSMEN among 48 Guidebook profiles, open its public Instagram and official website on both devices, then read both pages of its internal Guidebook story.
 
-[View the static poster](docs/media/brand-discovery-walkthrough-poster.png) · [Download the MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/brand-discovery-walkthrough.mp4) · [Read how the Guidebook became web content](docs/case-study/02-guidebook-and-agent-workflow.md)
+[Download the MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/brand-discovery-walkthrough.mp4) · [Read how the Guidebook became web content](docs/case-study/02-guidebook-and-agent-workflow.md)
 
 </details>
 
@@ -79,7 +79,7 @@ Search for event presenter IŚSMEN among 48 Guidebook profiles, open its public 
 
 Open the digital edition from the homepage, choose the faster web reader, jump to page 66, compare the two-page desktop spread with sequential phone reading, then continue to the next spread. A separate diagram maps the other Guidebook entry points used across the site.
 
-[View the static poster](docs/media/guidebook-journey-walkthrough-poster.png) · [Download the MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/guidebook-journey-walkthrough.mp4) · [See every Guidebook entry path](docs/diagrams/guidebook-entry-and-reading-flow.svg) · [Read the content workflow](docs/case-study/02-guidebook-and-agent-workflow.md)
+[Download the MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/guidebook-journey-walkthrough.mp4) · [See every Guidebook entry path](docs/diagrams/guidebook-entry-and-reading-flow.svg) · [Read the content workflow](docs/case-study/02-guidebook-and-agent-workflow.md)
 
 </details>
 
