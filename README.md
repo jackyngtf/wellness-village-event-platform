@@ -40,7 +40,9 @@ These detailed animations are large files and may take a moment to load. If an a
 <details>
 <summary><strong>Programme and before-you-go guidance</strong> — 40 seconds</summary>
 
-![Programme walkthrough on a laptop and iPhone.](docs/media/programme-walkthrough.gif)
+[![Programme walkthrough on a laptop and iPhone.](docs/media/programme-walkthrough.gif)](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/programme-walkthrough.mp4)
+
+Select the animation to download the full MP4, rather than open GitHub's image preview.
 
 Use the visible next arrow on desktop or swipe on iPhone to move through the Experience 101 reminders, filter the post-event activity records, then open the corresponding public page on The Ground. The recording keeps the provider's “This event has ended” state rather than implying that registration is still open.
 

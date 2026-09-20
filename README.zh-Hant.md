@@ -40,7 +40,9 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 <details>
 <summary><strong>節目及活動前須知</strong>——40 秒</summary>
 
-![手提電腦及 iPhone 節目導覽。](docs/media/programme-walkthrough-zh-Hant.gif)
+[![手提電腦及 iPhone 節目導覽。](docs/media/programme-walkthrough-zh-Hant.gif)](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/programme-walkthrough-zh-Hant.mp4)
+
+點選動畫可下載完整 MP4，而非開啟 GitHub 的圖片預覽。
 
 在電腦使用畫面上的下一步箭嘴，或在 iPhone 左右掃動 Experience 101 圖卡；其後篩選活動結束後保留的活動紀錄，再開啟 The Ground 上相應的公開頁面。影片保留平台顯示的「活動已結束」狀態，不會令人誤以為仍可報名。
 
