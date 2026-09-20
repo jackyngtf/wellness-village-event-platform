@@ -1,4 +1,8 @@
 import type { TheGroundEvent } from "@/integrations/the-ground/types";
+import {
+  isSupportedTheGroundEventDuration,
+  THE_GROUND_MAX_EVENT_DURATION_DAYS,
+} from "@/integrations/the-ground/event-window";
 import type { Locale } from "@/content/routes";
 
 import {
@@ -75,12 +79,28 @@ export function getProgrammeEventDates(
   for (const event of events) {
     const range = getEventHktDateRange(event);
     if (!range) continue;
-    for (
-      let dateKey = range.startsOn;
-      dateKey <= range.endsOn;
-      dateKey = hktDateAfter(dateKey)
+    if (
+      !isSupportedTheGroundEventDuration(
+        Date.parse(event.startsAt),
+        Date.parse(event.endsAt),
+      )
     ) {
+      throw new RangeError(
+        `Event duration must not exceed ${THE_GROUND_MAX_EVENT_DURATION_DAYS} elapsed days.`,
+      );
+    }
+
+    // A 366-day interval can occupy 367 HKT dates when it starts after midnight.
+    let dateKey = range.startsOn;
+    for (let day = 0; day <= THE_GROUND_MAX_EVENT_DURATION_DAYS; day += 1) {
       dates.add(dateKey);
+      if (dateKey === range.endsOn) break;
+      if (day === THE_GROUND_MAX_EVENT_DURATION_DAYS) {
+        throw new RangeError(
+          "Event calendar window exceeds the date-option limit.",
+        );
+      }
+      dateKey = hktDateAfter(dateKey);
     }
   }
   return [...dates].sort();

@@ -31,7 +31,7 @@ flowchart TB
         WEBSITE_API[已驗證的網站 API]
         QUEUE[Cloudflare 佇列]
         PRIVATE_CONSUMER[私人 consumer Worker]
-        GOOGLE_SHEET[客戶的 Google 試算表]
+        GOOGLE_SHEET[選定的 Google 試算表]
 
         VISITOR_FORM --> WEBSITE_API
         WEBSITE_API -->|只轉送真實提交| QUEUE

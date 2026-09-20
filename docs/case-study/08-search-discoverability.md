@@ -1,8 +1,10 @@
-# Search Console and indexing
+# Production record: search discovery
+
+[**English**](08-search-discoverability.md) · [繁體中文](08-search-discoverability.zh-Hant.md)
 
 ## What Search Console adds
 
-Cloudflare shows requests handled by the website. Google Search Console shows how Google found, indexed and displayed the site in search. The two reports measure different things, and neither tells us how many people attended the event or registered because of the website.
+Cloudflare told me how the website handled requests. Search Console answered a different question: whether Google had found the site and how it appeared in search. I kept the two reports separate because neither one counts event attendance or registrations caused by the website.
 
 ## `robots.txt` and sitemap
 
@@ -14,6 +16,14 @@ Read-only checks on 18 September 2026 confirmed that the production site served:
 Copies of [robots.txt](../evidence/search-discoverability/robots.txt) and [sitemap.xml](../evidence/search-discoverability/sitemap.xml) are kept here in case the campaign domain is retired.
 
 These files show what the website served on that date. They do not mean that Google fetched or indexed every URL. The runnable portfolio demo uses `noindex` because it is not intended to replace the campaign site.
+
+## From sitemap to search results
+
+![Lifecycle from bilingual routes and crawl controls through sitemap discovery, indexing and separately dated Search Console observations.](../diagrams/search-discovery-lifecycle.svg)
+
+[View the Mermaid source](../diagrams/search-discovery-lifecycle.mmd).
+
+The diagram keeps technical publishing steps separate from Google's later observations. It is a sequence of dated checks, not a funnel that attributes clicks, attendance or registrations to any one step.
 
 ## Search Console setup
 

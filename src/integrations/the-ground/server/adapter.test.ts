@@ -548,4 +548,32 @@ describe("The Ground public server adapter", () => {
       name: "TheGroundUnavailableError",
     });
   });
+
+  it("rejects a century-long upstream event and preserves the last valid warm snapshot", async () => {
+    let now = Date.parse("2030-05-20T00:00:00Z");
+    let oversized = false;
+    const adapter = createTheGroundAdapter({
+      config: liveConfig,
+      clock: () => new Date(now),
+      fetchImplementation: vi.fn<typeof fetch>(async (input) => {
+        const type = new URL(String(input)).searchParams.get("type");
+        const event = oversized
+          ? providerEvent(
+              "century",
+              "2000-01-01T00:00:00Z",
+              "2100-01-01T00:00:00Z",
+            )
+          : providerEvent("normal");
+        return jsonResponse(page(type === "upcoming" ? [event] : []));
+      }),
+    });
+    const original = await adapter.getCatalog();
+    now += 5 * 60 * 1_000 + 1;
+    oversized = true;
+
+    await expect(adapter.getCatalog()).resolves.toEqual({
+      ...original,
+      freshness: "stale",
+    });
+  });
 });

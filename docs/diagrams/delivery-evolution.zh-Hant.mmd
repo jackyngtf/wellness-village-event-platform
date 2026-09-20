@@ -3,13 +3,15 @@ flowchart LR
     MVP["8 月 5 日<br/>家中伺服器 MVP"]
     ITERATE["8 月 12 至 19 日<br/>資料 + 體驗審閱"]
     RELEASE["8 月 20 日<br/>可供公眾使用的正式版本"]
+    HARDEN["8 月 27 日<br/>Error 1102 · Workers Paid + CPU 優化"]
     OPERATE["8 月 30 日至 9 月 10 日<br/>活動營運與支援"]
     EVIDENCE["9 月 18 日<br/>整理活動後數據"]
 
     BRIEF --> MVP
     MVP --> ITERATE
     ITERATE --> RELEASE
-    RELEASE --> OPERATE
+    RELEASE --> HARDEN
+    HARDEN --> OPERATE
     OPERATE --> EVIDENCE
 
     classDef planning fill:#f2efe8,stroke:#6d6250,color:#332e27
@@ -18,5 +20,5 @@ flowchart LR
     classDef evidence fill:#f0eef5,stroke:#675b79,color:#312a3a
     class BRIEF planning
     class MVP,ITERATE preview
-    class RELEASE,OPERATE delivery
+    class RELEASE,HARDEN,OPERATE delivery
     class EVIDENCE evidence

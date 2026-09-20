@@ -1,0 +1,30 @@
+flowchart TB
+    SOURCES["1. 辨認資料來源"]
+    BOUNDARIES["2. 定義資料用途<br/>與限制"]
+    STRUCTURE["3. 把已核對內容<br/>整理成結構"]
+    SLICE["4. 建立小型而<br/>可審閱的版本"]
+    INTEGRATE["5. 加強外部<br/>系統整合"]
+    VERIFY["6. 用合適方法<br/>檢查每項結果"]
+    PUBLIC["7. 準備另一個<br/>公開版本"]
+
+    AGENT["Agent 協助<br/>擷取 · 研究 · 草擬 · 重構 · 測試"]
+    HUMAN["人手決定<br/>資料依據 · 客戶事實 · 私隱 · 發佈"]
+    CHECKS["可觀察檢查<br/>視覺審閱 · 測試 · 瀏覽器 · build · 有日期紀錄"]
+
+    SOURCES --> BOUNDARIES --> STRUCTURE --> SLICE --> INTEGRATE --> VERIFY --> PUBLIC
+    VERIFY -.->|仍未解決或欠缺依據| BOUNDARIES
+
+    AGENT -.-> STRUCTURE
+    AGENT -.-> INTEGRATE
+    HUMAN -.-> BOUNDARIES
+    HUMAN -.-> PUBLIC
+    CHECKS -.-> VERIFY
+
+    classDef process fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef agent fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef human fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef checks fill:#f0eef5,stroke:#675b79,color:#312a3a
+    class SOURCES,BOUNDARIES,STRUCTURE,SLICE,INTEGRATE,VERIFY,PUBLIC process
+    class AGENT agent
+    class HUMAN human
+    class CHECKS checks

@@ -8,8 +8,8 @@ export default defineConfig({
         configPath: "workers/contact-sheet-consumer/wrangler.jsonc",
       },
       miniflare: {
-        // The repository's required 18 September date is still one UTC day in
-        // the future while this Australian-local test run executes.
+        // Match the bundled workerd test runtime (2026-09-17). The deployment
+        // config's 2026-09-18 date is checked separately by the config tests.
         compatibilityDate: "2026-09-17",
         bindings: {
           GOOGLE_SERVICE_ACCOUNT_CREDENTIALS_JSON: "synthetic-test-secret",

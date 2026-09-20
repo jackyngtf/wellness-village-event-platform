@@ -1,5 +1,7 @@
 # ADR 001: Keep current schedules and booking on The Ground
 
+[**English**](001-the-ground-is-the-live-source.md) · [繁體中文](001-the-ground-is-the-live-source.zh-Hant.md)
+
 ## Status
 
 Used in the delivered website.

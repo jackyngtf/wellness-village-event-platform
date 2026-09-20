@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "capturedOn": "2026-09-18",
   "cloudflareBilling": {
     "source": "authorised read-only Cloudflare account billing dashboard",
@@ -9,56 +9,78 @@
       "endDateInclusive": "2026-09-11",
       "status": "complete"
     },
-    "usageCostUsd": 0,
+    "additionalUsageCostUsd": 0,
+    "usageCostMeaning": "additional usage charges shown for the complete billing period; not the account's total cost",
     "allDisplayedUsageWithinIncludedQuantities": true,
     "workersPaidActive": true,
+    "workersPlan": {
+      "name": "Workers Paid",
+      "statusAtCapture": "active",
+      "source": "authorised account status and captured public rate card",
+      "capturedPublicRateCardMinimumUsdPerAccountMonth": 5,
+      "scope": "shared account subscription",
+      "projectAttribution": "the plan change followed this project's resource-limit incident, but no retained line item isolates the base subscription as a project-only invoice"
+    },
+    "operationalContext": {
+      "date": "2026-08-27",
+      "source": "dated owner-authorised task record and implementation history",
+      "observedError": "Cloudflare Error 1102: Worker exceeded resource limits",
+      "response": [
+        "moved the shared account to Workers Paid",
+        "reduced CPU-heavy Worker request paths",
+        "continued runtime hardening before the event"
+      ],
+      "causationLimit": "the retained records do not isolate either the plan change or the code change as the sole fix"
+    },
     "selectedAccountUsage": {
       "workersStandardRequests": {
         "observedDisplayed": "46.46k requests",
         "precision": "dashboard-rounded",
         "billable": 0,
-        "usageCostUsd": 0
+        "additionalUsageCostUsd": 0
       },
       "workersCpuMilliseconds": {
         "observedDisplayed": "2.9M ms",
         "precision": "dashboard-rounded",
         "billable": 0,
-        "usageCostUsd": 0
+        "additionalUsageCostUsd": 0
       },
       "r2ClassAOperations": {
         "observedDisplayed": "9.21k operations",
         "precision": "dashboard-rounded",
         "billable": 0,
-        "usageCostUsd": 0
+        "additionalUsageCostUsd": 0
       },
       "r2ClassBOperations": {
         "observedDisplayed": "51.74k operations",
         "precision": "dashboard-rounded",
         "billable": 0,
-        "usageCostUsd": 0
+        "additionalUsageCostUsd": 0
       },
       "r2StorageGbMonth": {
         "observedDisplayed": "0.04 GB-month",
         "precision": "dashboard-displayed",
         "billable": 0,
-        "usageCostUsd": 0
+        "additionalUsageCostUsd": 0
       },
       "workerBuildMinutes": {
         "observedDisplayed": "11 minutes",
         "precision": "dashboard-displayed",
         "billable": 0,
-        "usageCostUsd": 0
+        "additionalUsageCostUsd": 0
       },
       "queueOperations": {
         "observed": "withheld from the public edition",
         "billable": 0,
-        "usageCostUsd": 0
+        "additionalUsageCostUsd": 0
       }
     },
     "excludedInterpretations": [
       "usage cost is not the account's total invoice",
       "shared-account usage is not project-only usage",
-      "an active paid subscription is not a zero-cost service"
+      "an active paid subscription is not a zero-cost service",
+      "the US$5 account minimum is not presented as a project-only invoice",
+      "the paid-plan change alone is not presented as the sole incident fix"
     ]
   },
   "domainRegistration": {

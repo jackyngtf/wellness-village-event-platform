@@ -1,5 +1,7 @@
 # ADR 002: Use OpenNext on Cloudflare Workers
 
+[**English**](002-workers-not-static-pages.md) · [繁體中文](002-workers-not-static-pages.zh-Hant.md)
+
 ## Status
 
 Used in the delivered website.

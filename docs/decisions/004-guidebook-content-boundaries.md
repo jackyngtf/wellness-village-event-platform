@@ -1,5 +1,7 @@
 # ADR 004: Use the Guidebook for fixed editorial content
 
+[**English**](004-guidebook-content-boundaries.md) · [繁體中文](004-guidebook-content-boundaries.zh-Hant.md)
+
 ## Status
 
 Used in the delivered website.

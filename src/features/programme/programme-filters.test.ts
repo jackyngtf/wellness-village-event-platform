@@ -1,9 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import type { TheGroundEvent } from "@/integrations/the-ground/types";
 
 import {
   filterAndSortProgrammeEvents,
+  getProgrammeEventDates,
   getProgrammeFilterOptions,
   parseProgrammeFilters,
   toLocationKey,
@@ -75,6 +76,78 @@ const events = [
 ] as const;
 
 describe("programme URL filters and action-first order", () => {
+  it.each([
+    ["2000-01-01T00:00:00+08:00", "2100-01-01T00:00:00+08:00"],
+    ["2028-01-01T12:00:00+08:00", "2029-01-01T12:00:00.001+08:00"],
+  ] as const)(
+    "rejects oversized direct fixtures without returning partial options (%s to %s)",
+    (startsAt, endsAt) => {
+      const oversized = event(
+        "oversized",
+        "Open Studio Listing",
+        startsAt,
+        endsAt,
+      );
+
+      expect(() => getProgrammeEventDates([...events, oversized])).toThrow(/366/);
+    },
+  );
+
+  it("keeps all 367 occupied dates for exactly 366 elapsed days from midday", () => {
+    const dates = getProgrammeEventDates([
+      event(
+        "year",
+        "Open Studio Listing",
+        "2028-01-01T12:00:00+08:00",
+        "2029-01-01T12:00:00+08:00",
+      ),
+    ]);
+
+    expect(dates).toHaveLength(367);
+    expect(dates[0]).toBe("2028-01-01");
+    expect(dates.at(-1)).toBe("2029-01-01");
+    expect(dates).toContain("2028-02-29");
+  });
+
+  it("preserves multi-day dates and excludes a midnight endpoint", () => {
+    const dates = getProgrammeEventDates([
+      event(
+        "new-year",
+        "Open Studio Listing",
+        "2030-12-30T23:30:00+08:00",
+        "2031-01-02T00:00:00+08:00",
+      ),
+    ]);
+
+    expect(dates).toEqual(["2030-12-30", "2030-12-31", "2031-01-01"]);
+  });
+
+  it("stops on the final occupied date before incrementing beyond year 9999", () => {
+    const parse = Date.parse;
+    let calls = 0;
+    // A regressed synchronous loop must fail rather than hang the test worker.
+    const guard = vi.spyOn(Date, "parse").mockImplementation((value) => {
+      if (++calls > 1_000) {
+        throw new Error("Date enumeration exceeded safety budget");
+      }
+      return parse(value);
+    });
+    try {
+      const dates = getProgrammeEventDates([
+        event(
+          "last-year",
+          "Open Studio Listing",
+          "9999-12-30T23:00:00+08:00",
+          "9999-12-31T23:59:59+08:00",
+        ),
+      ]);
+
+      expect(dates).toEqual(["9999-12-30", "9999-12-31"]);
+    } finally {
+      guard.mockRestore();
+    }
+  });
+
   it("orders live, upcoming chronologically with booking as a tie-breaker, then recent past", () => {
     const filters = parseProgrammeFilters({}, events);
 

@@ -1,0 +1,23 @@
+flowchart TB
+    ROUTES["正式網站提供公開 routes<br/>robots.txt + sitemap 內 12 個 URL"]
+    SUBMITTED["提交 sitemap<br/>2026 年 8 月 21 日"]
+    REPORTS["Search Console 觀察紀錄<br/>來自不同報告及日期"]
+    DISCOVERED["Sitemap 最後讀取：9 月 14 日<br/>發現 12 個 URL"]
+    INDEXED["索引快照：9 月 14 日<br/>6 個已索引 · 6 個未索引"]
+    PERFORMANCE["搜尋表現：8 月 30 日至 9 月 10 日（PT）<br/>362 次曝光 · 112 次點擊"]
+    LIMITS["解讀邊界<br/>不等於入場、轉換<br/>或永久索引覆蓋"]
+
+    ROUTES --> SUBMITTED --> REPORTS
+    REPORTS --> DISCOVERED
+    REPORTS --> INDEXED
+    REPORTS --> PERFORMANCE
+
+    INDEXED --> LIMITS
+    PERFORMANCE --> LIMITS
+
+    classDef technical fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef report fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef limit fill:#f7eadf,stroke:#8a5834,color:#442a18
+    class ROUTES,SUBMITTED,DISCOVERED,INDEXED technical
+    class REPORTS,PERFORMANCE report
+    class LIMITS limit

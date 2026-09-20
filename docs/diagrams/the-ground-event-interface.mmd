@@ -10,7 +10,7 @@ flowchart TB
 
     subgraph TRUST[2. Check the response]
         direction LR
-        LIMITS[Eight-second timeout<br/>Two MiB response limit]
+        LIMITS[Eight-second timeout per request<br/>Two MiB response limit]
         SCHEMA[Runtime schema and pagination validation]
         PUBLIC_CONTRACT[Admit only the public event contract]
     end

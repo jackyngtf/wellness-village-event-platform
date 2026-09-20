@@ -1,44 +1,54 @@
-# Visitor journey
+# What changed after I tested the journey on a phone
 
-## The problem
+[**English**](03-visitor-journey.md) · [繁體中文](03-visitor-journey.zh-Hant.md)
 
-A first-time visitor might know very little about the event, its programme or the original Guidebook. The homepage therefore starts by explaining the event and offering a few useful next steps instead of expecting people to understand the document structure.
+The supplied material explained the event, but it did not automatically create a useful website journey. The finished site is responsive, while the primary use case was someone checking it on a phone before or during the event. I therefore organised the interface around what a first-time visitor would ask: What is this? What can I join? What should I know before going? How do I get there?
 
-## The path through the site
+## The route I wanted visitors to follow
 
-The intended path is continuous:
-
-1. understand what Wellness Village is;
-2. discover an activity and whether booking is required;
-3. review preparation reminders before leaving;
-4. find the venue, arrival notes and map; and
+1. understand Wellness Village without reading the whole Guidebook;
+2. find an activity and see whether booking is required;
+3. read the practical reminders before leaving for registration;
+4. find the address, arrival notes and map; and
 5. continue into brand stories and the digital Guidebook.
 
-The homepage turns the middle of that path into three simple tasks: choose an activity, read the before-you-go guidance and plan the visit. The English and Chinese pages use matching section links, so cards, navigation and shared links lead to the same place in either language. Mobile navigation keeps the main tasks easy to reach during the visit.
+![Visitor journey from first arrival through programme discovery, preparation, venue planning and brand stories, with booking continuing on The Ground.](../diagrams/visitor-journey.svg)
 
-![A MacBook-and-iPhone composition of the English Wellness Village homepage, using real production captures framed by Chrome and compact Safari chrome.](../media/portfolio-hero.png)
+[View the Mermaid source](../diagrams/visitor-journey.mmd)
 
-The [visitor-journey diagram](../diagrams/visitor-journey.svg) shows the sequence and where booking moves to The Ground.
+## Moving the guidance to where it could help
 
-## Empty and unavailable states
+In an early version, the Experience 101 reminders sat below the activity list. On a phone, a visitor could find a session, follow its The Ground link and leave the site before seeing what to bring or do before arrival.
 
-- Event orientation appears before the visitor has to understand filters or site structure.
-- The programme starts with a short preview, then allows filtering by date, category, location, price and booking state without copying the schedule into a second data source.
-- Session cards separate timing from booking state and explain that registration continues on The Ground.
-- Preparation reminders are placed beside the activity decision, where they can change what a visitor brings or does before arrival.
-- The visit experience keeps address and direction actions ahead of detail, then adds arrival notes, the map and a text alternative.
-- Empty search results suggest another useful action. If the live feed cannot be loaded, the page says so and keeps a direct link to The Ground instead of showing made-up or stale sessions as current.
-- Brand stories and the digital Guidebook remain a continuation of the visit rather than a disconnected archive.
+I moved the guidance above the live programme, removed duplicate text cards and made all nine supplied images visible in a horizontal rail without requiring the visitor to open a disclosure first. The activity list then follows with date and category controls, clear booking states and a direct hand-off to The Ground.
 
-## How I checked it
+![Laptop and iPhone walkthrough of the programme page, including arrow navigation on desktop, swiping on iPhone, filters and activity records.](../media/programme-walkthrough.gif)
 
-I checked the delivered journey in mobile Chromium, iPhone/WebKit and desktop Chromium. The checks covered section links, touch targets, keyboard use, language switching, horizontal overflow, link integrity and automated accessibility scans.
+[Download the higher-quality MP4](../media/programme-walkthrough.mp4)
 
-The portfolio image is a real application capture. The device frame is a presentation layer; no generated interface is substituted for the delivered product.
+## Joining pages into one journey
 
-## Related code and notes
+The homepage originally risked feeling like a collection of sections. I connected its calls to action to three concrete tasks—choose an activity, prepare for the visit and find the venue—and kept those destinations equivalent in English and Traditional Chinese.
 
-- Implementation: [guided-home feature](../../src/features/home/) and [bilingual routes](../../src/app/)
-- Tests: [visitor-journey component checks](../../src/features/home/) and [route checks](../../src/app/)
-- Diagram: [visitor journey SVG](../diagrams/visitor-journey.svg) and [Mermaid source](../diagrams/visitor-journey.mmd)
-- Decision record: [The Ground remains the booking source](../decisions/001-the-ground-is-the-live-source.md) and [reconstructed MVP brief](../agent-workflow/reconstructed-mvp-brief.md)
+The venue page puts the address and direction actions first, then arrival notes, a two-page map and a full-screen viewer. Desktop visitors can use the visible arrows; phone visitors can swipe the same pages. In the enlarged desktop view, the header and page controls stay in place while the portrait map scrolls independently, so its labels remain readable instead of shrinking the whole sheet to fit. When a map detail needed correction close to launch, I prepared the updated web output instead of handing the print-production task back to an organising team already focused on the event.
+
+Brand discovery continues after the visit planning rather than appearing as a separate archive. Search and theme filters lead to a short story, confirmed Instagram destination, an official website where one was verified and the relevant Guidebook spread.
+
+## Small details found on real devices
+
+- Mobile navigation keeps programme, venue and brand tasks within reach.
+- Section links land on the corresponding content in both languages.
+- Switching language preserves the reader's place instead of always returning to the top.
+- Horizontal image rails show that more content can be swiped and do not create page-level overflow.
+- Empty searches suggest another action; unavailable programme data keeps an honest route to The Ground instead of showing invented sessions.
+- The map has an in-page view, full-screen controls and a text alternative.
+
+## How I checked the finished route
+
+I reviewed the journey in mobile Chromium, iPhone/WebKit and desktop Chromium. Checks covered section links, touch targets, keyboard use, language switching, horizontal overflow, external links and automated accessibility scans. I also used the LAN build on a physical phone while iterating, because a desktop responsive frame did not reveal every spacing or swipe problem.
+
+![A laptop-and-iPhone composition of the English Wellness Village homepage, using real production captures framed by Chrome and compact Safari chrome.](../media/portfolio-hero.png)
+
+The portfolio frame is only presentation; the screens inside it are captures of the delivered interface.
+
+Next: [how The Ground listings became a programme](04-the-ground-event-interface.md) · [guided-home implementation](../../src/features/home/) · [bilingual routes](../../src/app/)

@@ -1,0 +1,23 @@
+flowchart TB
+    ROUTES["Production routes served<br/>robots.txt + 12 sitemap URLs"]
+    SUBMITTED["Sitemap submitted<br/>21 August 2026"]
+    REPORTS["Search Console observations<br/>Different reports and dates"]
+    DISCOVERED["Sitemap last read: 14 September<br/>12 URLs discovered"]
+    INDEXED["Indexing snapshot: 14 September<br/>6 indexed · 6 not indexed"]
+    PERFORMANCE["Search performance: 30 August–10 September (PT)<br/>362 impressions · 112 clicks"]
+    LIMITS["Interpretation boundary<br/>Not attendance, conversion<br/>or permanent coverage"]
+
+    ROUTES --> SUBMITTED --> REPORTS
+    REPORTS --> DISCOVERED
+    REPORTS --> INDEXED
+    REPORTS --> PERFORMANCE
+
+    INDEXED --> LIMITS
+    PERFORMANCE --> LIMITS
+
+    classDef technical fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef report fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef limit fill:#f7eadf,stroke:#8a5834,color:#442a18
+    class ROUTES,SUBMITTED,DISCOVERED,INDEXED technical
+    class REPORTS,PERFORMANCE report
+    class LIMITS limit

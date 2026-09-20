@@ -1,71 +1,70 @@
-# How I used an Agent without losing track of the source
+# Turning a 184-page Guidebook into usable content
 
-The Agent was useful for organising a large amount of material and speeding up repetitive work. The important part was deciding what each source could tell us before asking the Agent to write content or code.
+[**English**](02-guidebook-and-agent-workflow.md) · [繁體中文](02-guidebook-and-agent-workflow.zh-Hant.md)
 
-## Each source had a different job
+The Guidebook was designed for print, not for someone trying to find one brand on a phone. My task was to preserve the supplied stories while giving visitors a faster way to search, filter and continue to an official destination.
+
+## Giving each source one job
+
+Before asking an Agent to extract or research anything, I wrote down what each source could actually tell me:
 
 | Source | Used for | Not used for |
 | --- | --- | --- |
-| Guidebook | Brand profiles, campaign story, four themes and page ranges | Current sessions, booths, sponsorship or booking availability |
-| The Ground | Public activity times, prices, availability and registration links | Brand stories, venue operations or participation outside its listings |
+| Guidebook | Brand profiles, campaign story, four themes and page ranges | Current sessions, booths or booking availability |
+| The Ground | Public activity times, prices, availability and registration links | Brand stories or participation outside its listings |
 | Approved venue and campaign material | Address, visitor guidance, map and visual direction | Details that were not supplied or confirmed |
-| Public brand pages | Checking an official website or social account | Proving participation in the event |
+| Public brand pages | Checking a likely official website or social account | Proving participation in Wellness Village |
 
-If a detail could not be confirmed, it stayed missing, pending or unavailable. I did not ask the Agent to fill the gap with a plausible answer.
+If a fact could not be confirmed, I left it missing or returned it to the client. The Agent was not asked to make a plausible completion.
 
-## Reviewing the Guidebook
+## Finding the structure inside the Guidebook
 
-The main source was a 184-page Guidebook. I kept its file details and checksum in the private project record, rendered every page and checked the pages visually. Text extraction and OCR helped create a first pass, but I did not rely on them for brand names, headings or page boundaries.
+I rendered and visually reviewed all 184 pages. Text extraction and OCR were useful for a first pass, but headings, brand names and page boundaries were checked against the actual pages. The final map contained four themes and 48 profiles, each tied to an exact two-page range.
 
-The final structure contained four themes and 48 profiles, each covering an exact two-page range. I then represented that structure as typed content rather than copying loose text directly into page components.
+I also prepared the supplied print material for the web, including removing print-production marks from the versions used online. The profile map then became typed content rather than page-specific copy scattered through React components.
 
-## Checking official links
+![Guidebook content pipeline separating Agent-assisted candidate work, human review and automated consistency checks.](../diagrams/guidebook-content-pipeline.svg)
 
-The Agent helped collect possible first-party destinations. I reviewed those candidates before publication:
+[Inspect the Mermaid source](../diagrams/guidebook-content-pipeline.mmd)
 
-- The client confirmed the Instagram destination for all 48 profiles.
-- I added a website only when an official site or another first-party page connected the domain to the brand.
-- Directories, marketplaces, guessed domains, inactive pages and name similarity were not enough.
-- I confirmed 29 official websites. The remaining 19 profiles stayed without a website button.
+## Where the Agent helped
 
-This is why the total is shown as `29 + 19 = 48`. “No website button” only describes what I could confirm at the time; it is not a judgement about the brand.
+The Agent was most useful when the task had a named input and an output I could inspect. I used it to:
 
-## Turning the checked content into code
+- turn page observations into a candidate profile map;
+- organise possible first-party links for review;
+- draft structured content, code and tests from the checked decisions;
+- compare counts, page ranges and publication states; and
+- refactor or document the implementation after the behaviour was understood.
 
-The private production content recorded the profile, theme, Guidebook page range, bilingual presentation, public destinations and whether each item was ready to publish. Tests checked the profile count, theme distribution, two-page mapping, URL format, duplicate records and link status.
+That shortened repetitive work, but it did not remove the review step. When the source changed, I updated the content, code, tests and documentation together.
 
-These tests did not decide whether a brand fact was true. They made sure the reviewed content was represented consistently in the application.
+## What I checked myself
 
-## What this public repository can show
+The client confirmed the Instagram destination for all 48 profiles. For official websites, I reviewed the Agent's candidates and added a link only when a first-party page connected the domain to the brand. A directory, marketplace, guessed domain, inactive page or similar name was not enough.
 
-The original profile names, links, Guidebook copy and production repository remain private. Instead, this portfolio includes an [anonymised audit](../../src/content/guidebook-audit.ts) with all 48 page mappings, four anonymous theme IDs and the `48 / 29 / 19` link totals. The [public tests](../../src/content/guidebook-audit.test.ts) check those numbers and also check that no real URL or social handle is present.
+The final result was:
 
-This makes the counts reviewable without republishing the client material.
+- **48** Guidebook profiles with client-confirmed Instagram destinations;
+- **29** profiles with an independently checked official website; and
+- **19** profiles with no website button rather than a guessed destination.
 
-## Reviewing Agent output
+“No website button” describes what I could verify at the time; it is not a judgement about the brand.
 
-The working loop was straightforward:
+## From reviewed content to visitor interface
 
-1. list the material available for the task;
-2. note what each source covered;
-3. turn confirmed details into structured content;
-4. give the Agent a small, specific piece of work;
-5. review the result against the product, privacy and failure cases;
-6. run tests, browser checks and builds; and
-7. keep unresolved questions separate from completed work.
+The website could now offer search, theme filters and a direct route into the relevant Guidebook spread. Automated checks covered the profile count, four-theme distribution, two-page mapping, URL format, duplicate records and publication state. Those tests checked whether my reviewed decisions were represented consistently; they did not decide whether a brand fact was true.
 
-The Agent could suggest, extract, research, code and challenge an approach. It could not confirm a client fact, approve personal-data handling or decide to release the site.
+The Guidebook was not limited to one menu item. Three broad prompts on the homepage lead to an introduction where a visitor can choose the fast web reader or the complete PDF. Featured stories and brand cards keep their page context and open the matching spread directly. Inside the reader, visitors can enter any page from 1 to 184, move by spread, download the PDF or return to the brand summaries.
 
-The first home-server MVP on 5 August was the start of this review loop. During the following two weeks I added the current Guidebook and design material, The Ground integration, client UX feedback, privacy controls and production setup. The [delivery timeline](delivery-timeline.md) shows those stages.
+![Guidebook entry and reading flow, from six site entry points to the landing page or a matching spread.](../diagrams/guidebook-entry-and-reading-flow.svg)
 
-## About the example MVP brief
+[Inspect the Mermaid source](../diagrams/guidebook-entry-and-reading-flow.mmd) · [Watch the reader walkthrough](../media/guidebook-journey-walkthrough.mp4)
 
-The original first prompt is not preserved in the private Git history. The public [MVP brief](../agent-workflow/reconstructed-mvp-brief.md) was written afterwards from the delivered requirements, then edited to remove private details. It is an example of how the first slice could be scoped, not a transcript and not a claim that one prompt built the finished site.
+The public repository retains an [anonymised 48-profile audit](../../src/content/guidebook-audit.ts) as a historical record, separate from the four fictional brand profiles in the runnable demo. Its [tests](../../src/content/guidebook-audit.test.ts) retain the counts and page-mapping rules while checking that no real URL or social handle appears. The demo explains the Guidebook workflow but does not include the production reader or page archive.
 
-## Related material
+## About the example Agent brief
 
-- Public audit: [anonymised Guidebook counts](../../src/content/guidebook-audit.ts)
-- Tests: [count, page-range, link-status and identity-removal checks](../../src/content/guidebook-audit.test.ts)
-- Diagram: [Guidebook content flow](../diagrams/guidebook-content-pipeline.svg) and [Mermaid source](../diagrams/guidebook-content-pipeline.mmd)
-- Decision: [how Guidebook content was used](../decisions/004-guidebook-content-boundaries.md)
-- Working notes: [Agent workflow](../agent-workflow/working-with-an-agent.md)
+The original first prompt was not preserved in private Git history. The public [reconstructed MVP brief](../agent-workflow/reconstructed-mvp-brief.md) was written afterwards from the delivered requirements and redacted for this portfolio. It shows how I would scope the first slice; it is not a transcript or a claim that one prompt produced the finished website.
+
+Next: [what changed after I tested the journey on a phone](03-visitor-journey.md) · [the full Agent working method](../agent-workflow/working-with-an-agent.md) · [Guidebook content decision](../decisions/004-guidebook-content-boundaries.md)

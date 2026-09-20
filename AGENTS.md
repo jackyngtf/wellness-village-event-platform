@@ -84,5 +84,6 @@ Report only checks that were actually run. Requests are not visitors, page views
 - Keep `README.md` as the short English overview. Keep `README.zh-Hant.md` as a formal written Traditional Chinese version that reads naturally in Hong Kong and Taiwan.
 - Match the meaning, main sections, diagrams, media and limitations across both languages; do not translate technical names when that would make them less precise.
 - Use unsuffixed English files and `-zh-Hant` for Traditional Chinese files. The production route `/zh-hk` does not change that documentation tag.
+- From a `-zh-Hant.md` page, link to the `-zh-Hant` partner whenever one exists. Code, tests, JSON, media, Mermaid sources and external references may remain shared or language-neutral.
 - Say when a prompt, timeline or diagram was reconstructed after the project. Do not present edited material as a verbatim record.
 - Keep dates and scopes beside traffic, cost and Search Console figures. Do not turn an account-level number into a project number or publish lead volume.

@@ -1,84 +1,48 @@
-# Lessons and limitations
+# What I would keep and change next time
 
-## What I can and cannot say about the result
+[**English**](09-lessons-and-limitations.md) · [繁體中文](09-lessons-and-limitations.zh-Hant.md)
 
-Different records answer different questions:
+This was a short event project, not a controlled product study. The most useful retrospective is therefore practical: which choices helped me deliver, and what information would make the next edition easier to evaluate?
 
-| Question | What I have | What is still missing |
-| --- | --- | --- |
-| Was the site delivered against the recorded dates? | Timestamped project records, the cleaned-up timeline and the domain registration date | A reliable measure of how much time Agent assistance saved |
-| Did the defined content, date, privacy and failure cases work? | Typed data, automated tests, builds, browser checks, accessibility checks and dry runs | Coverage of every real-world condition or permanent availability of external services |
-| What happened after launch? | Cloudflare traffic and billing, the domain invoice, production endpoints and Search Console | Unique visitor, attendance, booking, revenue and ROI data |
-| Did the website improve comprehension or satisfaction? | No controlled baseline or user study | A comparison with the original Guidebook and The Ground experience |
+## What I would keep
 
-The project can support a strong delivery and engineering story. It cannot support a claim that the website increased attendance, conversion or business return.
+### Start with a reviewable vertical slice
 
-## Things I would keep for another project
+The home-server MVP gave the client a page to open and discuss before the production domain existed. I would use the same approach again: make the riskiest part of the experience concrete early, while keeping the difference between “ready to review” and “ready to launch” clear.
 
-### Give the Agent smaller jobs with a named source
+### Give the Agent small jobs with a named source
 
-A long prompt did not remove the need to check the Guidebook, The Ground or a client decision. The Agent was most useful when I gave it one task, the relevant source and a clear check for completion.
+A long prompt did not remove the need to check the Guidebook, The Ground or a client decision. The Agent was most useful when it received one bounded task, the relevant material and a visible completion check. Product judgement, ambiguous facts, privacy and release stayed with me.
 
-### Make an early version easy to review
+### Let each external system keep one job
 
-The home-server preview let the client react to a working page before the production domain existed. It was useful because it started a concrete conversation, not because a home server was the final hosting choice.
+The Ground kept the changing programme and booking flow. Google Sheets was the intentionally small contact destination for a first edition with modest expected volume and an uncertain future workflow. Cloudflare Queue joined the public form to the private consumer. This avoided maintaining duplicate schedules or introducing a larger datastore before it was needed.
 
-### Let each external system keep its job
+### Test the journey on real devices
 
-The Ground kept the current schedule and booking flow. Google Sheets remained the client's contact list. Cloudflare Queue connected the contact form to the Sheet. The website improved how people found information without trying to replace those systems.
+The physical-phone review exposed the placement of before-you-go guidance, swipe affordance, spacing and language-switch behaviour more clearly than a desktop responsive frame. Automated checks remained useful, but they complemented rather than replaced that review.
 
-### Plan for failure even on a short campaign
+### Prepare failure states before the event
 
-A campaign site can still expose credentials, show old information or lose a form submission. Request limits, runtime checks, timeouts, a recent programme snapshot, stable IDs, retries, duplicate checks and a dead-letter Queue were reasonable safeguards for this project.
-
-### Edit a public portfolio instead of publishing private history
-
-The public repository is not a copy of the production repo. It contains selected code, synthetic fixtures, approved media and enough documentation to understand the work. Private messages, credentials, personal data and restricted source assets stay out.
-
-### Keep traffic, billing and outcomes separate
-
-Edge requests, HTML responses, Worker calls, included usage and invoices describe different parts of the system. The useful cost result is that the observed usage stayed within the included quantities shown for the billing period—not that the project was free.
+Timeouts, response limits, a recent programme copy, stable submission IDs, retries, duplicate checks and a dead-letter Queue gave the short campaign sensible boundaries. I would still keep an operator responsible for retention, withdrawal requests and failed-message recovery.
 
 ## What I would add next time
 
-1. **Short task-based tests before launch.** Ask first-time visitors to explain the event, find a suitable activity, check whether booking is needed and locate arrival guidance. Record completion, time and points of confusion.
-2. **Privacy-conscious journey counts.** Count programme views, outbound links to The Ground and accepted contact submissions without placing form values in analytics. Decide the denominator and consent basis before launch.
-3. **Content-update timing.** Record how long a programme correction takes to appear and how often an update needs client clarification. Brand profiles would remain fixed Guidebook content unless the client requested an editorial change.
-4. **Longer-term performance data.** If the site stays online long enough, review field Core Web Vitals rather than treating lab checks as real-user results.
-5. **A second reviewer.** Ask another designer, accessibility reviewer or engineer to repeat the main visitor tasks and selected technical checks.
+1. **Short task tests before launch.** Ask several first-time visitors to explain the event, find an activity, check booking and locate arrival guidance. Record completion, time and points of confusion.
+2. **Privacy-conscious journey counts.** Define programme views, outbound booking clicks and accepted contact submissions before launch, including the denominator and consent basis, without sending form values to analytics.
+3. **An update-time measure.** Record how long a programme correction takes to appear and how often the team has to clarify it. Fixed Guidebook profiles would still change only through an editorial decision.
+4. **A second reviewer.** Ask another designer, accessibility reviewer or engineer to repeat the main visitor tasks and selected release checks.
+5. **Longer-lived performance data.** If the site remains online long enough, review field Core Web Vitals rather than treating lab checks as real-user results.
 
-These are ideas for a future event, not results being added to this one after the fact.
+## Where this design stops
 
-## Limits of this case study
+| Area | Current boundary | When to reconsider it |
+| --- | --- | --- |
+| **The Ground** | A limited public-catalogue integration with a short in-memory fallback, not a formal partner API | Agree access, polling and content-reuse terms for a long-term commercial integration |
+| **Google Sheets** | A small, single-writer destination with at-least-once Queue delivery and operational duplicate checks | Move uniqueness and concurrent writes into a transactional datastore when volume or workflow grows |
+| **Public portfolio** | Selected code, synthetic fixtures and approved media; no private history, personal data, credentials or restricted source material | Reconfirm rights and redaction whenever new material is added |
+| **Measurement** | Dated delivery, traffic, billing and Search Console records, but no attendance, conversion, productivity, SLA or ROI study | Decide success measures and collection method before the next launch |
 
-### External services
+The available records are enough to describe what I built, how the main paths behaved and what the production services recorded. I do not use them to claim that the website caused higher attendance, conversion or commercial return.
 
-- The Ground integration used a public endpoint, not a formal partner API documented here.
-- The recent in-memory programme copy only covers a short upstream interruption.
-- Google Sheets suits this small, single-writer workflow; it is not a transactional application database.
-- Cloudflare Queue can deliver more than once. Stable IDs and duplicate checks reduce ordinary duplicates but do not create distributed exactly-once delivery.
-- Sheet retention, withdrawal requests, monitoring and dead-letter recovery still need a person to operate them.
-
-### Public portfolio
-
-- The screenshots and videos show the delivered interface, but the campaign imagery remains within the approved portfolio scope.
-- The example MVP brief was written after the project. It is not the original first prompt.
-- The public timeline is based partly on private project messages. Names, quotations, attachments and message screenshots remain private.
-- The event URL may be retired; the repository media and synthetic demo are the lasting record.
-
-### Metrics
-
-- Cloudflare requests and page responses include crawlers and threats and do not count people or attendance. Some Worker analytics may be sampled.
-- The Cloudflare bill is account-level and can include other work. It showed no usage charge for the captured billing period but is not a project-only invoice.
-- The first-year Porkbun domain registration is a direct project cost; future renewal pricing is not included.
-- Search Console uses Pacific Time for performance dates. The selected dates match the 12 event calendar dates but not the exact HKT hours.
-- The 6-of-12 indexing figure is a 14 September snapshot, and there was not enough 90-day field data for a Core Web Vitals result.
-- The project did not retain conversion, productivity, SLA or ROI measurements.
-
-## Related material
-
-- Implementation: [public Agent instructions](../../AGENTS.md) and [public release checklist](../agent-workflow/release-checklist.md)
-- Tests: [application checks](../../src/) and [contact-consumer checks](../../workers/contact-sheet-consumer/)
-- Diagrams: [diagram index](../diagrams/README.md)
-- Traffic and search: [Cloudflare and cost](07-production-economics-and-observability.md) and [Search Console](08-search-discoverability.md)
-- Decisions: [The Ground](../decisions/001-the-ground-is-the-live-source.md), [Workers](../decisions/002-workers-not-static-pages.md), [Queue before Sheets](../decisions/003-queue-before-google-sheets.md) and [Guidebook content](../decisions/004-guidebook-content-boundaries.md)
+Reference notes: [delivery record](delivery-timeline.md) · [traffic and cost](07-production-economics-and-observability.md) · [search discovery](08-search-discoverability.md) · [implementation map](10-evidence-index.md) · [architecture decisions](../decisions/README.md)

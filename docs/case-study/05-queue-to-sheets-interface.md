@@ -1,40 +1,56 @@
-# How the contact form reaches Google Sheets
+# Keeping lead capture simple without exposing Google credentials
 
-## Why I did not add a database
+[**English**](05-queue-to-sheets-interface.md) · [繁體中文](05-queue-to-sheets-interface.zh-Hant.md)
 
-The client already used Google Sheets and only needed a small contact form, so I did not add a CRM or application database. Cloudflare Queue carries accepted submissions to a separate Worker; it is not used as long-term storage. This keeps Google credentials and Google response time out of the public website request.
+Wellness Village needed a way for interested visitors to leave their details. It did not yet need a customer database. This was the event's first edition, expected volume was modest and the organiser had not decided what a later event or longer-term contact workflow would look like.
 
-## Checks before the form body is read
+## Why Google Sheets fitted the first edition
 
-Before reading a submitted body, the route checks that contact collection is enabled, the privacy-notice version matches, Turnstile is configured, the Queue binding exists and both rate limiters are available. These configuration checks do not consume rate-limit quota. If any required setting is missing, the route stops without processing the submitted personal data.
+Google Sheets was a project choice, not an existing client process. I considered Firebase and Supabase, then chose the smaller operating surface while the future workflow was still uncertain.
 
-The public portfolio keeps contact collection off by default and does not render the form. The code can still be run and tested without collecting data from portfolio visitors.
+| Option | How I assessed it for this release |
+| --- | --- |
+| **Google Sheets** | A small, single-writer list was enough for the expected volume. It was easy to inspect and hand over, with no separate application datastore to operate. |
+| **Firebase or Supabase** | Either could support richer queries and future product features, but would require earlier decisions about data modelling, access and ongoing operation before those needs were known. |
 
-After those gates, the route:
+Setup, maintenance and likely cost all mattered, but I did not keep a like-for-like historical price comparison. The decision was about proportionality, not a claimed dollar saving. If the volume, workflow or later editions become more demanding, the datastore should be reconsidered.
 
-1. requires JSON;
-2. applies a coarse pre-verification rate limit;
-3. reads at most 8 KiB, including streamed bodies;
-4. applies a strict Zod schema for the UUID, names, email, phone, locale, literal consent, Turnstile token and honeypot, rejecting extra fields;
-5. verifies Turnstile server-side;
-6. applies the shared post-verification rate limit; and
-7. gives a filled honeypot the same `202 Accepted` response without placing it on the Queue.
+## Separating the public form from Google
 
-The form creates one stable UUID for a logical submission and reuses it after a failed attempt until acceptance. The website adds server-side UTC and Hong Kong timestamps and retains only a same-origin pathname—never its query string or fragment—as source metadata.
+I did not let the browser write directly to a Sheet. The public website validates the request and places an accepted internal message on Cloudflare Queue. A separate private Worker owns the Google credentials, reads the Queue and appends a row only when the submission ID is not already present.
+
+![A contact submission passing validation and Turnstile before Cloudflare Queue hands it to a private consumer that appends an unseen ID to Google Sheets.](../diagrams/queue-to-sheets-sequence.svg)
+
+[View the Mermaid source](../diagrams/queue-to-sheets-sequence.mmd)
+
+This arrangement keeps Google response time out of the visitor request and Google credentials out of the browser and main website Worker. The Queue is a delivery buffer, not long-term lead storage.
+
+## From the browser to the Queue
+
+Before the route reads personal data, it checks that contact collection, the approved privacy-notice version, Turnstile, the Queue binding and both rate limiters are configured. Missing configuration stops the route before it processes the form.
+
+An enabled request then passes a body-size limit, strict schema, honeypot, server-side Turnstile check and two-stage rate limiting. Extra fields are rejected. The server adds UTC and Hong Kong timestamps and retains only a same-origin pathname as source metadata—never its query string or fragment.
+
+The public portfolio keeps contact collection off and does not render the form, so readers can run the demo without collecting anyone's details.
 
 ## What `202 Accepted` means
 
-For a genuine submission, the website creates the small internal message, waits for Queue acceptance and then returns `202 Accepted`. A filled honeypot receives the same public response but is not queued. The response therefore does not reveal the anti-spam result, and it does not mean that Google Sheets has already written a row.
+For a genuine submission, the route waits until Cloudflare Queue accepts the message and then returns `202 Accepted`. A filled honeypot receives the same public response but is not queued, so the response does not reveal the anti-spam decision.
 
-## The 14 columns written to the Sheet
+`202` does **not** mean that Google Sheets has already written a row. The private consumer completes that work asynchronously.
 
-A separate consumer Worker has no public route. Only that Worker receives the Google service-account credentials, destination spreadsheet ID and fixed append range. It validates the exact field set and order before using the `A:N` Sheet contract:
+## From the Queue to one Sheet row
+
+The consumer has no public route. It validates the exact internal message, obtains a Sheets-scoped OAuth token and checks column A for the stable submission ID. It collapses duplicate IDs within the same batch, skips IDs already present and appends unseen rows with `valueInputOption=RAW`, so visitor text is not interpreted as a formula.
+
+<details>
+<summary><strong>The 14-column Sheet contract</strong></summary>
 
 | Column | Field | Purpose |
 | --- | --- | --- |
-| A | `submission_id` | Stable logical UUID and deduplication key |
+| A | `submission_id` | Stable UUID and deduplication key |
 | B | `submitted_at_utc` | Server timestamp in UTC |
-| C | `submitted_at_hkt` | The same instant with explicit Hong Kong offset |
+| C | `submitted_at_hkt` | The same instant with Hong Kong offset |
 | D | `last_name` | Validated surname |
 | E | `first_name` | Validated given name |
 | F | `display_name` | Locale-aware derived display name |
@@ -47,27 +63,14 @@ A separate consumer Worker has no public route. Only that Worker receives the Go
 | M | `purpose` | Fixed approved processing purpose |
 | N | `marketing_opt_in` | Literal `true` for this contract |
 
-The consumer obtains a Sheets-scoped OAuth token, reads column A, collapses duplicate IDs within the current batch and acknowledges IDs already present. It appends only unseen rows with `valueInputOption=RAW`, preventing formula interpretation of visitor-entered values, and acknowledges those messages only after the append is confirmed.
+</details>
 
-## Retries and duplicate checks
+## Retries, duplicates and the point to outgrow this design
 
-Cloudflare Queues deliver at least once. A transient OAuth or Sheets failure retries the unconfirmed messages; exhausted messages move to a dead-letter Queue for controlled operator recovery. If a Sheets append commits but its response is lost, the retry reads column A and can recognise the stable ID before another append.
+Cloudflare Queues deliver at least once. A transient Google failure retries the unconfirmed message; exhausted messages go to a dead-letter Queue for operator review. If an append succeeds but its response is lost, the retry can recognise the stable ID before another append.
 
-For ordinary retries, this design should settle on one row, but it is not distributed exactly-once delivery. Reading before appending is also not a general transaction system, so the consumer stays as a single writer. Monitoring, Sheet retention, withdrawal requests and dead-letter recovery still need an operator. Logs contain event names, counts and upstream status, not form values or credentials.
+This should make ordinary retries settle on one row, but it is not distributed exactly-once delivery. The read-before-append check assumes one consumer writing to one Sheet, so `max_concurrency` remains `1`. A higher-volume or multi-writer workflow should move uniqueness into a transactional datastore rather than scaling this pattern sideways.
 
-Cloudflare generally recommends allowing Queue consumers to autoscale. This example sets `max_concurrency: 1` because its duplicate check assumes one writer to one Sheet. A higher-volume system should enforce uniqueness in a transactional datastore rather than adding more concurrent writers to this pattern.
+Logs contain event names, counts and upstream status—not form values or credentials. Retention, withdrawal requests, monitoring and dead-letter recovery still require an operator.
 
-## Privacy safeguards
-
-- Google credentials exist only in the consumer Worker.
-- Personal fields and message bodies are excluded from logs.
-- The native form remains fail-closed without the approved privacy notice, Turnstile configuration, both rate-limiter bindings, Queue binding and consumer configuration. The binding preflight happens before the body is read; actual pre-IP quota is consumed before the body, and post-verification quota is consumed only after successful Turnstile verification.
-- The destination Sheet is append-only during normal ingestion; retention and withdrawal are controlled operational processes.
-
-## Related code and notes
-
-- Implementation: [public schemas and Queue producer](../../src/features/interest/), [API route](../../src/app/api/interest/) and [private consumer](../../workers/contact-sheet-consumer/)
-- Tests: [route and producer tests](../../src/features/interest/), [API boundary tests](../../src/app/api/interest/) and [Worker-runtime consumer tests](../../workers/contact-sheet-consumer/src/)
-- Operations: [consumer setup, secret boundary and verification](../../workers/contact-sheet-consumer/README.md)
-- Diagram: [Queue-to-Sheets sequence SVG](../diagrams/queue-to-sheets-sequence.svg) and [Mermaid source](../diagrams/queue-to-sheets-sequence.mmd)
-- Decision record: [Queue submissions before Google Sheets](../decisions/003-queue-before-google-sheets.md)
+Next: [how the site launched on Cloudflare](06-cloudflare-delivery.md) · [producer and route](../../src/features/interest/) · [private consumer](../../workers/contact-sheet-consumer/) · [architecture decision](../decisions/003-queue-before-google-sheets.md)

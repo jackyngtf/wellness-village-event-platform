@@ -1,0 +1,30 @@
+flowchart TB
+    SOURCES["1. Identify the sources"]
+    BOUNDARIES["2. Define ownership<br/>and limits"]
+    STRUCTURE["3. Structure checked<br/>content"]
+    SLICE["4. Build a small<br/>reviewable slice"]
+    INTEGRATE["5. Strengthen external<br/>integrations"]
+    VERIFY["6. Verify each result<br/>with the right method"]
+    PUBLIC["7. Prepare a separate<br/>public edition"]
+
+    AGENT["Agent assistance<br/>Extract · research · draft · refactor · test"]
+    HUMAN["Human decisions<br/>Source authority · client facts · privacy · release"]
+    CHECKS["Observable checks<br/>Visual review · tests · browser · build · dated records"]
+
+    SOURCES --> BOUNDARIES --> STRUCTURE --> SLICE --> INTEGRATE --> VERIFY --> PUBLIC
+    VERIFY -.->|Unresolved or unsupported| BOUNDARIES
+
+    AGENT -.-> STRUCTURE
+    AGENT -.-> INTEGRATE
+    HUMAN -.-> BOUNDARIES
+    HUMAN -.-> PUBLIC
+    CHECKS -.-> VERIFY
+
+    classDef process fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef agent fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef human fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef checks fill:#f0eef5,stroke:#675b79,color:#312a3a
+    class SOURCES,BOUNDARIES,STRUCTURE,SLICE,INTEGRATE,VERIFY,PUBLIC process
+    class AGENT agent
+    class HUMAN human
+    class CHECKS checks

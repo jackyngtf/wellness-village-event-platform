@@ -1,0 +1,38 @@
+flowchart TB
+    INDEX["Story index<br/>Choose the shortest useful route"]
+
+    CLIENT["Prospective client"]
+    HIRING["Hiring reader"]
+    ENGINEER["Engineer"]
+    AGENT["Agent-workflow reader"]
+
+    CLIENT_STORY["Role and delivery<br/>Visitor journey"]
+    CLIENT_RECORD["Traffic and cost<br/>What I would change"]
+
+    HIRING_STORY["Role and delivery<br/>Delivery record"]
+    HIRING_RECORD["Agent workflow<br/>Implementation map"]
+
+    ENGINEER_STORY["The Ground · Queue to Sheets<br/>Cloudflare delivery"]
+    ENGINEER_RECORD["Architecture decisions<br/>Implementation map"]
+
+    AGENT_STORY["Agent working method<br/>Guidebook story"]
+    AGENT_RECORD["Reconstructed MVP brief<br/>Public release checklist"]
+
+    INDEX --> CLIENT
+    INDEX --> HIRING
+    INDEX --> ENGINEER
+    INDEX --> AGENT
+
+    CLIENT --> CLIENT_STORY --> CLIENT_RECORD
+    HIRING --> HIRING_STORY --> HIRING_RECORD
+    ENGINEER --> ENGINEER_STORY --> ENGINEER_RECORD
+    AGENT --> AGENT_STORY --> AGENT_RECORD
+
+    classDef index fill:#f7eadf,stroke:#8a5834,color:#442a18
+    classDef reader fill:#e4f1f7,stroke:#356a7d,color:#16333d
+    classDef story fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef record fill:#f0eef5,stroke:#675b79,color:#312a3a
+    class INDEX index
+    class CLIENT,HIRING,ENGINEER,AGENT reader
+    class CLIENT_STORY,HIRING_STORY,ENGINEER_STORY,AGENT_STORY story
+    class CLIENT_RECORD,HIRING_RECORD,ENGINEER_RECORD,AGENT_RECORD record

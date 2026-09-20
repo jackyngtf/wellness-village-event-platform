@@ -1,12 +1,16 @@
 # ADR 003: Put a Queue before Google Sheets
 
+[**English**](003-queue-before-google-sheets.md) · [繁體中文](003-queue-before-google-sheets.zh-Hant.md)
+
 ## Status
 
 Used in the delivered website.
 
 ## Context
 
-The client wanted selected contact-form fields in an existing Google Sheet without adding an application database. Writing to the Sheet during the public request would make visitors wait for Google and would place broader credentials in the website runtime.
+Wellness Village was a first edition with modest expected contact volume and no settled long-term data workflow. I considered Firebase and Supabase, then chose a Google Sheet as the initial destination rather than introduce a general-purpose application database before the future requirement was known. The Sheet was a project decision, not an existing client workflow.
+
+Writing to the Sheet during the public request would make visitors wait for Google and would place broader credentials in the website runtime.
 
 ## Decision
 
@@ -19,6 +23,7 @@ After checking privacy settings, configuration, Turnstile and the schema, the we
 - Cloudflare Queue delivery remains at-least-once. Same-batch collapse and read-before-append deduplication provide idempotent convergence for ordinary retries without claiming distributed exactly-once delivery.
 - Transient failures retry; exhausted messages move to a dead-letter Queue for controlled recovery.
 - Monitoring, retention, withdrawal requests, duplicate handling and dead-letter recovery still need an operator.
+- The Sheet remains a small, single-writer destination. Multiple writers, transactional uniqueness, relational queries or materially higher volume would be reasons to revisit Firebase, Supabase or another datastore.
 
 ## References
 

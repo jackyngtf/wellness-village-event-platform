@@ -143,6 +143,36 @@ describe("The Ground public schema and normalizer", () => {
     ).not.toThrow();
   });
 
+  it.each([
+    ["2000-01-01T00:00:00Z", "2100-01-01T00:00:00Z"],
+    ["2028-01-01T12:00:00+08:00", "2029-01-01T04:00:00.001Z"],
+  ])(
+    "rejects upstream windows beyond 366 elapsed days (%s to %s)",
+    (startDate, endDate) => {
+      expect(() =>
+        theGroundEventPageSchema.parse(
+          providerPage(providerEvent({ startDate, endDate })),
+        ),
+      ).toThrow(/366/);
+    },
+  );
+
+  it.each([
+    "2029-01-01T04:00:00Z",
+    "2029-01-01T03:59:59.999Z",
+  ])("accepts the leap-year duration boundary ending at %s", (endDate) => {
+    expect(() =>
+      theGroundEventPageSchema.parse(
+        providerPage(
+          providerEvent({
+            startDate: "2028-01-01T12:00:00+08:00",
+            endDate,
+          }),
+        ),
+      ),
+    ).not.toThrow();
+  });
+
   it("requires provider organisation membership and bounds public location labels", () => {
     const missingCompany = Object.fromEntries(
       Object.entries(providerEvent()).filter(([key]) => key !== "companyId"),

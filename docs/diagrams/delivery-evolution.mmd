@@ -3,13 +3,15 @@ flowchart LR
     MVP["5 Aug<br/>Home-server MVP"]
     ITERATE["12–19 Aug<br/>Data + UX reviews"]
     RELEASE["20 Aug<br/>Working public production release"]
+    HARDEN["27 Aug<br/>Error 1102 · Workers Paid + CPU reduction"]
     OPERATE["30 Aug–10 Sep<br/>Event operation and support"]
     EVIDENCE["18 Sep<br/>Post-event metrics captured"]
 
     BRIEF --> MVP
     MVP --> ITERATE
     ITERATE --> RELEASE
-    RELEASE --> OPERATE
+    RELEASE --> HARDEN
+    HARDEN --> OPERATE
     OPERATE --> EVIDENCE
 
     classDef planning fill:#f2efe8,stroke:#6d6250,color:#332e27
@@ -18,5 +20,5 @@ flowchart LR
     classDef evidence fill:#f0eef5,stroke:#675b79,color:#312a3a
     class BRIEF planning
     class MVP,ITERATE preview
-    class RELEASE,OPERATE delivery
+    class RELEASE,HARDEN,OPERATE delivery
     class EVIDENCE evidence

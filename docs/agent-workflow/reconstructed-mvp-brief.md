@@ -1,5 +1,7 @@
 # Reconstructed brief for the first MVP
 
+[**English**](reconstructed-mvp-brief.md) · [繁體中文](reconstructed-mvp-brief.zh-Hant.md)
+
 > I wrote this example after the project by working back from the delivered requirements. It is edited, removes private details and is not the original first prompt. It also does not mean that one prompt produced the finished website.
 
 The first reviewable MVP went onto my home server on 5 August 2026, before the production domain was purchased. This brief shows the intended scope of that first slice. The [delivery timeline](../case-study/delivery-timeline.md) covers the reviews, integrations and production work that followed.

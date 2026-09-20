@@ -1,26 +1,41 @@
-# Case study
+# The story behind the build
 
-The main [README](../../README.md) is the five-minute version. The pages below keep the implementation details, decisions and source notes for readers who want to go further.
+[**English**](README.md) · [繁體中文](README.zh-Hant.md)
 
-## Pick a route
+The main [README](../../README.md) is the five-minute version. These six chapters tell the project in the order it unfolded: a short deadline, a large amount of source material, product changes found through real-device review, two external-system interfaces and a production incident before the event opened.
 
-- **Hiring manager or recruiter:** read [Project in one minute](../../README.md#project-in-one-minute), [What I built](../../README.md#what-i-built) and [What I observed after launch](../../README.md#what-i-observed-after-launch). The [delivery timeline](delivery-timeline.md) has the fuller ownership story.
-- **Client or event organiser:** start with the [visitor journey](03-visitor-journey.md), then see how the site works with [The Ground](04-the-ground-event-interface.md) and [Google Sheets](05-queue-to-sheets-interface.md).
-- **Engineer:** open the [system diagram](../diagrams/system-overview.svg), then use the [decision records](../decisions/) and [code-and-test index](10-evidence-index.md).
-- **Interested in the Agent workflow:** read [how I handled the Guidebook and Agent work](02-guidebook-and-agent-workflow.md), the [reconstructed MVP brief](../agent-workflow/reconstructed-mvp-brief.md) and the [timeline](delivery-timeline.md) together.
+## Six chapters
 
-## Chapters
+| Chapter | What it covers |
+| --- | --- |
+| [1. A deadline, scattered inputs and one developer](01-context-and-role.md) | The starting point, my role, the client relationship and what reached launch |
+| [2. Turning a 184-page Guidebook into usable content](02-guidebook-and-agent-workflow.md) | How I divided the source material, used an Agent for bounded work and checked 48 brand profiles |
+| [3. What changed after testing the journey on a phone](03-visitor-journey.md) | The homepage-to-programme path, before-you-go guidance, venue map and bilingual details |
+| [4. Using The Ground without rebuilding booking](04-the-ground-event-interface.md) | How organisation-scoped listings became date, status and category views while registration stayed upstream |
+| [5. Keeping lead capture simple without exposing Google credentials](05-queue-to-sheets-interface.md) | Why the first edition used Google Sheets, and how Queue delivery separated the public form from Google |
+| [6. Launching on Cloudflare and handling the first incident](06-cloudflare-delivery.md) | Why the site ran on Workers, how releases were checked and what changed after Error 1102 |
 
-1. [Context, constraints and role](01-context-and-role.md)
-2. [From brief to live operation](delivery-timeline.md)
-3. [How I used an Agent without losing track of the source](02-guidebook-and-agent-workflow.md)
-4. [Visitor journey](03-visitor-journey.md)
-5. [How programme data comes from The Ground](04-the-ground-event-interface.md)
-6. [How the contact form reaches Google Sheets](05-queue-to-sheets-interface.md)
-7. [Running the site on Cloudflare](06-cloudflare-delivery.md)
-8. [Traffic, hosting and cost](07-production-economics-and-observability.md)
-9. [Search Console and indexing](08-search-discoverability.md)
-10. [Lessons and limitations](09-lessons-and-limitations.md)
-11. [Code and test index](10-evidence-index.md)
+## Choose a shorter route
 
-The chapters separate my development work from client approvals and Agent assistance. Where a claim depends on private project records or a dated dashboard, the relevant page says so rather than reproducing the private material.
+![Four reading paths through the case study for a prospective client, hiring reader, engineer or Agent-workflow reader.](../diagrams/portfolio-reader-paths.svg)
+
+[Inspect the Mermaid source](../diagrams/portfolio-reader-paths.mmd)
+
+| If you are looking for… | Start with… |
+| --- | --- |
+| **Product and client judgement** | [Role and delivery](01-context-and-role.md) → [Visitor journey](03-visitor-journey.md) → [Lessons](09-lessons-and-limitations.md) |
+| **Hands-on AI experience** | [Guidebook story](02-guidebook-and-agent-workflow.md) → [Working with an Agent](../agent-workflow/working-with-an-agent.md) → [Reconstructed MVP brief](../agent-workflow/reconstructed-mvp-brief.md) |
+| **Full-stack integration** | [The Ground](04-the-ground-event-interface.md) → [Queue to Sheets](05-queue-to-sheets-interface.md) → [Cloudflare](06-cloudflare-delivery.md) |
+| **Implementation detail** | [Implementation map](10-evidence-index.md) → [Architecture decisions](../decisions/README.md) → [Release checklist](../agent-workflow/release-checklist.md) |
+
+## Reference notes
+
+The main story stays readable; the dated and technical material sits behind it:
+
+- [Delivery record](delivery-timeline.md) — milestones from the 5 August home-server MVP to event support;
+- [Traffic and cost](07-production-economics-and-observability.md) — Cloudflare usage, the paid baseline and direct domain cost;
+- [Search discovery](08-search-discoverability.md) — sitemap, indexing and the event-aligned Search Console period;
+- [What I would keep and change](09-lessons-and-limitations.md) — practical follow-up rather than retrospective success claims; and
+- [Implementation map](10-evidence-index.md) — where the main statements connect to code, tests or a dated source note.
+
+Private messages and restricted client material remain private. Cleaned-up records are included only where they help a reader understand a date, number or technical decision.

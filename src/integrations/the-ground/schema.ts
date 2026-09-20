@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+import {
+  isSupportedTheGroundEventDuration,
+  THE_GROUND_MAX_EVENT_DURATION_DAYS,
+} from "./event-window";
+
 export const THE_GROUND_MAX_PAGE_SIZE = 50 as const;
 export const THE_GROUND_MAX_LOCATION_LENGTH = 120 as const;
 
@@ -41,11 +46,16 @@ const eventObjectSchema = z
 
 export const theGroundProviderEventSchema = eventObjectSchema.superRefine(
   (event, context) => {
-    if (Date.parse(event.endDate) <= Date.parse(event.startDate)) {
+    if (
+      !isSupportedTheGroundEventDuration(
+        Date.parse(event.startDate),
+        Date.parse(event.endDate),
+      )
+    ) {
       context.addIssue({
         code: "custom",
         path: ["endDate"],
-        message: "Event endDate must be later than startDate.",
+        message: `Event duration must be positive and no longer than ${THE_GROUND_MAX_EVENT_DURATION_DAYS} elapsed days.`,
       });
     }
   },

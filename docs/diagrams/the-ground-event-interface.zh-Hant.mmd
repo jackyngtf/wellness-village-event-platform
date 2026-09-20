@@ -10,7 +10,7 @@ flowchart TB
 
     subgraph TRUST[2. 檢查回應]
         direction LR
-        LIMITS[八秒逾時限制<br/>兩 MiB 回應大小限制]
+        LIMITS[每個請求八秒逾時限制<br/>兩 MiB 回應大小限制]
         SCHEMA[執行階段結構描述與分頁驗證]
         PUBLIC_CONTRACT[僅接納公開活動合約]
     end

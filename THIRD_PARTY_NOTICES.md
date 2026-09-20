@@ -1,15 +1,17 @@
 # Third-party notices
 
+[**English**](THIRD_PARTY_NOTICES.md) · [繁體中文](THIRD_PARTY_NOTICES.zh-Hant.md)
+
 This repository includes rendered portfolio images made with the following MIT-licensed device-frame sources. It does not include their source code or CSS.
 
 ## react-mockframe
 
-The MacBook presentation geometry in the portfolio mock-ups is derived from [`mbdev3/react-mockframe`](https://github.com/mbdev3/react-mockframe), inspected at source revision `c2e114b46cc252aedb8701d5e7b7a532b5fa2cc6`.
+The 3:2 laptop presentation shell in the portfolio mock-ups is adapted from the MacBook geometry in [`mbdev3/react-mockframe`](https://github.com/mbdev3/react-mockframe), inspected at source revision `c2e114b46cc252aedb8701d5e7b7a532b5fa2cc6`.
 
 - Licence: MIT
 - Copyright: © 2026 Mohammed Banani
 - Upstream style lineage: adapted from Marvel `devices.css`, MIT, © 2014 Marvelapp
-- Use in this repository: rendered MacBook geometry around unmodified browser captures
+- Use in this repository: rendered 3:2 laptop geometry around unmodified browser captures
 
 ## liquidframe
 

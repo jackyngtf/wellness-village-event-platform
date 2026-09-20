@@ -44,6 +44,38 @@ function result(
 }
 
 describe("bilingual programme explorer", () => {
+  it.each([
+    ["en", "HKD", 49.5, "HK$49.50"],
+    ["zh-hk", "HKD", 49.5, "HK$49.50"],
+    ["en", "JPY", 49.5, "JP¥50"],
+    ["zh-hk", "JPY", 49.5, "¥50"],
+    ["en", "KWD", 1.234, "KWD\u00a01.234"],
+    ["zh-hk", "KWD", 1.234, "KWD\u00a01.234"],
+  ] as const)(
+    "renders native %s/%s currency precision in the event card",
+    (locale, currency, amount, expected) => {
+      const paidEvent: TheGroundEvent = {
+        ...liveEvent,
+        price: {
+          kind: "paid",
+          amount,
+          currency,
+          sourceDisplay: `${amount} ${currency}`,
+        },
+      };
+      const html = renderToStaticMarkup(
+        <ProgrammeExplorer
+          locale={locale}
+          result={result("fresh", paidEvent)}
+          filters={parseProgrammeFilters({}, [paidEvent])}
+          now="2030-05-20T00:00:00.000Z"
+        />,
+      );
+
+      expect(html).toContain(`<dd>${expected}</dd>`);
+    },
+  );
+
   it("renders URL-backed controls and an external booking hand-off in English", () => {
     const filters = parseProgrammeFilters({}, [demoEvent]);
     const html = renderToStaticMarkup(

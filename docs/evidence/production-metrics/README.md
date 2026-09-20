@@ -1,5 +1,7 @@
 # Traffic and cost records
 
+[**English**](README.md) · [繁體中文](README.zh-Hant.md)
+
 This directory keeps an aggregate record of the Wellness Village website during the event dates. It lets the portfolio retain the main operational figures after the campaign URL or account dashboards are no longer available.
 
 ## Source and capture
@@ -13,7 +15,9 @@ This directory keeps an aggregate record of the Wellness Village website during 
 
 The retained JSON contains aggregate counts only. It excludes account and zone identifiers, Worker and Queue names, IP addresses, paths, query strings, user-level data, personal submissions, billing identifiers and message-level lead volumes.
 
-The second JSON file combines two separately verified cost facts without merging their scopes: the complete 12 August–11 September 2026 Cloudflare **account** billing period recorded US$0.00 in usage charges, while an authenticated Porkbun invoice recorded US$11.08 for the domain's first year. Workers Paid was active; zero usage charge is therefore not presented as zero account or project cost. Shared-account invoice totals without project-attributable line items are excluded, and abbreviated dashboard values remain explicitly labelled as rounded rather than converted into falsely precise integers.
+The second JSON file keeps three separately verified cost facts apart: Workers Paid was active and its captured rate card had a US$5 account/month minimum; the complete 12 August–11 September 2026 Cloudflare **account** billing period recorded US$0.00 in additional usage charges; and an authenticated Porkbun invoice recorded US$11.08 for the domain's first year. The US$0.00 figure is therefore not presented as zero account or project cost. Shared-account invoice totals without project-attributable line items are excluded, and abbreviated dashboard values remain explicitly labelled as rounded rather than converted into falsely precise integers.
+
+The same record notes the 27 August Error 1102 incident that led to the paid-plan baseline. The plan change and CPU-reduction work happened together; the public record does not claim that either one was the sole fix.
 
 ## Metric boundaries
 
@@ -31,6 +35,8 @@ Daily unique-IP values are not published or added together as a visitor total. T
 
 Exact Queue operation counts are retained outside this public edition because they could be used to infer confidential lead volume. The case study states only the supported rate-card position: the observed workload sat below the applicable included allowance.
 
-Account-level billing-cycle values are not used as project-specific traffic. The event-window file supplies the project-scoped analytics; the billing file supplies only the account's included-usage and overage position. The Porkbun amount is retained because its invoice directly identifies the project domain, while all identifying invoice and payment fields are removed.
+Account-level billing-cycle values are not used as project-specific traffic. The event-window file supplies the project-scoped analytics; the billing file supplies the account-plan status, included-usage and additional-charge position. The Porkbun amount is retained because its invoice directly identifies the project domain, while all identifying invoice and payment fields are removed.
 
 None of these traffic figures is presented as event attendance, registration conversion, commercial return or proof that the website caused an outcome.
+
+Continue with the [traffic, hosting and cost chapter](../../case-study/07-production-economics-and-observability.md) or inspect the [measurement-boundaries diagram](../../diagrams/production-measurement-boundaries.svg).

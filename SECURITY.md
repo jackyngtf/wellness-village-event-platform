@@ -1,5 +1,7 @@
 # Security policy
 
+[**English**](SECURITY.md) · [繁體中文](SECURITY.zh-Hant.md)
+
 This portfolio edition is a sanitised reference implementation with synthetic fixtures and disabled-by-default integrations. It is not a production security programme or an invitation to test the historical event website.
 
 ## Reporting

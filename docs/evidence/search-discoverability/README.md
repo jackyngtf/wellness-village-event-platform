@@ -1,5 +1,7 @@
 # Search and indexing records
 
+[**English**](README.md) · [繁體中文](README.zh-Hant.md)
+
 This directory keeps read-only snapshots of the production search endpoints captured on 18 September 2026:
 
 - [`robots.txt`](robots.txt) allowed public crawling, excluded `/api/` and identified the sitemap.
@@ -15,3 +17,5 @@ The submitted sitemap was last read successfully on 14 September, with 12 discov
 No property was created, no sitemap was submitted and no DNS or Search Console setting was changed during curation. Account identifiers, screenshots, permission listings and raw low-volume query rows remain excluded.
 
 See the official [Performance report](https://support.google.com/webmasters/answer/7576553?hl=en), [Performance data and aggregation](https://support.google.com/webmasters/answer/17011364?hl=en), [Sitemaps report](https://support.google.com/webmasters/answer/7451001?hl=en), [Page indexing report](https://support.google.com/webmasters/answer/7440203?hl=en) and [Core Web Vitals report](https://support.google.com/webmasters/answer/9205520?hl=en).
+
+Continue with the [Search Console and indexing chapter](../../case-study/08-search-discoverability.md) or inspect the [search-discovery lifecycle](../../diagrams/search-discovery-lifecycle.svg).

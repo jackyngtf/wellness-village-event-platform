@@ -1,5 +1,7 @@
 # Code and asset policy
 
+[**English**](ASSET_POLICY.md) · [繁體中文](ASSET_POLICY.zh-Hant.md)
+
 This repository deliberately separates software rights from documentary media, client material, third-party content and operational data.
 
 ## Software code
@@ -10,11 +12,11 @@ Do not assume permission to copy, modify, redistribute, sublicense or commercial
 
 ## Documentary portfolio media
 
-The PNG, GIF and MP4 files in `docs/media/` document the delivered bilingual interface within the client-approved portfolio scope. The application pixels are browser captures, not a generated reconstruction. Presentation layers add device and browser geometry without redrawing the captured interface.
+The PNG, GIF and MP4 files in `docs/media/` document the delivered bilingual interface within the client-approved portfolio scope. Where a visitor journey continues to a named public provider or brand page, the walkthrough may also retain a limited browser capture of that destination. The website and linked-page pixels are captures, not a generated reconstruction. Presentation layers add device and browser geometry without redrawing them.
 
-Those rendered files may be viewed as part of this case study. Their inclusion does **not** grant permission to extract, reproduce or reuse any depicted campaign artwork, brand mark, photography, font, copy or other client/third-party material. Any future software licence would not change that boundary.
+Those rendered files may be viewed as part of this case study. Their inclusion does **not** grant permission to extract, reproduce or reuse any depicted campaign artwork, provider interface, brand mark, photography, font, copy or other client/third-party material. Any future software licence would not change that boundary.
 
-The laptop frame was derived from `react-mockframe`; the iPhone geometry and compact Safari chrome were derived from `liquidframe`. Both are MIT-licensed sources and are credited in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This repository distributes rendered portfolio outputs, not either library's source or CSS. If source or CSS is added later, its complete applicable licence notice must be added at the same time.
+The 3:2 laptop frame was adapted from `react-mockframe` MacBook geometry; the iPhone geometry and compact Safari chrome were derived from `liquidframe`. Both are MIT-licensed sources and are credited in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This repository distributes rendered portfolio outputs, not either library's source or CSS. If source or CSS is added later, its complete applicable licence notice must be added at the same time.
 
 Generative image tools must not redraw or alter the product interface and then present the result as documentary evidence.
 

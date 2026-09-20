@@ -53,7 +53,6 @@ function getPriceLabel(event: DemoEvent, locale: Locale) {
   return new Intl.NumberFormat(locale === "en" ? "en-HK" : "zh-HK", {
     style: "currency",
     currency: event.price.currency,
-    maximumFractionDigits: 0,
   }).format(event.price.amount);
 }
 

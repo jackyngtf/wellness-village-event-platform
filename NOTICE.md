@@ -1,5 +1,7 @@
 # Copyright and reuse notice
 
+[**English**](NOTICE.md) · [繁體中文](NOTICE.zh-Hant.md)
+
 Copyright © 2026 Jacky Ng. All rights reserved.
 
 This public repository is a **source-available portfolio edition**. It is published so prospective clients, collaborators and employers can inspect the product thinking, selected implementation, tests and evidence behind the work.

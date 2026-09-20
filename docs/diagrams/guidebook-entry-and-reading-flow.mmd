@@ -1,0 +1,50 @@
+flowchart LR
+    subgraph ENTRY[Ways into the Guidebook]
+        direction TB
+        HOME_HERO[Home hero<br/>Explore the digital Guidebook]
+        EVENT_HIGHLIGHTS[Event highlights<br/>Explore the digital Guidebook]
+        HOME_GUIDEBOOK[Home Guidebook introduction<br/>Read or download]
+        FEATURED_STORY[Featured brand story<br/>Read the full interview]
+        BRANDS_INTRO[Brands page<br/>Begin in the Guidebook]
+        BRAND_CARD[Brand card<br/>Read their story]
+    end
+
+    subgraph ROUTES[Where each entry leads]
+        direction TB
+        LANDING[Guidebook landing page]
+        TARGETED[Matching Guidebook spread]
+    end
+
+    subgraph READING[Reading choices]
+        direction TB
+        WEB_READER[Fast web reader]
+        PDF[Download the complete PDF]
+        PAGE_JUMP[Jump to any page<br/>1–184]
+        SPREAD[Read the current spread<br/>two pages on desktop · one after another on mobile]
+        NEXT_PREVIOUS[Previous or next spread]
+        RETURN[Return to the Guidebook introduction<br/>or browse brand summaries]
+    end
+
+    HOME_HERO --> LANDING
+    EVENT_HIGHLIGHTS --> LANDING
+    HOME_GUIDEBOOK --> LANDING
+    FEATURED_STORY --> TARGETED
+    BRANDS_INTRO --> TARGETED
+    BRAND_CARD --> TARGETED
+
+    LANDING --> WEB_READER
+    LANDING --> PDF
+    TARGETED --> SPREAD
+    WEB_READER --> PAGE_JUMP
+    PAGE_JUMP --> SPREAD
+    SPREAD --> NEXT_PREVIOUS
+    NEXT_PREVIOUS --> SPREAD
+    SPREAD -.-> PDF
+    SPREAD -.-> RETURN
+
+    classDef entry fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef route fill:#f0eef5,stroke:#675b79,color:#312a3a
+    classDef reading fill:#f7eadf,stroke:#8a5834,color:#442a18
+    class HOME_HERO,EVENT_HIGHLIGHTS,HOME_GUIDEBOOK,FEATURED_STORY,BRANDS_INTRO,BRAND_CARD entry
+    class LANDING,TARGETED route
+    class WEB_READER,PDF,PAGE_JUMP,SPREAD,NEXT_PREVIOUS,RETURN reading

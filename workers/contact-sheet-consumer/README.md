@@ -1,8 +1,14 @@
 # Contact-to-Sheets consumer
 
+[**English**](README.md) · [繁體中文](README.zh-Hant.md)
+
 This standalone Cloudflare Worker shows the private half of the contact-form flow. For a genuine submission, the website returns `202 Accepted` only after Cloudflare Queue accepts the message. A honeypot receives the same response without being added to the Queue. The consumer then checks the exact 14-field message, requests a Sheets-only Google OAuth token, reads column A for existing submission IDs and appends unseen rows to `A:N` with `valueInputOption=RAW`.
 
-This avoids adding a general-purpose application database to a small workflow; it does not remove persistence. Cloudflare Queue carries the message asynchronously, and Google Sheets remains the client's working destination.
+This avoids adding a general-purpose application database to a small first-edition workflow; it does not remove persistence. Cloudflare Queue carries the message asynchronously, and Google Sheets is the selected working destination.
+
+![Sequence from the public form through validation, Turnstile and Cloudflare Queue to the private consumer and Google Sheets.](../../docs/diagrams/queue-to-sheets-sequence.svg)
+
+[View the Mermaid source](../../docs/diagrams/queue-to-sheets-sequence.mmd).
 
 ## Trust boundary
 

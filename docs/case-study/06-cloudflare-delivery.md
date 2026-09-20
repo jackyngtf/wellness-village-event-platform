@@ -1,70 +1,69 @@
-# Running the site on Cloudflare
+# Launching on Cloudflare and handling the first production incident
 
-## Why I used Workers
+[**English**](06-cloudflare-delivery.md) · [繁體中文](06-cloudflare-delivery.zh-Hant.md)
 
-The production site is a Next.js application packaged by OpenNext and run on Cloudflare Workers. A static Pages-only deployment would not cover the server-rendered routes, API routes, server-side integrations, Queue binding and cache revalidation used by this project.
+The website looked content-led, but the delivered system was not a static brochure. It rendered routes on the server, read The Ground from server-only code, accepted contact messages through an API route and produced those messages to Cloudflare Queue. That shaped both the hosting choice and the release process.
+
+## Why Workers rather than static Pages
+
+I packaged the Next.js application with OpenNext and ran it on Cloudflare Workers. A static Pages-only export could not provide the server-side routes, Queue binding or cache revalidation used by the project.
+
+Cloudflare Pages is still useful for static websites; it simply was not the production runtime here. The domain used Cloudflare DNS, TLS and edge delivery, while the application itself ran as a Worker.
 
 ![System overview showing the three data paths and the Cloudflare runtime.](../diagrams/system-overview.svg)
 
-## What each part does
+## What ran where
 
-- OpenNext adapts the Next.js request, route and asset model to the Worker runtime.
-- Static assets are served as deployment assets.
-- R2 stores the Next.js incremental cache.
-- A Durable Object coordinates cache revalidation across Worker isolates.
-- The server-only The Ground adapter acquires and normalises public event data.
-- The website Worker produces approved contact messages to a Cloudflare Queue.
-- A separate private consumer Worker performs Google OAuth, deduplication and Sheet appends.
+- OpenNext adapted the Next.js route, request and asset model to the Worker runtime.
+- Deployment assets and edge caching handled repeat static delivery.
+- R2 held the Next.js incremental cache, while a Durable Object coordinated revalidation across Worker isolates.
+- The server-only adapter acquired and normalised The Ground listings.
+- The website Worker produced accepted contact messages to Queue.
+- A separate private consumer performed Google OAuth, duplicate checks and Sheet appends.
 
-R2 and the Durable Object support the application cache. They do not store contact submissions. Personal data follows a separate website Worker → Queue → private consumer → Google Sheets path, and Google credentials exist only in the consumer Worker.
+R2 and Durable Objects support application caching and revalidation; they do not store contact submissions. Personal data follows the separate website Worker → Queue → private consumer → Google Sheets path, and Google credentials exist only in the consumer.
 
-The public edition removes account-specific identifiers, defaults to synthetic fixtures and keeps live integrations opt-in.
+## Releasing more than a successful build
 
-## Configuration in this public repository
+No single green command covered the whole release, so I used a sequence of checks:
 
-The checked-in configuration shows the same arrangement without including production account details:
-
-- [`open-next.config.ts`](../../open-next.config.ts) selects the R2 incremental-cache override and OpenNext's supported Durable Object queue override for normal builds.
-- [`wrangler.jsonc`](../../wrangler.jsonc) declares static assets, the Worker self-reference, R2 cache, `DOQueueHandler`, the neutral contact Queue producer and two example rate-limit namespaces. Both optional live integrations remain off.
-- [`wrangler.preview.jsonc`](../../wrangler.preview.jsonc) is for local preview. `npm run cf:preview` passes that file to the OpenNext build and preview commands, sets `OPEN_NEXT_LOCAL_PREVIEW=true` and uses the local default without `--remote`. The preview file has no contact Queue, rate-limit or revalidation Durable Object binding.
-- [`worker-configuration.d.ts`](../../worker-configuration.d.ts) is reproducibly generated from the website config. The hand-written optional contact Queue and rate-limiter contracts remain at the application boundary so a missing binding continues to fail closed without an unsafe cast.
-
-Synthetic local mode requires no production resources. It uses synthetic content, disabled integrations and Wrangler's local binding implementations. `npm run cf:build` and `npm run cf:dry-run` assemble and validate a neutral bundle; a successful dry run does not create resources, upload a version or deploy a Worker.
-
-Before a real deployment, the target account needs an R2 cache bucket; the contact Queue, private consumer and dead-letter Queue; separate rate-limit namespace IDs; the Worker self-reference binding; and the `DOQueueHandler` migration. The hostname, consent version, Turnstile secret and optional The Ground organisation ID also need to be configured before the live features are enabled. Google credentials and Sheet settings belong only to the private consumer Worker.
-
-## Current framework guidance
-
-Cloudflare currently recommends [vinext for new Next.js applications](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) and keeps an [OpenNext guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/) for existing applications. This portfolio keeps OpenNext because that is what the delivered site used. It is not a general recommendation for a new project.
-
-## How I released it
-
-I used several checks because no single green command covers the whole release:
-
-| Stage | What it establishes |
+| Stage | Question it answered |
 | --- | --- |
-| Inspect source, diff and configuration | The intended code and binding boundary are the ones under review |
-| Lint, type checks and focused tests | Static rules and tested behavioural contracts pass |
-| Next.js production build and OpenNext bundle | The application can be assembled for the target runtime |
-| Wrangler dry run | The Worker bundle and declared configuration can be prepared without deploying |
-| Local workerd preview | The built Worker can serve representative routes with preview bindings |
-| Human-approved deploy | The reviewed bundle is released through the supported deployment path |
-| Read-only production smoke checks | The deployed Worker and key visitor routes respond after release |
+| Inspect source, diff and configuration | Am I reviewing the intended code and bindings? |
+| Lint, type checks and focused tests | Do the static rules and tested contracts pass? |
+| Next.js build and OpenNext bundle | Can the application be assembled for the target runtime? |
+| Wrangler dry run | Can the Worker bundle and declared configuration be prepared without deployment? |
+| Local workerd preview | Can representative routes run with local preview bindings? |
+| Human-approved deployment | Is this the reviewed version I intend to release? |
+| Read-only production smoke | Do the deployed Worker and important visitor routes respond now? |
 
-Local preview deliberately uses a direct revalidation queue because a local Worker cannot call its own internal Durable Object in the same way as production. Production retains R2-backed incremental caching and Durable Object coordination across isolates.
+Local workerd preview uses a direct revalidation queue because the local Worker cannot call its own internal Durable Object in the same way. Production retains R2-backed incremental caching and Durable Object coordination across isolates.
 
-Together, these stages cover buildability, configuration and the routes observed after release. They do not establish an SLA, conversion result or future availability of an external service. I still made the final release decision.
+These checks covered buildability, configuration and observed routes. They did not turn a release into an SLA or establish that an external service would always be available.
 
-## Where Cloudflare Pages fits
+## The 27 August Error 1102
 
-Cloudflare Pages is useful for static sites, but it was not the production runtime for this project. The delivered application ran on Workers because it needed server-side code and Queue integration.
+Three days before the event, the site briefly returned Cloudflare Error 1102: the Worker had exceeded a resource limit. The diagnostic record matched the Free plan's per-request CPU ceiling.
 
-The separate [traffic and cost chapter](07-production-economics-and-observability.md) connects this choice to event-window traffic, cache delivery, the account billing period and the domain cost. It also explains why a zero usage charge is not the same as saying the project cost nothing.
+I responded on two fronts. I moved the shared Cloudflare account to Workers Paid, establishing a more suitable US$5/month account baseline, and I reduced CPU-heavy work on request paths before checking the runtime again. Further hardening continued before the event opened.
 
-## Related code and notes
+The available records do not isolate how much each change contributed, so I do not describe the plan upgrade—or the code changes—alone as the fix. The important operational lesson was to treat the limit as both a capacity decision and an application-performance problem.
 
-- Implementation: [OpenNext configuration](../../open-next.config.ts), [website Worker configuration](../../wrangler.jsonc) and [private consumer](../../workers/contact-sheet-consumer/)
-- Tests: [Cloudflare configuration-contract checks](../../tests/cloudflare-config.test.ts) and [consumer configuration/runtime checks](../../workers/contact-sheet-consumer/)
-- Diagram: [system overview SVG](../diagrams/system-overview.svg) and [Mermaid source](../diagrams/system-overview.mmd)
-- Decision record: [Use OpenNext on Cloudflare Workers](../decisions/002-workers-not-static-pages.md) and [release checklist](../agent-workflow/release-checklist.md)
-- Operations: [production economics and observability](07-production-economics-and-observability.md) and [sanitised metrics](../evidence/production-metrics/)
+The complete captured billing period later showed US$0.00 in **additional** usage charges because the observed usage remained inside the paid plan's included quantities. That does not erase the base subscription, and the shared account means the whole US$5 cannot be treated as a project-only invoice.
+
+<details>
+<summary><strong>How the public repository represents the runtime</strong></summary>
+
+- [`open-next.config.ts`](../../open-next.config.ts) selects the R2 incremental cache and supported Durable Object queue override for normal builds.
+- [`wrangler.jsonc`](../../wrangler.jsonc) declares neutral assets, self-reference, R2, Durable Object, Queue producer and example rate-limit bindings without production account IDs.
+- [`wrangler.preview.jsonc`](../../wrangler.preview.jsonc) provides local bindings and deliberately omits live contact and revalidation Durable Object bindings.
+- `npm run cf:build` assembles the Worker, `npm run cf:dry-run` validates the neutral deployment bundle and `npm run cf:preview` runs the local Worker.
+- Live The Ground and contact integrations remain explicit opt-ins. Google credentials and Sheet settings belong only to the private consumer Worker.
+
+</details>
+
+## Framework note for a future rebuild
+
+As checked on 19 September 2026, Cloudflare's [Next.js guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) recommended vinext as the default path for new applications, while its [OpenNext guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/) covered existing OpenNext applications. This portfolio keeps OpenNext because that is what the delivered site used, not because every new project should make the same choice.
+
+Next: [traffic and cost](07-production-economics-and-observability.md) · [Search discovery](08-search-discoverability.md) · [Cloudflare configuration tests](../../tests/cloudflare-config.test.ts) · [release checklist](../agent-workflow/release-checklist.md)

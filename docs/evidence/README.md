@@ -1,5 +1,7 @@
 # Project records used in this case study
 
+[**English**](README.md) · [繁體中文](README.zh-Hant.md)
+
 The runnable demo can show how the website behaves now. It cannot reproduce the original delivery dates, event traffic, account billing or Search Console reports. This directory keeps cleaned-up copies of those project records without exposing client or account details.
 
 | Record | What it covers | What is left out |

@@ -31,7 +31,7 @@ flowchart TB
         WEBSITE_API[Validated website API]
         QUEUE[Cloudflare Queue]
         PRIVATE_CONSUMER[Private consumer Worker]
-        GOOGLE_SHEET[Client-owned Google Sheet]
+        GOOGLE_SHEET[Selected Google Sheet]
 
         VISITOR_FORM --> WEBSITE_API
         WEBSITE_API -->|Genuine submissions only| QUEUE

@@ -1,20 +1,20 @@
-# Traffic, hosting and cost
+# Production record: traffic and cost
 
-## Why I included cost
+[**English**](07-production-economics-and-observability.md) · [繁體中文](07-production-economics-and-observability.zh-Hant.md)
 
-The site needed to run through a 12-day public event without leaving the client with unnecessary infrastructure to maintain afterwards.
+## Why cost belongs in this case study
 
-Where possible, I kept using systems that the client or event already relied on:
+The site needed to support a 12-day public event without leaving the client with unnecessary systems to maintain afterwards. I therefore kept each service in a deliberately narrow job:
 
 - The Ground kept the current activity schedule and registration;
-- Google Sheets remained the client's contact list;
+- Google Sheets served as the simple contact destination chosen for this first edition;
 - Cloudflare Workers ran the full-stack Next.js application;
 - edge caching and deployment assets absorbed repeat delivery;
 - R2 and a Durable Object supported incremental cache and revalidation;
 - Queue delivery isolated the public request from Google credentials and latency; and
 - Turnstile and rate limits protected the small contact form.
 
-This avoided adding a database or CRM only for the campaign. It does not mean that third-party services or development work had no cost.
+This avoided adding a database or CRM only for the campaign. The cost section below records the services I can price without suggesting that third-party services or development work were free.
 
 ## What the event window showed
 
@@ -36,41 +36,48 @@ Cloudflare documents that Free-plan HTTP traffic includes legitimate users, craw
 
 A separate Search Console report recorded 112 Web Search clicks from 362 impressions, with a displayed 30.9% CTR and 3.5 average position for the Pacific Time dates aligned to the 12 event dates. Search clicks are different from edge requests, page views and attendance. The [search chapter](08-search-discoverability.md) explains the date and indexing details.
 
+## How the figures relate
+
+![Diagram separating project analytics, search figures, shared-account billing, the direct domain invoice and public rate cards.](../diagrams/production-measurement-boundaries.svg)
+
+[Inspect the Mermaid source](../diagrams/production-measurement-boundaries.mmd) · [Read the aggregate evidence note](../evidence/production-metrics/README.md)
+
+## The resource-limit incident before the event
+
+On 27 August, the production site briefly returned Cloudflare Error 1102 (`Worker exceeded resource limits`). The diagnostic record matched the Free plan's per-request CPU ceiling. I moved the shared Cloudflare account to Workers Paid and also reduced CPU-heavy request paths; later implementation work continued to harden the runtime before the event opened.
+
+The later account check confirms that Workers Paid was active, and the implementation history confirms the CPU-reduction work. Those records do not isolate how much each change contributed, so I do not describe the plan upgrade alone as the fix. The incident is included because it explains why a paid baseline was chosen and why the cost story cannot be reduced to the US$0.00 usage-charge line.
+
 ## How I report the cost
 
-I separate three kinds of cost information:
+I separate four kinds of cost information:
 
 1. **direct project spend** — the Porkbun invoice records US$11.08 for one year of `wellnessvillagehk.com` registration on 19 August 2026;
-2. **account-level Cloudflare billing** — the complete 12 August–11 September 2026 billing period reported US$0.00 in usage charges, with every displayed usage category inside its included quantity; and
-3. **public rate cards** — useful for explaining the architecture's cost position, but not a substitute for an attributable invoice.
+2. **account-level base subscription** — Workers Paid was active at the later account check, and the captured rate card showed a US$5 account/month minimum;
+3. **additional usage charges** — the complete 12 August–11 September 2026 billing period reported US$0.00, with every displayed usage category inside its included quantity; and
+4. **public rate cards** — useful for explaining allowances and the architecture's cost position, but not a substitute for an attributable invoice.
 
-Workers Paid was active during the account check. A zero usage charge therefore does **not** mean that the Cloudflare account, the project or the development work cost nothing. The account also contained other products and workloads, so I have not assigned its base subscription to this project without a matching line item. The cleaned-up [billing and domain summary](../evidence/production-metrics/billing-and-domain-summary.json) leaves out order, invoice, account and payment identifiers.
+The US$0.00 figure is therefore an **additional usage-charge** result, not the total Cloudflare cost. The account also contained other products and workloads, so I have not presented the whole US$5 base subscription as a project-only invoice without a matching attributable line item. The cleaned-up [billing and domain summary](../evidence/production-metrics/billing-and-domain-summary.json) leaves out order, invoice, account and payment identifiers.
 
 | Component | Observed decision or usage | Public rate-card position | What is not claimed |
 | --- | --- | --- | --- |
 | Domain registration | Porkbun invoice: US$11.08 paid for one year on 19 August 2026; expiry 19 August 2027 | Direct, project-attributable first-year cost | Future renewal pricing or total ownership cost |
 | DNS, TLS and CDN | The Cloudflare zone reported the Free Website plan | No separate zone-plan usage charge was identified in the captured billing view | That every Cloudflare account service was free |
-| Workers and OpenNext | Project event window: about 35,600 invocations and 2.335 million CPU ms. Account billing cycle: 46.46k Standard requests and 2.9 million CPU ms, both with zero billable usage | The captured Workers Paid rate card had a US$5 account/month minimum and included 10 million requests plus 30 million CPU ms | That the US$5 rate card is a project-only invoice or that account traffic belongs only to this site |
+| Workers and OpenNext | Workers Paid was active. Project event window: about 35,600 invocations and 2.335 million CPU ms. Account billing cycle: 46.46k Standard requests and 2.9 million CPU ms, both with zero additional billable usage | The captured Workers Paid rate card had a US$5 account/month minimum and included 10 million requests plus 30 million CPU ms | That the whole US$5 base subscription is a project-only invoice or that account traffic belongs only to this site |
 | R2 incremental cache | Project event snapshot: 68.8 MB. Account billing cycle: 0.04 GB-month, 9.21k Class A and 51.74k Class B operations, all with zero billable usage | Standard storage included 10 GB-month, 1 million Class A and 10 million Class B operations | A project-only monthly R2 bill from shared-account figures |
-| Queue delivery | The authenticated billing view showed zero usage charge and usage inside the included quantity; exact operations remain withheld because they could be misread as lead volume | Current allowance is 10,000 operations per day on Workers Free or 1 million per month on Workers Paid | The number of leads, completed Sheet writes or a Queue-only project cost |
+| Queue delivery | The authenticated billing view showed no additional usage charge and usage inside the included quantity; exact operations remain withheld because they could be misread as lead volume | Current allowance is 10,000 operations per day on Workers Free or 1 million per month on Workers Paid | The number of leads, completed Sheet writes or a Queue-only project cost |
 | Turnstile | Used for server-side verification of the contact flow | Free plan includes unlimited challenges within its product limits | An absence of abuse, conversion uplift or a security guarantee |
-| Google Sheets and The Ground | Existing client-owned services remained the working destinations | Outside the Cloudflare bill and this public cost assessment | That either external service was free or that their commercial terms are public |
+| Google Sheets and The Ground | Google Sheets was selected as the first-edition contact destination; The Ground remained the activity and booking destination | Outside the Cloudflare bill and this public cost assessment; no retained like-for-like Firebase or Supabase price comparison | That either external service was free, that their commercial terms are public or that a precise database saving was measured |
 
 Official references: [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/), [R2 pricing](https://developers.cloudflare.com/r2/pricing/), [Queues pricing](https://developers.cloudflare.com/queues/platform/pricing/) and [Turnstile plans](https://developers.cloudflare.com/turnstile/plans/).
 
-For the period checked, the observed usage stayed below the published included quantities and the complete account billing period showed no usage overage. The first-year domain cost that can be assigned directly to this project was US$11.08. These figures do not include development time, shared subscription costs or the client's other services.
+For the period checked, the observed usage stayed below the published included quantities and the complete account billing period showed no additional usage charge. The shared account still had the US$5/month Workers Paid base plan. The first-year domain cost that can be assigned directly to this project was US$11.08. These figures do not include development time, an allocation of the shared subscription or the client's other services.
 
 ## Why Workers, not static Pages
 
 The delivered runtime was OpenNext on Cloudflare Workers. It needed server rendering, API routes, a server-only The Ground adapter, Queue production, R2 incremental cache, Durable Object revalidation and privacy gates. A static Pages-only export could not provide that complete runtime.
 
 Cloudflare Pages remains useful for static sites, but it was not the host used for this full-stack application. The decision is recorded in [ADR 002](../decisions/002-workers-not-static-pages.md).
-
-## How the figures relate
-
-![Diagram separating project analytics, search figures, shared-account billing, the direct domain invoice and public rate cards.](../diagrams/production-measurement-boundaries.svg)
-
-[Inspect the Mermaid source](../diagrams/production-measurement-boundaries.mmd) · [Read the aggregate evidence note](../evidence/production-metrics/README.md)
 
 ## What these figures do not tell us
 

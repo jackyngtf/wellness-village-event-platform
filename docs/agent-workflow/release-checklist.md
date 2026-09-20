@@ -1,6 +1,8 @@
 # Public-edition release checklist
 
-This checklist prepares a candidate for owner review; it does not authorise remote creation, push or publication. Run it against the complete candidate after the publication scope is final.
+[**English**](release-checklist.md) · [繁體中文](release-checklist.zh-Hant.md)
+
+This reusable checklist prepares a candidate for owner review; unchecked boxes are not a live status report. Record each run separately with its date and candidate revision. Run it against the complete candidate after the publication scope is final; it does not authorise remote creation, push or publication.
 
 ## 1. Rights review
 
@@ -36,19 +38,15 @@ This checklist prepares a candidate for owner review; it does not authorise remo
 - [ ] Search for prohibited claims and manually review every negation. Do not claim documented partner status for The Ground, synchronous Google Sheets persistence, distributed exactly-once delivery, Cloudflare Pages as the delivered runtime, one-prompt production delivery, or unmeasured conversion, productivity, SLA or ROI outcomes.
 - [ ] Describe the campaign URL as optional and time-limited; the repository media and runnable demo are the durable record.
 - [ ] Recompute every published aggregate metric from its retained sanitised record; keep requests, page views, Worker invocations, visitors and business outcomes distinct.
-- [ ] Confirm direct project spend, shared-account billing, usage charges and public rate-card comparisons remain separate. A zero usage charge must never be described as zero total cost.
+- [ ] Confirm direct project spend, a shared-account base subscription, additional usage charges and public rate-card comparisons remain separate. A US$0 additional usage charge must never be described as zero total cost; where supported, state the active paid-plan baseline beside it.
 - [ ] Confirm every retained invoice-derived fact excludes account, order, payment and personal identifiers, and publish no shared-account total as a project-only cost without attributable line items.
 - [ ] Publish Search Console outcomes only from an authorised verified property; otherwise state the evidence gap without inferring indexing or organic performance.
 
 ## 5. Code, build and runtime verification
 
-- [ ] `npm run lint`
-- [ ] `npm run typecheck`
-- [ ] `npm run test`
-- [ ] `npm run build`
-- [ ] `npm run cf:typegen:check`
-- [ ] `npm run cf:build`
-- [ ] `npm run cf:dry-run`
+- [ ] `npm ci` with the latest Node.js 22.x (minimum 22.13.0) and the committed lockfile.
+- [ ] `npm run check` — documentation, lint, application and consumer type checks, application and consumer runtime tests, and the Next.js build.
+- [ ] `npm run check:cloudflare` — both binding-type checks, the OpenNext build and both Worker deployment dry runs.
 - [ ] Start `npm run cf:preview` in a short local session, request representative English and Traditional Chinese routes, then terminate it cleanly.
 - [ ] Run configuration validation and Worker dry runs with neutral example configuration.
 - [ ] Record build and dry-run evidence separately from any future deployment claim. A dry run neither uploads nor deploys.

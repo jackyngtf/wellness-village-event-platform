@@ -1,0 +1,50 @@
+flowchart LR
+    subgraph ENTRY[進入 Guidebook 的方法]
+        direction TB
+        HOME_HERO[首頁主視覺<br/>探索數碼 Guidebook]
+        EVENT_HIGHLIGHTS[活動回顧<br/>閱讀數碼 Guidebook]
+        HOME_GUIDEBOOK[首頁 Guidebook 介紹<br/>閱讀或下載]
+        FEATURED_STORY[首頁精選品牌<br/>閱讀完整專訪]
+        BRANDS_INTRO[品牌頁入口<br/>從 Guidebook 開始探索]
+        BRAND_CARD[品牌卡<br/>閱讀品牌故事]
+    end
+
+    subgraph ROUTES[入口會前往的位置]
+        direction TB
+        LANDING[Guidebook 介紹頁]
+        TARGETED[相應的 Guidebook 跨頁]
+    end
+
+    subgraph READING[閱讀方式]
+        direction TB
+        WEB_READER[快速網頁閱讀器]
+        PDF[下載完整 PDF]
+        PAGE_JUMP[輸入頁碼前往<br/>第 1–184 頁]
+        SPREAD[閱讀目前跨頁<br/>桌面並列兩頁 · 手機依次閱讀]
+        NEXT_PREVIOUS[上一個或下一個跨頁]
+        RETURN[返回 Guidebook 介紹<br/>或瀏覽品牌摘要]
+    end
+
+    HOME_HERO --> LANDING
+    EVENT_HIGHLIGHTS --> LANDING
+    HOME_GUIDEBOOK --> LANDING
+    FEATURED_STORY --> TARGETED
+    BRANDS_INTRO --> TARGETED
+    BRAND_CARD --> TARGETED
+
+    LANDING --> WEB_READER
+    LANDING --> PDF
+    TARGETED --> SPREAD
+    WEB_READER --> PAGE_JUMP
+    PAGE_JUMP --> SPREAD
+    SPREAD --> NEXT_PREVIOUS
+    NEXT_PREVIOUS --> SPREAD
+    SPREAD -.-> PDF
+    SPREAD -.-> RETURN
+
+    classDef entry fill:#eaf4e1,stroke:#48633c,color:#20301b
+    classDef route fill:#f0eef5,stroke:#675b79,color:#312a3a
+    classDef reading fill:#f7eadf,stroke:#8a5834,color:#442a18
+    class HOME_HERO,EVENT_HIGHLIGHTS,HOME_GUIDEBOOK,FEATURED_STORY,BRANDS_INTRO,BRAND_CARD entry
+    class LANDING,TARGETED route
+    class WEB_READER,PDF,PAGE_JUMP,SPREAD,NEXT_PREVIOUS,RETURN reading
