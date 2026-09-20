@@ -5,7 +5,7 @@
 
 ![手提電腦與 iPhone 畫面展示 Wellness Village 繁體中文網站，依序呈現活動介紹、節目、品牌故事、聯絡表格及頁尾。](docs/media/responsive-scroll-walkthrough-zh-Hant.gif)
 
-[查看靜態海報](docs/media/responsive-scroll-walkthrough-zh-Hant-poster.png) · [下載 H.264 導覽影片](docs/media/responsive-scroll-walkthrough-zh-Hant.mp4?raw=true)
+[查看靜態海報](docs/media/responsive-scroll-walkthrough-zh-Hant-poster.png) · [下載 H.264 導覽影片](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/responsive-scroll-walkthrough-zh-Hant.mp4)
 
 Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料，以及收集查詢的需要，但內容分散在不同地方。我以唯一開發者身分，把它們整理成一個雙語網站，供這項於香港中環街市舉行、為期 12 日的活動使用。
 
@@ -42,7 +42,7 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 
 在電腦使用畫面上的下一步箭嘴，或在 iPhone 左右掃動 Experience 101 圖卡；其後篩選活動結束後保留的活動紀錄，再開啟 The Ground 上相應的公開頁面。影片保留平台顯示的「活動已結束」狀態，不會令人誤以為仍可報名。
 
-[查看靜態海報](docs/media/programme-walkthrough-zh-Hant-poster.png) · [下載 MP4](docs/media/programme-walkthrough-zh-Hant.mp4?raw=true) · [了解節目資料流程](docs/case-study/04-the-ground-event-interface.zh-Hant.md)
+[查看靜態海報](docs/media/programme-walkthrough-zh-Hant-poster.png) · [下載 MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/programme-walkthrough-zh-Hant.mp4) · [了解節目資料流程](docs/case-study/04-the-ground-event-interface.zh-Hant.md)
 
 </details>
 
@@ -53,7 +53,7 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 
 在同一流程找到地址及到場提示，再以電腦箭嘴或 iPhone 掃動手勢切換兩頁地圖。桌面版放大檢視器會固定控制列，讓訪客由上至下閱讀每張直向地圖；手機則保留完整頁面。
 
-[查看靜態海報](docs/media/venue-guide-walkthrough-zh-Hant-poster.png) · [下載 MP4](docs/media/venue-guide-walkthrough-zh-Hant.mp4?raw=true) · [閱讀訪客流程說明](docs/case-study/03-visitor-journey.zh-Hant.md)
+[查看靜態海報](docs/media/venue-guide-walkthrough-zh-Hant-poster.png) · [下載 MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/venue-guide-walkthrough-zh-Hant.mp4) · [閱讀訪客流程說明](docs/case-study/03-visitor-journey.zh-Hant.md)
 
 </details>
 
@@ -64,7 +64,7 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 
 在 48 個 Guidebook 品牌專題中搜尋活動呈獻單位 IŚSMEN，以兩種裝置前往其公開 Instagram 及官方網站，再閱讀站內 Guidebook 專題的兩頁內容。
 
-[查看靜態海報](docs/media/brand-discovery-walkthrough-zh-Hant-poster.png) · [下載 MP4](docs/media/brand-discovery-walkthrough-zh-Hant.mp4?raw=true) · [了解 Guidebook 如何變成網頁內容](docs/case-study/02-guidebook-and-agent-workflow.zh-Hant.md)
+[查看靜態海報](docs/media/brand-discovery-walkthrough-zh-Hant-poster.png) · [下載 MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/brand-discovery-walkthrough-zh-Hant.mp4) · [了解 Guidebook 如何變成網頁內容](docs/case-study/02-guidebook-and-agent-workflow.zh-Hant.md)
 
 </details>
 
@@ -75,7 +75,7 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 
 由首頁開啟數碼版，選擇較快的網頁閱讀器，跳到第 66 頁，比較電腦並列兩頁與手機依次閱讀的方式，再前往下一個跨頁。另一張流程圖列出網站內其餘 Guidebook 入口。
 
-[查看靜態海報](docs/media/guidebook-journey-walkthrough-zh-Hant-poster.png) · [下載 MP4](docs/media/guidebook-journey-walkthrough-zh-Hant.mp4?raw=true) · [查看所有 Guidebook 入口](docs/diagrams/guidebook-entry-and-reading-flow.zh-Hant.svg) · [閱讀內容整理流程](docs/case-study/02-guidebook-and-agent-workflow.zh-Hant.md)
+[查看靜態海報](docs/media/guidebook-journey-walkthrough-zh-Hant-poster.png) · [下載 MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/guidebook-journey-walkthrough-zh-Hant.mp4) · [查看所有 Guidebook 入口](docs/diagrams/guidebook-entry-and-reading-flow.zh-Hant.svg) · [閱讀內容整理流程](docs/case-study/02-guidebook-and-agent-workflow.zh-Hant.md)
 
 </details>
 

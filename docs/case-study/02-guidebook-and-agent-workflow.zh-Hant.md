@@ -59,7 +59,7 @@ Guidebook 並非只放在一個選單項目內。首頁有三個較廣泛的提�
 
 ![Guidebook 入口及閱讀流程，由網站內六個入口前往介紹頁或相應跨頁。](../diagrams/guidebook-entry-and-reading-flow.zh-Hant.svg)
 
-[查看 Mermaid 原始檔](../diagrams/guidebook-entry-and-reading-flow.zh-Hant.mmd) · [下載閱讀器導覽](../media/guidebook-journey-walkthrough-zh-Hant.mp4?raw=true)
+[查看 Mermaid 原始檔](../diagrams/guidebook-entry-and-reading-flow.zh-Hant.mmd) · [下載閱讀器導覽](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/guidebook-journey-walkthrough-zh-Hant.mp4)
 
 公開儲存庫保留[匿名化的 48 項審計資料](../../src/content/guidebook-audit.ts)作為歷史紀錄，與可執行示範中的四個虛構品牌分開。[測試](../../src/content/guidebook-audit.test.ts)保留數量與頁碼映射規則，亦會檢查當中沒有真實 URL 或社交帳戶名稱。示範版本會解釋 Guidebook 工作流程，但不包含正式閱讀器或頁面素材庫。
 

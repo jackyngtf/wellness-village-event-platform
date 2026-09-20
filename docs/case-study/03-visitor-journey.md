@@ -24,7 +24,7 @@ I moved the guidance above the live programme, removed duplicate text cards and 
 
 ![Laptop and iPhone walkthrough of the programme page, including arrow navigation on desktop, swiping on iPhone, filters and activity records.](../media/programme-walkthrough.gif)
 
-[Download the higher-quality MP4](../media/programme-walkthrough.mp4?raw=true)
+[Download the higher-quality MP4](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/programme-walkthrough.mp4)
 
 ## Joining pages into one journey
 
