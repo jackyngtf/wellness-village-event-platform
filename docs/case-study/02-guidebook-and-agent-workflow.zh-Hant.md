@@ -25,6 +25,8 @@ Guidebook 是為印刷而設，並不適合在手機上快速尋找一個品牌�
 
 ![Guidebook 內容流程分開 Agent 協助整理的候選資料、人手審閱，以及自動一致性檢查。](../diagrams/guidebook-content-pipeline.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/guidebook-content-pipeline.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/guidebook-content-pipeline.zh-Hant.mmd)
 
 ## Agent 協助的部分
@@ -58,6 +60,8 @@ Guidebook 是為印刷而設，並不適合在手機上快速尋找一個品牌�
 Guidebook 並非只放在一個選單項目內。首頁有三個較廣泛的提示，先帶訪客到介紹頁，再選擇快速網頁閱讀器或完整 PDF；精選故事及品牌卡則保留頁碼脈絡，直接開啟相應跨頁。進入閱讀器後，訪客可以輸入第 1 至 184 頁的任何頁碼、按跨頁前後移動、下載 PDF，或返回品牌摘要。
 
 ![Guidebook 入口及閱讀流程，由網站內六個入口前往介紹頁或相應跨頁。](../diagrams/guidebook-entry-and-reading-flow.zh-Hant.svg)
+
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/guidebook-entry-and-reading-flow.zh-Hant.svg)
 
 [查看 Mermaid 原始檔](../diagrams/guidebook-entry-and-reading-flow.zh-Hant.mmd) · [下載閱讀器導覽](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/guidebook-journey-walkthrough-zh-Hant.mp4)
 

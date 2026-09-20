@@ -16,6 +16,8 @@ The server-side adapter requests the `upcoming` and `past` feeds for the configu
 
 ![Programme data moving from The Ground through a bounded server-side adapter into date and status views, with registration returning to The Ground.](../diagrams/the-ground-event-interface.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/the-ground-event-interface.svg)
+
 [View the Mermaid source](../diagrams/the-ground-event-interface.mmd)
 
 ## Turning provider rows into a useful programme

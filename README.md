@@ -35,6 +35,8 @@ I took the project from a same-day home-server MVP to event support. The client 
 
 The film above reaches the contact form and footer. Expand any of the four sections below to see the visitor journey on desktop and iPhone, even if the campaign URL is retired.
 
+These detailed animations are large files and may take a moment to load. If an animation stays blank, use its static poster or MP4 download link below.
+
 <details>
 <summary><strong>Programme and before-you-go guidance</strong> — 40 seconds</summary>
 
@@ -85,6 +87,8 @@ Open the digital edition from the homepage, choose the faster web reader, jump t
 ## Three sources, one visitor journey
 
 ![System diagram showing the fixed Guidebook content, programme data from The Ground and the contact form path to Google Sheets.](docs/diagrams/system-overview.svg)
+
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/system-overview.svg)
 
 | Starting point | What I built around it | Result for the visitor or organiser |
 | --- | --- | --- |

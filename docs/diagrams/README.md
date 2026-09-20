@@ -4,6 +4,8 @@
 
 Each diagram has an English and formal written Traditional Chinese Mermaid source, plus a matching SVG that GitHub can display directly.
 
+The SVGs use an opaque white canvas so their labels and arrows remain readable in both GitHub themes. Each article also links to the full-size diagram; use that view and your browser's zoom for the detailed flows.
+
 | Diagram | English | Traditional Chinese | Used in |
 | --- | --- | --- | --- |
 | Portfolio reader paths | [Mermaid source](portfolio-reader-paths.mmd) · [SVG fallback](portfolio-reader-paths.svg) | [Mermaid source](portfolio-reader-paths.zh-Hant.mmd) · [SVG fallback](portfolio-reader-paths.zh-Hant.svg) | [Case-study index](../case-study/README.md) |
@@ -19,3 +21,5 @@ Each diagram has an English and formal written Traditional Chinese Mermaid sourc
 | Search discovery lifecycle | [Mermaid source](search-discovery-lifecycle.mmd) · [SVG fallback](search-discovery-lifecycle.svg) | [Mermaid source](search-discovery-lifecycle.zh-Hant.mmd) · [SVG fallback](search-discovery-lifecycle.zh-Hant.svg) | [Search and indexing](../case-study/08-search-discoverability.md) |
 
 The English and Chinese versions use the same nodes and connections. I drew these diagrams after the project to explain the delivered design; the linked code and tests remain the place to check implementation details.
+
+After re-exporting an SVG from its Mermaid source, run `npm run docs:prepare-diagrams` to restore its canvas and intrinsic dimensions, then `npm run docs:check`. The preparation step preserves the diagram's existing layout and text, including negative viewBox origins in sequence diagrams.

@@ -14,6 +14,8 @@
 
 ![訪客由首次進站，到瀏覽節目、準備出發、規劃到訪及閱讀品牌故事的流程；報名會在 The Ground 繼續。](../diagrams/visitor-journey.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/visitor-journey.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/visitor-journey.zh-Hant.mmd)
 
 ## 把提示移到真正有用的位置

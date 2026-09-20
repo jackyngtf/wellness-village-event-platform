@@ -21,6 +21,8 @@ Cloudflare 告訴我網站如何處理請求；Search Console 回答另一個問
 
 ![由雙語 routes 及 crawl 控制開始，經 sitemap discovery、索引，再到不同日期的 Search Console 觀察。](../diagrams/search-discovery-lifecycle.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/search-discovery-lifecycle.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/search-discovery-lifecycle.zh-Hant.mmd)。
 
 圖表把網站發佈步驟與 Google 其後提供的觀察分開。這是一組有日期的檢查，不是把點擊、入場或報名歸因到其中一步的 funnel。

@@ -22,6 +22,8 @@ On 5 August, the project had a direction and an internal target but no productio
 
 ![Delivery timeline from the first client brief and a home-server MVP to production release, event operation and post-event evidence capture.](../diagrams/delivery-evolution.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/delivery-evolution.svg)
+
 [Inspect the Mermaid source](../diagrams/delivery-evolution.mmd) · [Read the sanitised timeline evidence note](../evidence/delivery-timeline/)
 
 ## Why the home-server preview was useful

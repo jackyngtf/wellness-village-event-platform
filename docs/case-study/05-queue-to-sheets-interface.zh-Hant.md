@@ -21,6 +21,8 @@ Google Sheets 是本項目的技術選擇，不是客戶原有流程。我考慮
 
 ![聯絡資料先通過驗證及 Turnstile，再由 Cloudflare Queue 交給私人 consumer；consumer 只把未見過的 ID 加入 Google Sheets。](../diagrams/queue-to-sheets-sequence.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/queue-to-sheets-sequence.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/queue-to-sheets-sequence.zh-Hant.mmd)
 
 這個安排令 Google 回應時間不會影響訪客請求，而瀏覽器及主要網站 Worker 亦不會取得 Google 憑證。Queue 是傳送緩衝，不是長期潛在客戶資料儲存。

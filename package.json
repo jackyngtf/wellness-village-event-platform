@@ -25,7 +25,8 @@
     "contact-consumer:typegen": "wrangler types --config workers/contact-sheet-consumer/wrangler.jsonc --env-interface GeneratedEnv --include-runtime false workers/contact-sheet-consumer/worker-configuration.d.ts",
     "contact-consumer:typegen:check": "wrangler types --check --config workers/contact-sheet-consumer/wrangler.jsonc --env-interface GeneratedEnv --include-runtime false workers/contact-sheet-consumer/worker-configuration.d.ts",
     "contact-consumer:dry-run": "wrangler deploy --dry-run --config workers/contact-sheet-consumer/wrangler.jsonc --outdir /tmp/wv-portfolio-contact-consumer-dry-run",
-    "docs:check": "node scripts/check-docs.mjs",
+    "docs:prepare-diagrams": "node scripts/prepare-diagrams.mjs",
+    "docs:check": "node scripts/prepare-diagrams.mjs --check && node scripts/check-docs.mjs",
     "check": "npm run docs:check && npm run lint && npm run typecheck && npm run test && npm run contact-consumer:typecheck && vitest run --config workers/contact-sheet-consumer/vitest.config.ts && npm run build",
     "check:cloudflare": "npm run cf:typegen:check && npm run contact-consumer:typegen:check && npm run cf:dry-run && npm run contact-consumer:dry-run"
   },

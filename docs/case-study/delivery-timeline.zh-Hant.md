@@ -22,6 +22,8 @@
 
 ![時間線由首次客戶 brief 及家中伺服器 MVP，發展到正式上線、活動運作及活動後證據整理。](../diagrams/delivery-evolution.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/delivery-evolution.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/delivery-evolution.zh-Hant.mmd) · [閱讀經整理的時間線證據說明](../evidence/delivery-timeline/README.zh-Hant.md)
 
 ## 家中伺服器預覽的用途

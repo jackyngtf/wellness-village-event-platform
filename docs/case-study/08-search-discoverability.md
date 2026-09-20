@@ -21,6 +21,8 @@ These files show what the website served on that date. They do not mean that Goo
 
 ![Lifecycle from bilingual routes and crawl controls through sitemap discovery, indexing and separately dated Search Console observations.](../diagrams/search-discovery-lifecycle.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/search-discovery-lifecycle.svg)
+
 [View the Mermaid source](../diagrams/search-discovery-lifecycle.mmd).
 
 The diagram keeps technical publishing steps separate from Google's later observations. It is a sequence of dated checks, not a funnel that attributes clicks, attendance or registrations to any one step.

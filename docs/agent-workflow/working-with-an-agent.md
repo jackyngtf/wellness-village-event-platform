@@ -16,6 +16,8 @@ If a detail was missing, I left it missing, pending or unavailable instead of as
 
 ![Agent workflow in which source boundaries and human decisions guide assisted extraction, implementation and checks, while uncertain details return for review.](../diagrams/evidence-first-agent-workflow.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/evidence-first-agent-workflow.svg)
+
 [View the Mermaid source](../diagrams/evidence-first-agent-workflow.mmd).
 
 ## 1. List the source material

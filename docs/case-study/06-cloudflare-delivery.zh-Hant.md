@@ -12,6 +12,8 @@ Cloudflare Pages 仍然適合靜態網站，只是不是本項目的正式 runti
 
 ![系統圖顯示三條資料路徑及 Cloudflare 執行環境。](../diagrams/system-overview.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/system-overview.zh-Hant.svg)
+
 ## 各部分在哪裡執行
 
 - OpenNext 把 Next.js route、request 及 asset model 適配到 Worker runtime。

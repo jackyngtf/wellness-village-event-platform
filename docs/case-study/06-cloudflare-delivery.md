@@ -12,6 +12,8 @@ Cloudflare Pages is still useful for static websites; it simply was not the prod
 
 ![System overview showing the three data paths and the Cloudflare runtime.](../diagrams/system-overview.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/system-overview.svg)
+
 ## What ran where
 
 - OpenNext adapted the Next.js route, request and asset model to the Worker runtime.

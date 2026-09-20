@@ -16,6 +16,8 @@ Guidebook 提供固定編輯故事；The Ground 提供最新活動時間、價�
 
 ![節目資料由 The Ground 經過有明確邊界的伺服器端 adapter，轉成日期及狀態介面；報名仍返回 The Ground 完成。](../diagrams/the-ground-event-interface.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/the-ground-event-interface.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/the-ground-event-interface.zh-Hant.mmd)
 
 ## 把 provider 資料變成可用節目表

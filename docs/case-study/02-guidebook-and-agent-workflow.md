@@ -25,6 +25,8 @@ I also prepared the supplied print material for the web, including removing prin
 
 ![Guidebook content pipeline separating Agent-assisted candidate work, human review and automated consistency checks.](../diagrams/guidebook-content-pipeline.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/guidebook-content-pipeline.svg)
+
 [Inspect the Mermaid source](../diagrams/guidebook-content-pipeline.mmd)
 
 ## Where the Agent helped
@@ -58,6 +60,8 @@ The website could now offer search, theme filters and a direct route into the re
 The Guidebook was not limited to one menu item. Three broad prompts on the homepage lead to an introduction where a visitor can choose the fast web reader or the complete PDF. Featured stories and brand cards keep their page context and open the matching spread directly. Inside the reader, visitors can enter any page from 1 to 184, move by spread, download the PDF or return to the brand summaries.
 
 ![Guidebook entry and reading flow, from six site entry points to the landing page or a matching spread.](../diagrams/guidebook-entry-and-reading-flow.svg)
+
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/guidebook-entry-and-reading-flow.svg)
 
 [Inspect the Mermaid source](../diagrams/guidebook-entry-and-reading-flow.mmd) · [Download the reader walkthrough](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/media/guidebook-journey-walkthrough.mp4)
 

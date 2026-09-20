@@ -19,6 +19,8 @@
 
 ![案例研究提供四條閱讀路線，分別適合潛在客戶、招聘及評審讀者、工程讀者，以及希望了解 Agent 工作方式的讀者。](../diagrams/portfolio-reader-paths.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/portfolio-reader-paths.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/portfolio-reader-paths.zh-Hant.mmd)
 
 | 如果你想了解…… | 建議先閱讀…… |

@@ -14,6 +14,8 @@ The supplied material explained the event, but it did not automatically create a
 
 ![Visitor journey from first arrival through programme discovery, preparation, venue planning and brand stories, with booking continuing on The Ground.](../diagrams/visitor-journey.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/visitor-journey.svg)
+
 [View the Mermaid source](../diagrams/visitor-journey.mmd)
 
 ## Moving the guidance to where it could help

@@ -38,6 +38,8 @@ edge requests、page views 及 Worker invocations 量度不同事情，所以沒
 
 ![圖表把項目 analytics、搜尋數字、共享帳戶計費、直接網域帳單及公開價目表分開。](../diagrams/production-measurement-boundaries.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/production-measurement-boundaries.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/production-measurement-boundaries.zh-Hant.mmd) · [閱讀彙總證據說明](../evidence/production-metrics/README.zh-Hant.md)
 
 ## 活動前的資源限制事故

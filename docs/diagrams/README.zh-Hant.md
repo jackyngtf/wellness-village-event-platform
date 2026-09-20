@@ -4,6 +4,8 @@
 
 每張圖都有英文及正式書面繁體中文 Mermaid source，亦附上 GitHub 可直接顯示的 SVG。
 
+SVG 使用不透明白色畫布，讓文字及箭嘴在 GitHub 深淺色主題下都保持清楚。各篇文章亦附有完整尺寸圖表連結；閱讀詳細流程時，可開啟該版本，再使用瀏覽器縮放。
+
 | 圖表 | 英文 | 繁體中文 | 使用位置 |
 | --- | --- | --- | --- |
 | 作品集閱讀路徑 | [Mermaid source](portfolio-reader-paths.mmd) · [SVG](portfolio-reader-paths.svg) | [Mermaid source](portfolio-reader-paths.zh-Hant.mmd) · [SVG](portfolio-reader-paths.zh-Hant.svg) | [案例研究索引](../case-study/README.zh-Hant.md) |
@@ -19,3 +21,5 @@
 | 搜尋 discovery 生命週期 | [Mermaid source](search-discovery-lifecycle.mmd) · [SVG](search-discovery-lifecycle.svg) | [Mermaid source](search-discovery-lifecycle.zh-Hant.mmd) · [SVG](search-discovery-lifecycle.zh-Hant.svg) | [搜尋與索引](../case-study/08-search-discoverability.zh-Hant.md) |
 
 中英文版本使用相同節點及連線。這些圖是在項目後繪製，用來解釋已交付設計；實作細節仍以連結的程式碼及測試為準。
+
+從 Mermaid source 重新輸出 SVG 後，執行 `npm run docs:prepare-diagrams` 補回畫布及明確尺寸，再執行 `npm run docs:check`。這個處理步驟保留原有佈局及文字，亦會保留 sequence diagram 的負數 viewBox 起點。

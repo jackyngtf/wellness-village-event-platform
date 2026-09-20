@@ -40,6 +40,8 @@ A separate Search Console report recorded 112 Web Search clicks from 362 impress
 
 ![Diagram separating project analytics, search figures, shared-account billing, the direct domain invoice and public rate cards.](../diagrams/production-measurement-boundaries.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/production-measurement-boundaries.svg)
+
 [Inspect the Mermaid source](../diagrams/production-measurement-boundaries.mmd) · [Read the aggregate evidence note](../evidence/production-metrics/README.md)
 
 ## The resource-limit incident before the event

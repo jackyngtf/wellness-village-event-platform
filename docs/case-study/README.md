@@ -19,6 +19,8 @@ The main [README](../../README.md) is the five-minute version. These six chapter
 
 ![Four reading paths through the case study for a prospective client, hiring reader, engineer or Agent-workflow reader.](../diagrams/portfolio-reader-paths.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/portfolio-reader-paths.svg)
+
 [Inspect the Mermaid source](../diagrams/portfolio-reader-paths.mmd)
 
 | If you are looking for… | Start with… |

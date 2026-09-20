@@ -21,6 +21,8 @@ I did not let the browser write directly to a Sheet. The public website validate
 
 ![A contact submission passing validation and Turnstile before Cloudflare Queue hands it to a private consumer that appends an unseen ID to Google Sheets.](../diagrams/queue-to-sheets-sequence.svg)
 
+[Open the full-size diagram](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/queue-to-sheets-sequence.svg)
+
 [View the Mermaid source](../diagrams/queue-to-sheets-sequence.mmd)
 
 This arrangement keeps Google response time out of the visitor request and Google credentials out of the browser and main website Worker. The Queue is a delivery buffer, not long-term lead storage.

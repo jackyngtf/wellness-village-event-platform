@@ -35,6 +35,8 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 
 頁首影片一直瀏覽至聯絡表格及頁尾。展開以下任何一項，即可直接觀看桌面及 iPhone 的訪客流程動畫，即使活動網址停用後仍可查看。
 
+這些完整動畫的檔案較大，載入可能需要一點時間。如動畫位置暫時空白，可先使用下方的靜態海報或 MP4 下載連結。
+
 <details>
 <summary><strong>節目及活動前須知</strong>——40 秒</summary>
 
@@ -85,6 +87,8 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 ## 三個資料來源，一條訪客流程
 
 ![系統圖展示固定的 Guidebook 內容、來自 The Ground 的節目資料，以及由聯絡表格前往 Google Sheets 的路徑。](docs/diagrams/system-overview.zh-Hant.svg)
+
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/system-overview.zh-Hant.svg)
 
 | 起點 | 我在其上建立的部分 | 對訪客或主辦方的作用 |
 | --- | --- | --- |

@@ -16,6 +16,8 @@ Agent 協助重複及探索工作：列出資料、擷取候選項目、整理�
 
 ![Agent 協作流程：資料邊界及人為決定引導 Agent 協助整理、實作及檢查；不確定內容會返回審閱。](../diagrams/evidence-first-agent-workflow.zh-Hant.svg)
 
+[開啟完整尺寸圖表](https://raw.githubusercontent.com/jackyngtf/wellness-village-event-platform/refs/heads/main/docs/diagrams/evidence-first-agent-workflow.zh-Hant.svg)
+
 [查看 Mermaid 原始檔](../diagrams/evidence-first-agent-workflow.zh-Hant.mmd)。
 
 ## 1. 列出資料來源
