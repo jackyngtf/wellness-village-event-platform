@@ -13,7 +13,7 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 
 [瀏覽活動網站](https://www.wellnessvillagehk.com/zh-hk) · [閱讀開發背後的故事](docs/case-study/README.zh-Hant.md) · [查看實作索引](docs/case-study/10-evidence-index.zh-Hant.md)
 
-> **作品集說明：**這個獨立整理版本使用合成資料，不包括私人儲存庫、憑證、個人資料、訊息及受限制素材。詳見[法律聲明](NOTICE.zh-Hant.md)及[素材政策](ASSET_POLICY.zh-Hant.md)。
+> **作品集說明：** 這個獨立整理版本使用合成資料，不包括私人儲存庫、憑證、個人資料、訊息及受限制素材。詳見[法律聲明](NOTICE.zh-Hant.md)及[素材政策](ASSET_POLICY.zh-Hant.md)。
 
 <!-- section:project-summary -->
 ## 項目概覽

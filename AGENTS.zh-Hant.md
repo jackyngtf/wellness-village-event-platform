@@ -12,11 +12,11 @@ Agent 可以協助檢查來源、研究連結、草擬程式碼、執行測試�
 
 ## 先理解內容模型
 
-- **品牌介紹是固定編輯內容。**資料由已批准 Guidebook 及核對後的公開品牌連結整理，不會由 The Ground 或其他 live feed 更新。
-- **節目資料是另一條路徑。**最新 session time、availability、price 及 registration destination 來自 The Ground 指定機構的公開 catalogue。
-- **報名維持在 The Ground。**網站協助發現活動，再把訪客送到相應 The Ground page。
-- **聯絡資料是單向流程。**網站 Worker 驗證 submission、放入 Cloudflare Queue，再由私人 consumer 寫入客戶 Google Sheet。
-- **公開 demo 預設使用 synthetic data。**Live integrations 只可 opt in；設定不足時必須 fail closed。
+- **品牌介紹是固定編輯內容。** 資料由已批准 Guidebook 及核對後的公開品牌連結整理，不會由 The Ground 或其他 live feed 更新。
+- **節目資料是另一條路徑。** 最新 session time、availability、price 及 registration destination 來自 The Ground 指定機構的公開 catalogue。
+- **報名維持在 The Ground。** 網站協助發現活動，再把訪客送到相應 The Ground page。
+- **聯絡資料是單向流程。** 網站 Worker 驗證 submission、放入 Cloudflare Queue，再由私人 consumer 寫入客戶 Google Sheet。
+- **公開 demo 預設使用 synthetic data。** Live integrations 只可 opt in；設定不足時必須 fail closed。
 
 資料不足時不可猜測。使用 `Unknown`、unavailable 或不採取行動。
 

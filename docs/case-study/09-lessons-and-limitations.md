@@ -28,11 +28,25 @@ Timeouts, response limits, a recent programme copy, stable submission IDs, retri
 
 ## What I would add next time
 
-1. **Short task tests before launch.** Ask several first-time visitors to explain the event, find an activity, check booking and locate arrival guidance. Record completion, time and points of confusion.
-2. **Privacy-conscious journey counts.** Define programme views, outbound booking clicks and accepted contact submissions before launch, including the denominator and consent basis, without sending form values to analytics.
-3. **An update-time measure.** Record how long a programme correction takes to appear and how often the team has to clarify it. Fixed Guidebook profiles would still change only through an editorial decision.
-4. **A second reviewer.** Ask another designer, accessibility reviewer or engineer to repeat the main visitor tasks and selected release checks.
-5. **Longer-lived performance data.** If the site remains online long enough, review field Core Web Vitals rather than treating lab checks as real-user results.
+1. **Short task tests before launch.**
+
+   Ask several first-time visitors to explain the event, find an activity, check booking and locate arrival guidance. Record completion, time and points of confusion.
+
+2. **Privacy-conscious journey counts.**
+
+   Define programme views, outbound booking clicks and accepted contact submissions before launch, including the denominator and consent basis, without sending form values to analytics.
+
+3. **An update-time measure.**
+
+   Record how long a programme correction takes to appear and how often the team has to clarify it. Fixed Guidebook profiles would still change only through an editorial decision.
+
+4. **A second reviewer.**
+
+   Ask another designer, accessibility reviewer or engineer to repeat the main visitor tasks and selected release checks.
+
+5. **Longer-lived performance data.**
+
+   If the site remains online long enough, review field Core Web Vitals rather than treating lab checks as real-user results.
 
 ## Where this design stops
 

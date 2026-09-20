@@ -28,11 +28,25 @@ Timeout、回應上限、近期節目副本、穩定提交 ID、retry、duplicat
 
 ## 下次會增加的項目
 
-1. **上線前的小型任務測試。**請數位首次訪客解釋活動、尋找節目、檢查報名及找到場地指引，記錄完成情況、時間及疑惑位置。
-2. **重視私隱的 journey counts。**在上線前界定節目瀏覽、前往報名平台的點擊及已接受聯絡提交，包括 denominator 及 consent basis，而不把表格內容送到 analytics。
-3. **更新時間量度。**記錄一項節目修正多久反映，以及團隊需要補充多少次資料。固定 Guidebook 品牌內容仍只會按編輯決定更改。
-4. **第二位 reviewer。**請另一位設計師、無障礙 reviewer 或工程師重做主要訪客任務及部分發佈檢查。
-5. **較長期 performance data。**如果網站保持上線足夠時間，再查看 field Core Web Vitals，而不是把 lab checks 當成 real-user 結果。
+1. **上線前的小型任務測試。**
+
+   請數位首次訪客解釋活動、尋找節目、檢查報名及找到場地指引，記錄完成情況、時間及疑惑位置。
+
+2. **重視私隱的 journey counts。**
+
+   在上線前界定節目瀏覽、前往報名平台的點擊及已接受聯絡提交，包括 denominator 及 consent basis，而不把表格內容送到 analytics。
+
+3. **更新時間量度。**
+
+   記錄一項節目修正多久反映，以及團隊需要補充多少次資料。固定 Guidebook 品牌內容仍只會按編輯決定更改。
+
+4. **第二位 reviewer。**
+
+   請另一位設計師、無障礙 reviewer 或工程師重做主要訪客任務及部分發佈檢查。
+
+5. **較長期 performance data。**
+
+   如果網站保持上線足夠時間，再查看 field Core Web Vitals，而不是把 lab checks 當成 real-user 結果。
 
 ## 這套設計的界線
 

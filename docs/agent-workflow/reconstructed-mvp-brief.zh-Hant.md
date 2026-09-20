@@ -35,12 +35,12 @@
 
 ### 初步 information architecture
 
-- **Home：**活動簡介，以及前往節目、準備及到訪資料的清楚路徑。
-- **Programme：**按訪客實際需要分組及篩選活動，並清楚交代報名會轉往外部平台。
-- **Brands：**按 Guidebook 主題整理、可搜尋的品牌專題。
-- **Visit：**已批准地址、方向、到場須知及地圖狀態。
-- **Guidebook：**第一方 landing route 及進入已批准編輯內容的安全連結。
-- **Privacy：**啟用任何原生聯絡表格前所需的已發佈聲明。
+- **Home：** 活動簡介，以及前往節目、準備及到訪資料的清楚路徑。
+- **Programme：** 按訪客實際需要分組及篩選活動，並清楚交代報名會轉往外部平台。
+- **Brands：** 按 Guidebook 主題整理、可搜尋的品牌專題。
+- **Visit：** 已批准地址、方向、到場須知及地圖狀態。
+- **Guidebook：** 第一方 landing route 及進入已批准編輯內容的安全連結。
+- **Privacy：** 啟用任何原生聯絡表格前所需的已發佈聲明。
 
 ### 體驗要求
 
@@ -104,8 +104,8 @@
 
 ## MVP 之後加入的內容
 
-- **內容及客戶決定：**正式網站使用五個活動類別、四個 Guidebook 主題及 48 個專題。客戶確認 48 個 Instagram；我核對 29 個官方網站，19 個維持沒有網站按鈕。詳見 [Guidebook 與 Agent 章節](../case-study/02-guidebook-and-agent-workflow.zh-Hant.md)。
-- **正式環境工作：**The Ground 整合加入 pagination、response limits、runtime checks、HKT handling 及 cache fallback；聯絡流程加入 privacy checks、Queue acknowledgement、獨立 Sheets consumer、14 欄內部格式、stable IDs、retry、duplicate check 及 dead-letter handling。詳見 [The Ground 整合](../case-study/04-the-ground-event-interface.zh-Hant.md)及 [Queue-to-Sheets](../case-study/05-queue-to-sheets-interface.zh-Hant.md)。
-- **Release：**完整應用程式透過 OpenNext 在 Cloudflare Workers 執行，R2 作 incremental cache、Durable Object 作 revalidation；流程包括 inspect、test、build、dry run、preview、deploy 及 read-only smoke checks。詳見 [Cloudflare 交付](../case-study/06-cloudflare-delivery.zh-Hant.md)及[發佈清單](release-checklist.zh-Hant.md)。
+- **內容及客戶決定：** 正式網站使用五個活動類別、四個 Guidebook 主題及 48 個專題。客戶確認 48 個 Instagram；我核對 29 個官方網站，19 個維持沒有網站按鈕。詳見 [Guidebook 與 Agent 章節](../case-study/02-guidebook-and-agent-workflow.zh-Hant.md)。
+- **正式環境工作：** The Ground 整合加入 pagination、response limits、runtime checks、HKT handling 及 cache fallback；聯絡流程加入 privacy checks、Queue acknowledgement、獨立 Sheets consumer、14 欄內部格式、stable IDs、retry、duplicate check 及 dead-letter handling。詳見 [The Ground 整合](../case-study/04-the-ground-event-interface.zh-Hant.md)及 [Queue-to-Sheets](../case-study/05-queue-to-sheets-interface.zh-Hant.md)。
+- **Release：** 完整應用程式透過 OpenNext 在 Cloudflare Workers 執行，R2 作 incremental cache、Durable Object 作 revalidation；流程包括 inspect、test、build、dry run、preview、deploy 及 read-only smoke checks。詳見 [Cloudflare 交付](../case-study/06-cloudflare-delivery.zh-Hant.md)及[發佈清單](release-checklist.zh-Hant.md)。
 
 以上都是首個 MVP 後由我加入的工作，不會歸因於這份重建 prompt。

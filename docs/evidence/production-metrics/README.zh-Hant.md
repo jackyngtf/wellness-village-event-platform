@@ -21,10 +21,10 @@
 
 ## 指標邊界
 
-- **Edge requests：**Cloudflare edge 的 HTTP requests，包括 HTML、scripts、styles、images、crawlers 及 threats，不是人或 visits。
-- **HTML page views：**Cloudflare 成功 HTML responses，較 total requests 接近頁面消費，但仍不能證明 distinct human audience。
-- **Worker invocations：**應用程式 runtime 層；cached assets 等 edge-handled traffic 未必到達 Worker。
-- **R2 object count 及 bytes：**時段內最新 storage snapshot，不是 monthly GB-month invoice。
+- **Edge requests：** Cloudflare edge 的 HTTP requests，包括 HTML、scripts、styles、images、crawlers 及 threats，不是人或 visits。
+- **HTML page views：** Cloudflare 成功 HTML responses，較 total requests 接近頁面消費，但仍不能證明 distinct human audience。
+- **Worker invocations：** 應用程式 runtime 層；cached assets 等 edge-handled traffic 未必到達 Worker。
+- **R2 object count 及 bytes：** 時段內最新 storage snapshot，不是 monthly GB-month invoice。
 - `workersInvocationsAdaptive` 是 adaptive dataset，因此 Worker totals 標示為 approximate。
 
 Cloudflare 文件說明 Free-plan HTTP traffic 可包括 legitimate users、crawlers 及 threats；一個 page view 可產生多個 requests；page view 是成功 HTML response。見 [Zone Analytics](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/)及 [GraphQL sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/)。
