@@ -33,49 +33,49 @@ I took the project from a same-day home-server MVP to event support. The client 
 <!-- section:experience -->
 ## A short product tour
 
-The film above reaches the contact form and footer. Four focused walkthroughs preserve the main visitor tasks on desktop and iPhone if the campaign URL is retired.
+The film above reaches the contact form and footer. Expand any of the four sections below to see the visitor journey on desktop and iPhone, even if the campaign URL is retired.
 
 <details>
 <summary><strong>Programme and before-you-go guidance</strong> — 40 seconds</summary>
 
-![Programme walkthrough on a laptop and iPhone.](docs/media/programme-walkthrough-poster.png)
+![Programme walkthrough on a laptop and iPhone.](docs/media/programme-walkthrough.gif)
 
 Use the visible next arrow on desktop or swipe on iPhone to move through the Experience 101 reminders, filter the post-event activity records, then open the corresponding public page on The Ground. The recording keeps the provider's “This event has ended” state rather than implying that registration is still open.
 
-[Play the GIF](docs/media/programme-walkthrough.gif) · [Download the MP4](docs/media/programme-walkthrough.mp4?raw=true) · [Follow the programme data](docs/case-study/04-the-ground-event-interface.md)
+[View the static poster](docs/media/programme-walkthrough-poster.png) · [Download the MP4](docs/media/programme-walkthrough.mp4?raw=true) · [Follow the programme data](docs/case-study/04-the-ground-event-interface.md)
 
 </details>
 
 <details>
 <summary><strong>Venue guide and map</strong> — 31 seconds</summary>
 
-![Venue guide walkthrough on a laptop and iPhone.](docs/media/venue-guide-walkthrough-poster.png)
+![Venue guide walkthrough on a laptop and iPhone.](docs/media/venue-guide-walkthrough.gif)
 
 Keep the address and arrival notes together, then move between both map pages with the desktop arrows or an iPhone swipe. In the enlarged desktop viewer, the controls stay fixed while each portrait map scrolls from top to bottom; the phone keeps the complete page in view.
 
-[Play the GIF](docs/media/venue-guide-walkthrough.gif) · [Download the MP4](docs/media/venue-guide-walkthrough.mp4?raw=true) · [Read the visitor-journey notes](docs/case-study/03-visitor-journey.md)
+[View the static poster](docs/media/venue-guide-walkthrough-poster.png) · [Download the MP4](docs/media/venue-guide-walkthrough.mp4?raw=true) · [Read the visitor-journey notes](docs/case-study/03-visitor-journey.md)
 
 </details>
 
 <details>
 <summary><strong>Brand search and Guidebook stories</strong> — 48 seconds</summary>
 
-![Brand-search walkthrough on a laptop and iPhone.](docs/media/brand-discovery-walkthrough-poster.png)
+![Brand-search walkthrough on a laptop and iPhone.](docs/media/brand-discovery-walkthrough.gif)
 
 Search for event presenter IŚSMEN among 48 Guidebook profiles, open its public Instagram and official website on both devices, then read both pages of its internal Guidebook story.
 
-[Play the GIF](docs/media/brand-discovery-walkthrough.gif) · [Download the MP4](docs/media/brand-discovery-walkthrough.mp4?raw=true) · [Read how the Guidebook became web content](docs/case-study/02-guidebook-and-agent-workflow.md)
+[View the static poster](docs/media/brand-discovery-walkthrough-poster.png) · [Download the MP4](docs/media/brand-discovery-walkthrough.mp4?raw=true) · [Read how the Guidebook became web content](docs/case-study/02-guidebook-and-agent-workflow.md)
 
 </details>
 
 <details>
 <summary><strong>Digital Guidebook paths and reader</strong> — 43 seconds</summary>
 
-![Digital Guidebook walkthrough on a laptop and iPhone.](docs/media/guidebook-journey-walkthrough-poster.png)
+![Digital Guidebook walkthrough on a laptop and iPhone.](docs/media/guidebook-journey-walkthrough.gif)
 
 Open the digital edition from the homepage, choose the faster web reader, jump to page 66, compare the two-page desktop spread with sequential phone reading, then continue to the next spread. A separate diagram maps the other Guidebook entry points used across the site.
 
-[Play the GIF](docs/media/guidebook-journey-walkthrough.gif) · [Download the MP4](docs/media/guidebook-journey-walkthrough.mp4?raw=true) · [See every Guidebook entry path](docs/diagrams/guidebook-entry-and-reading-flow.svg) · [Read the content workflow](docs/case-study/02-guidebook-and-agent-workflow.md)
+[View the static poster](docs/media/guidebook-journey-walkthrough-poster.png) · [Download the MP4](docs/media/guidebook-journey-walkthrough.mp4?raw=true) · [See every Guidebook entry path](docs/diagrams/guidebook-entry-and-reading-flow.svg) · [Read the content workflow](docs/case-study/02-guidebook-and-agent-workflow.md)
 
 </details>
 

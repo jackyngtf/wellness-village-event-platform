@@ -16,7 +16,7 @@ GIF links open GitHub's image viewer. MP4 links download the original file for p
 | Brand search and Guidebook story | [GIF](brand-discovery-walkthrough.gif) · [H.264 MP4](brand-discovery-walkthrough.mp4?raw=true) · [poster](brand-discovery-walkthrough-poster.png) | [GIF](brand-discovery-walkthrough-zh-Hant.gif) · [H.264 MP4](brand-discovery-walkthrough-zh-Hant.mp4?raw=true) · [poster](brand-discovery-walkthrough-zh-Hant-poster.png) | 48.000 s · GIF 480 / MP4 1,440 |
 | Digital Guidebook journey | [GIF](guidebook-journey-walkthrough.gif) · [H.264 MP4](guidebook-journey-walkthrough.mp4?raw=true) · [poster](guidebook-journey-walkthrough-poster.png) | [GIF](guidebook-journey-walkthrough-zh-Hant.gif) · [H.264 MP4](guidebook-journey-walkthrough-zh-Hant.mp4?raw=true) · [poster](guidebook-journey-walkthrough-zh-Hant-poster.png) | 43.000 s · GIF 430 / MP4 1,290 |
 
-All GIFs are 1440 × 900 at 10 fps, use a capture-specific palette of up to 256 colours and loop. The higher-quality MP4 versions are 1600 × 1000, H.264 4:2:0, 30 fps and fast-start enabled. Every walkthrough also has a 1600 × 1000 poster; the main README embeds only the overview GIF and uses still posters for the four focused routes.
+All GIFs are 1440 × 900 at 10 fps, use a capture-specific palette of up to 256 colours and loop. The higher-quality MP4 versions are 1600 × 1000, H.264 4:2:0, 30 fps and fast-start enabled. The README shows the overview GIF at the top and the four focused GIFs inside expandable sections. Each walkthrough also links to a 1600 × 1000 static poster and its MP4. GitHub may load GIFs even while their sections are collapsed; the MP4 files are smaller downloads.
 
 The five walkthroughs preserve these tasks:
 

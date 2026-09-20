@@ -33,49 +33,49 @@ Wellness Village 已有一本 184 頁 Guidebook、The Ground 上的節目資料�
 <!-- section:experience -->
 ## 簡短產品導覽
 
-頁首影片一直瀏覽至聯絡表格及頁尾。以下四段導覽以桌面及 iPhone 畫面保留主要訪客流程，避免活動網址停用後無法查看。
+頁首影片一直瀏覽至聯絡表格及頁尾。展開以下任何一項，即可直接觀看桌面及 iPhone 的訪客流程動畫，即使活動網址停用後仍可查看。
 
 <details>
 <summary><strong>節目及活動前須知</strong>——40 秒</summary>
 
-![手提電腦及 iPhone 節目導覽。](docs/media/programme-walkthrough-zh-Hant-poster.png)
+![手提電腦及 iPhone 節目導覽。](docs/media/programme-walkthrough-zh-Hant.gif)
 
 在電腦使用畫面上的下一步箭嘴，或在 iPhone 左右掃動 Experience 101 圖卡；其後篩選活動結束後保留的活動紀錄，再開啟 The Ground 上相應的公開頁面。影片保留平台顯示的「活動已結束」狀態，不會令人誤以為仍可報名。
 
-[播放 GIF](docs/media/programme-walkthrough-zh-Hant.gif) · [下載 MP4](docs/media/programme-walkthrough-zh-Hant.mp4?raw=true) · [了解節目資料流程](docs/case-study/04-the-ground-event-interface.zh-Hant.md)
+[查看靜態海報](docs/media/programme-walkthrough-zh-Hant-poster.png) · [下載 MP4](docs/media/programme-walkthrough-zh-Hant.mp4?raw=true) · [了解節目資料流程](docs/case-study/04-the-ground-event-interface.zh-Hant.md)
 
 </details>
 
 <details>
 <summary><strong>場地指南及地圖</strong>——31 秒</summary>
 
-![手提電腦及 iPhone 場地指南導覽。](docs/media/venue-guide-walkthrough-zh-Hant-poster.png)
+![手提電腦及 iPhone 場地指南導覽。](docs/media/venue-guide-walkthrough-zh-Hant.gif)
 
 在同一流程找到地址及到場提示，再以電腦箭嘴或 iPhone 掃動手勢切換兩頁地圖。桌面版放大檢視器會固定控制列，讓訪客由上至下閱讀每張直向地圖；手機則保留完整頁面。
 
-[播放 GIF](docs/media/venue-guide-walkthrough-zh-Hant.gif) · [下載 MP4](docs/media/venue-guide-walkthrough-zh-Hant.mp4?raw=true) · [閱讀訪客流程說明](docs/case-study/03-visitor-journey.zh-Hant.md)
+[查看靜態海報](docs/media/venue-guide-walkthrough-zh-Hant-poster.png) · [下載 MP4](docs/media/venue-guide-walkthrough-zh-Hant.mp4?raw=true) · [閱讀訪客流程說明](docs/case-study/03-visitor-journey.zh-Hant.md)
 
 </details>
 
 <details>
 <summary><strong>品牌搜尋及 Guidebook 內容</strong>——48 秒</summary>
 
-![手提電腦及 iPhone 品牌搜尋導覽。](docs/media/brand-discovery-walkthrough-zh-Hant-poster.png)
+![手提電腦及 iPhone 品牌搜尋導覽。](docs/media/brand-discovery-walkthrough-zh-Hant.gif)
 
 在 48 個 Guidebook 品牌專題中搜尋活動呈獻單位 IŚSMEN，以兩種裝置前往其公開 Instagram 及官方網站，再閱讀站內 Guidebook 專題的兩頁內容。
 
-[播放 GIF](docs/media/brand-discovery-walkthrough-zh-Hant.gif) · [下載 MP4](docs/media/brand-discovery-walkthrough-zh-Hant.mp4?raw=true) · [了解 Guidebook 如何變成網頁內容](docs/case-study/02-guidebook-and-agent-workflow.zh-Hant.md)
+[查看靜態海報](docs/media/brand-discovery-walkthrough-zh-Hant-poster.png) · [下載 MP4](docs/media/brand-discovery-walkthrough-zh-Hant.mp4?raw=true) · [了解 Guidebook 如何變成網頁內容](docs/case-study/02-guidebook-and-agent-workflow.zh-Hant.md)
 
 </details>
 
 <details>
 <summary><strong>數碼 Guidebook 入口及閱讀器</strong>——43 秒</summary>
 
-![手提電腦及 iPhone 數碼 Guidebook 導覽。](docs/media/guidebook-journey-walkthrough-zh-Hant-poster.png)
+![手提電腦及 iPhone 數碼 Guidebook 導覽。](docs/media/guidebook-journey-walkthrough-zh-Hant.gif)
 
 由首頁開啟數碼版，選擇較快的網頁閱讀器，跳到第 66 頁，比較電腦並列兩頁與手機依次閱讀的方式，再前往下一個跨頁。另一張流程圖列出網站內其餘 Guidebook 入口。
 
-[播放 GIF](docs/media/guidebook-journey-walkthrough-zh-Hant.gif) · [下載 MP4](docs/media/guidebook-journey-walkthrough-zh-Hant.mp4?raw=true) · [查看所有 Guidebook 入口](docs/diagrams/guidebook-entry-and-reading-flow.zh-Hant.svg) · [閱讀內容整理流程](docs/case-study/02-guidebook-and-agent-workflow.zh-Hant.md)
+[查看靜態海報](docs/media/guidebook-journey-walkthrough-zh-Hant-poster.png) · [下載 MP4](docs/media/guidebook-journey-walkthrough-zh-Hant.mp4?raw=true) · [查看所有 Guidebook 入口](docs/diagrams/guidebook-entry-and-reading-flow.zh-Hant.svg) · [閱讀內容整理流程](docs/case-study/02-guidebook-and-agent-workflow.zh-Hant.md)
 
 </details>
 

@@ -16,7 +16,7 @@ GIF 連結會開啟 GitHub 的圖片檢視器；MP4 連結則直接下載原檔�
 | 品牌搜尋及 Guidebook 內容 | [GIF](brand-discovery-walkthrough.gif) · [H.264 MP4](brand-discovery-walkthrough.mp4?raw=true) · [海報](brand-discovery-walkthrough-poster.png) | [GIF](brand-discovery-walkthrough-zh-Hant.gif) · [H.264 MP4](brand-discovery-walkthrough-zh-Hant.mp4?raw=true) · [海報](brand-discovery-walkthrough-zh-Hant-poster.png) | 48.000 秒 · GIF 480／MP4 1,440 格 |
 | 數碼 Guidebook 流程 | [GIF](guidebook-journey-walkthrough.gif) · [H.264 MP4](guidebook-journey-walkthrough.mp4?raw=true) · [海報](guidebook-journey-walkthrough-poster.png) | [GIF](guidebook-journey-walkthrough-zh-Hant.gif) · [H.264 MP4](guidebook-journey-walkthrough-zh-Hant.mp4?raw=true) · [海報](guidebook-journey-walkthrough-zh-Hant-poster.png) | 43.000 秒 · GIF 430／MP4 1,290 格 |
 
-所有 GIF 均為 1440 × 900、每秒 10 格，使用每段影片各自產生、最多 256 色的調色盤，並循環播放。較高畫質的 MP4 為 1600 × 1000、H.264 4:2:0、每秒 30 格，並已啟用 fast start。每段導覽亦有一張 1600 × 1000 海報；README 只會自動顯示項目概覽 GIF，其餘四段以靜態海報呈現。
+所有 GIF 均為 1440 × 900、每秒 10 格，使用每段影片各自產生、最多 256 色的調色盤，並循環播放。較高畫質的 MP4 為 1600 × 1000、H.264 4:2:0、每秒 30 格，並已啟用 fast start。README 頁首顯示項目概覽 GIF，其餘四段 GIF 放在可展開的項目內；每段亦保留 1600 × 1000 靜態海報及 MP4 連結。GitHub 可能在項目尚未展開時已載入 GIF；如希望減少下載量，可選用較小的 MP4 檔案。
 
 五段導覽分別保留以下流程：
 
