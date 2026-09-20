@@ -6,13 +6,15 @@
 
 ## 媒體清單
 
+GIF 連結會開啟 GitHub 的圖片檢視器；MP4 連結則直接下載原檔，方便以慣用的播放器觀看，不必經過 GitHub 的檔案預覽頁。
+
 | 導覽內容 | 英文檔案 | 繁體中文檔案 | 長度及格數 |
 | --- | --- | --- | ---: |
-| 項目概覽 | [GIF](responsive-scroll-walkthrough.gif) · [H.264 MP4](responsive-scroll-walkthrough.mp4) · [海報](responsive-scroll-walkthrough-poster.png) | [GIF](responsive-scroll-walkthrough-zh-Hant.gif) · [H.264 MP4](responsive-scroll-walkthrough-zh-Hant.mp4) · [海報](responsive-scroll-walkthrough-zh-Hant-poster.png) | 24.000 秒 · GIF 240／MP4 720 格 |
-| 節目及活動前須知 | [GIF](programme-walkthrough.gif) · [H.264 MP4](programme-walkthrough.mp4) · [海報](programme-walkthrough-poster.png) | [GIF](programme-walkthrough-zh-Hant.gif) · [H.264 MP4](programme-walkthrough-zh-Hant.mp4) · [海報](programme-walkthrough-zh-Hant-poster.png) | 40.000 秒 · GIF 400／MP4 1,200 格 |
-| 場地指南及地圖 | [GIF](venue-guide-walkthrough.gif) · [H.264 MP4](venue-guide-walkthrough.mp4) · [海報](venue-guide-walkthrough-poster.png) | [GIF](venue-guide-walkthrough-zh-Hant.gif) · [H.264 MP4](venue-guide-walkthrough-zh-Hant.mp4) · [海報](venue-guide-walkthrough-zh-Hant-poster.png) | 31.000 秒 · GIF 310／MP4 930 格 |
-| 品牌搜尋及 Guidebook 內容 | [GIF](brand-discovery-walkthrough.gif) · [H.264 MP4](brand-discovery-walkthrough.mp4) · [海報](brand-discovery-walkthrough-poster.png) | [GIF](brand-discovery-walkthrough-zh-Hant.gif) · [H.264 MP4](brand-discovery-walkthrough-zh-Hant.mp4) · [海報](brand-discovery-walkthrough-zh-Hant-poster.png) | 48.000 秒 · GIF 480／MP4 1,440 格 |
-| 數碼 Guidebook 流程 | [GIF](guidebook-journey-walkthrough.gif) · [H.264 MP4](guidebook-journey-walkthrough.mp4) · [海報](guidebook-journey-walkthrough-poster.png) | [GIF](guidebook-journey-walkthrough-zh-Hant.gif) · [H.264 MP4](guidebook-journey-walkthrough-zh-Hant.mp4) · [海報](guidebook-journey-walkthrough-zh-Hant-poster.png) | 43.000 秒 · GIF 430／MP4 1,290 格 |
+| 項目概覽 | [GIF](responsive-scroll-walkthrough.gif) · [H.264 MP4](responsive-scroll-walkthrough.mp4?raw=true) · [海報](responsive-scroll-walkthrough-poster.png) | [GIF](responsive-scroll-walkthrough-zh-Hant.gif) · [H.264 MP4](responsive-scroll-walkthrough-zh-Hant.mp4?raw=true) · [海報](responsive-scroll-walkthrough-zh-Hant-poster.png) | 24.000 秒 · GIF 240／MP4 720 格 |
+| 節目及活動前須知 | [GIF](programme-walkthrough.gif) · [H.264 MP4](programme-walkthrough.mp4?raw=true) · [海報](programme-walkthrough-poster.png) | [GIF](programme-walkthrough-zh-Hant.gif) · [H.264 MP4](programme-walkthrough-zh-Hant.mp4?raw=true) · [海報](programme-walkthrough-zh-Hant-poster.png) | 40.000 秒 · GIF 400／MP4 1,200 格 |
+| 場地指南及地圖 | [GIF](venue-guide-walkthrough.gif) · [H.264 MP4](venue-guide-walkthrough.mp4?raw=true) · [海報](venue-guide-walkthrough-poster.png) | [GIF](venue-guide-walkthrough-zh-Hant.gif) · [H.264 MP4](venue-guide-walkthrough-zh-Hant.mp4?raw=true) · [海報](venue-guide-walkthrough-zh-Hant-poster.png) | 31.000 秒 · GIF 310／MP4 930 格 |
+| 品牌搜尋及 Guidebook 內容 | [GIF](brand-discovery-walkthrough.gif) · [H.264 MP4](brand-discovery-walkthrough.mp4?raw=true) · [海報](brand-discovery-walkthrough-poster.png) | [GIF](brand-discovery-walkthrough-zh-Hant.gif) · [H.264 MP4](brand-discovery-walkthrough-zh-Hant.mp4?raw=true) · [海報](brand-discovery-walkthrough-zh-Hant-poster.png) | 48.000 秒 · GIF 480／MP4 1,440 格 |
+| 數碼 Guidebook 流程 | [GIF](guidebook-journey-walkthrough.gif) · [H.264 MP4](guidebook-journey-walkthrough.mp4?raw=true) · [海報](guidebook-journey-walkthrough-poster.png) | [GIF](guidebook-journey-walkthrough-zh-Hant.gif) · [H.264 MP4](guidebook-journey-walkthrough-zh-Hant.mp4?raw=true) · [海報](guidebook-journey-walkthrough-zh-Hant-poster.png) | 43.000 秒 · GIF 430／MP4 1,290 格 |
 
 所有 GIF 均為 1440 × 900、每秒 10 格，使用每段影片各自產生、最多 256 色的調色盤，並循環播放。較高畫質的 MP4 為 1600 × 1000、H.264 4:2:0、每秒 30 格，並已啟用 fast start。每段導覽亦有一張 1600 × 1000 海報；README 只會自動顯示項目概覽 GIF，其餘四段以靜態海報呈現。
 

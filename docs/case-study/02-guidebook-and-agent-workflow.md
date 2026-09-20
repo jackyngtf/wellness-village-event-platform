@@ -59,7 +59,7 @@ The Guidebook was not limited to one menu item. Three broad prompts on the homep
 
 ![Guidebook entry and reading flow, from six site entry points to the landing page or a matching spread.](../diagrams/guidebook-entry-and-reading-flow.svg)
 
-[Inspect the Mermaid source](../diagrams/guidebook-entry-and-reading-flow.mmd) · [Watch the reader walkthrough](../media/guidebook-journey-walkthrough.mp4)
+[Inspect the Mermaid source](../diagrams/guidebook-entry-and-reading-flow.mmd) · [Download the reader walkthrough](../media/guidebook-journey-walkthrough.mp4?raw=true)
 
 The public repository retains an [anonymised 48-profile audit](../../src/content/guidebook-audit.ts) as a historical record, separate from the four fictional brand profiles in the runnable demo. Its [tests](../../src/content/guidebook-audit.test.ts) retain the counts and page-mapping rules while checking that no real URL or social handle appears. The demo explains the Guidebook workflow but does not include the production reader or page archive.
 

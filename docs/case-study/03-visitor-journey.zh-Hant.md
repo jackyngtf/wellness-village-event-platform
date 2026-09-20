@@ -24,7 +24,7 @@
 
 ![手提電腦與 iPhone 導覽展示節目頁，包括電腦箭嘴、iPhone 左右掃動、篩選器及活動紀錄。](../media/programme-walkthrough-zh-Hant.gif)
 
-[下載較高畫質 MP4](../media/programme-walkthrough-zh-Hant.mp4)
+[下載較高畫質 MP4](../media/programme-walkthrough-zh-Hant.mp4?raw=true)
 
 ## 把不同頁面連成一條路徑
 
