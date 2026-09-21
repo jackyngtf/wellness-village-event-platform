@@ -31,13 +31,15 @@ GIF 連結會開啟 GitHub 的圖片檢視器；MP4 連結則直接下載原檔�
 - 英文路徑：`/en`、`/en/programme`、`/en/visit` 及 `/en/brands`
 - 繁體中文路徑：`/zh-hk`、`/zh-hk/programme`、`/zh-hk/visit` 及 `/zh-hk/brands`
 - 擷取時的正式網站來源：<https://www.wellnessvillagehk.com/>
-- 擷取日期：2026 年 9 月 18 至 20 日
+- 擷取日期：2026 年 9 月 18 至 20 日；品牌分類操作於 9 月 21 日補錄
 - 桌面瀏覽器 viewport：1440 × 867 CSS pixels，device scale factor 1；加入模擬 Chrome 控制列後置於 3:2 顯示範圍內
 - 手機瀏覽器 viewport：390 × 664 CSS pixels，device scale factor 3；原始畫面為 1170 × 1992 pixels
 
 所有畫面均在全新、互相隔離的瀏覽器 context 內擷取，並停用 service worker、使用 reduced motion、關閉動畫及 transition，以及在可識別的情況下封鎖分析或追蹤請求。網站狀態變更請求（包括聯絡資料 endpoint）均被封鎖；只准許兩項嚴格比對的非 GET 請求：Cloudflare Turnstile 的 challenge request，讓未提交的表格顯示正常安全檢查；以及一項具名的 Instagram logged-out GraphQL 查詢，讓桌面版公開個人檔案保持可見。後者同時限制準確 host、path 及 query name；其他 Instagram POST 請求仍被封鎖。正式網站右下方的 Instagram 浮動按鈕保留在原來的 viewport 位置。
 
-經批准的 Playwright 錄影仍是底層畫面。這個作品集版本只在必要的操作位置加上一層共用 Remotion 提示：當某個 click、tap、swipe 或滑鼠滾輪操作會帶來下一個狀態時，才顯示簡單游標、點按圓圈、掃動軌跡或滾輪提示。一般閱讀及頁面捲動不加標記；兩段放大地圖捲動則保留提示，用來交代固定檢視器如何顯示直向圖片。英文與繁體中文版共用同一組提示時間，並已按最終輸出畫面逐格核對；最後由 FFmpeg 輸出 MP4 及 GIF。這層提示沒有重建、修改或重新部署正式網站。
+底層畫面由 Playwright 擷取，再以 Remotion 加上游標、點按、掃動及滑鼠滾輪提示。這些是解說操作的標記，並非實際滑鼠或手指軌跡的錄影。點擊會先出現在可見的控制項上，然後才切換畫面；中英文排版不同的位置亦分開設定。一般閱讀不加標記；放大地圖則保留滾輪提示，交代直向圖片可以在檢視器內捲動。
+
+9 月 21 日，我修正了操作提示的時間，並補錄四秒品牌分類過程，讓手機先顯示分類按鈕，再點選。另有兩處短暫未載入完整的圖片，以前一個完整畫面稍作停留取代，片長不變。網站介面沒有重畫、修改或重新部署；MP4 及 GIF 由 FFmpeg 輸出。
 
 節目及品牌導覽只以一般 GET 瀏覽三個指定公開目的地：一個相應的 The Ground 活動紀錄、IŚSMEN 的 Instagram profile，以及其官方網站。擷取期間沒有登入、追蹤帳戶、提交表格、開始報名或付款，亦沒有選擇 cookie 設定；只關閉了 Instagram 本機顯示的登入提示，讓原本公開的 profile 保持可見。兩種裝置均記錄前往目的地及返回網站的路徑。這些第三方畫面只記錄 2026 年 9 月 20 日公開可見的狀態，不代表日後仍會維持在線。
 

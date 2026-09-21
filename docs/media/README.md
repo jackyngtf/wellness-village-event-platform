@@ -31,13 +31,15 @@ The five walkthroughs preserve these tasks:
 - English routes: `/en`, `/en/programme`, `/en/visit` and `/en/brands`
 - Traditional Chinese routes: `/zh-hk`, `/zh-hk/programme`, `/zh-hk/visit` and `/zh-hk/brands`
 - Production origin at capture time: <https://www.wellnessvillagehk.com/>
-- Capture dates: 18–20 September 2026
+- Capture dates: 18–20 September 2026; brand-category interaction re-captured on 21 September
 - Desktop browser viewport: 1440 × 867 CSS pixels at device scale factor 1, fitted inside a 3:2 display after the simulated Chrome controls
 - Mobile browser viewport: 390 × 664 CSS pixels at device scale factor 3, producing 1170 × 1992 source pixels
 
 Captures used fresh, isolated browser contexts with service workers blocked, reduced motion enabled, animation and transitions disabled, and analytics or tracking requests blocked where identifiable. Website mutations—including the contact endpoint—were blocked. Two narrowly matched non-GET requests were permitted: Cloudflare Turnstile's challenge request so the unsubmitted form could show its normal security control, and one named Instagram logged-out GraphQL query needed to keep its public desktop profile visible. The latter was limited by exact host, path and query name; other Instagram POST requests remained blocked. The production floating Instagram action remains in its captured viewport position.
 
-The approved Playwright recordings remain the underlying footage. For this portfolio edition, one shared Remotion layer adds a small cursor, tap ring, swipe trace or mouse-wheel cue only where an action leads to the next state. Ordinary reading and page scrolling remain unmarked; the two enlarged-map scrolls are marked because they explain how the fixed viewer handles portrait artwork. English and Traditional Chinese use the same cue timings, checked against the final rendered frames. FFmpeg produces the final MP4 and GIF files. This overlay did not rebuild, edit or redeploy the production website.
+The underlying footage is captured with Playwright. Remotion adds cursor, tap, swipe and mouse-wheel illustrations; these are explanatory markers, not recordings of physical mouse or finger movements. Clicks are placed on the visible control before the page changes, with separate target positions where the English and Chinese layouts differ. Ordinary reading stays unmarked; the enlarged-map scrolls have a wheel cue to show that portrait artwork can scroll inside the viewer.
+
+On 21 September, I corrected the interaction timings and re-captured the four-second brand-category sequence so the phone shows the category before selecting it. Two brief image-loading flashes were replaced by a hold on the preceding complete frame, without changing the film lengths. The website interface was not redrawn, changed or redeployed. FFmpeg produces the MP4 and GIF files.
 
 The Programme and Brand walkthroughs use ordinary GET navigation to three named public destinations: one matching The Ground event record, IŚSMEN's Instagram profile and its official website. The capture did not sign in, follow an account, submit a form, start booking or payment, or make a cookie choice. A local Instagram sign-in prompt was dismissed so the already-public profile remained visible. The destination and return path are recorded on both devices. These third-party views record what was publicly visible on 20 September 2026; they are not an uptime or future-availability claim.
 
